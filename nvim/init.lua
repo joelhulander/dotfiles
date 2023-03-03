@@ -1,4 +1,4 @@
-require('config')
+require('core')
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -37,8 +37,3 @@ require('onedark').setup {
 }
 require('onedark').load()
 
-require('lualine').setup() 
-require('nvim-treesitter').setup() 
-require('nvim-tree').setup()
-require('telescope').setup()
-require('indent_blankline').setup()
