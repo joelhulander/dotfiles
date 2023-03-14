@@ -11,6 +11,9 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
+-- vim.g.OmniSharp_translate_cygwin_wsl = 1
+-- vim.g.OmniSharp_highlighting = 0
+
 
 vim.opt.runtimepath:prepend(lazypath)
 
@@ -31,7 +34,6 @@ require('lazy').setup('plugins', {
 		},
 	},
 })
---vim.cmd.colorscheme('onedark')
 require('onedark').setup {
 	style = 'darker'
 }

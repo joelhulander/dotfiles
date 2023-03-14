@@ -16,7 +16,9 @@ return {
 			'javascript',
 			'json',
 			'markdown',
-			'c_sharp'
+			'c_sharp',
+			'vim',
+			'regex',
 		},
 		incremental_selection = {
 			enable = true,
