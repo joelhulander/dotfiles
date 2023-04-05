@@ -7,8 +7,9 @@ return {
 		config = function()
 			require('nvim-tree').setup{
 				view = {
-					width = 35,
+					width = 50,
 				},
+				update_cwd = true,
 			}
 		end,
 	},

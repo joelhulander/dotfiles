@@ -3,7 +3,7 @@ return {
 		config = function()
 			local lsp = require'lspconfig'
 			local pid = vim.fn.getpid()
-			local omnisharp_bin = "/mnt/c/Users/joelhu/.omnisharp/OmniSharp.exe"
+			local omnisharp_bin = "C:/Users/joelhu/.omnisharp/OmniSharp.exe"
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local on_attach = function(client, bufnr)
 				vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
