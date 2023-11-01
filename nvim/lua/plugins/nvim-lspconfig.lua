@@ -3,7 +3,8 @@ return {
 		config = function()
 			local lsp = require'lspconfig'
 			local pid = vim.fn.getpid()
-			local omnisharp_bin = "C:/Users/joelhu/.omnisharp/OmniSharp.exe"
+			local omnisharp_bin = "/mnt/c/Users/joelhu/.omnisharp/OmniSharp.exe"
+			local csharp_ls_bin = "C:/Users/JHU02/.dotnet/tools/csharp-ls.exe"
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local on_attach = function(client, bufnr)
 				vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -23,11 +24,17 @@ return {
 				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 				vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 			end,
-			lsp.omnisharp.setup {
-				cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-				on_attach = on_attach,
-				capabilities = capabilities
+			lsp.csharp_ls.setup {
+				cmd = { csharp_ls_bin },
+				filetypes = { "cs" },
+				init_options = { AutomaticWorkspaceInit = true },
+				-- root_dir { see source file }
 			}
+--			lsp.omnisharp.setup {
+--				cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+--				on_attach = on_attach,
+--				capabilities = capabilities
+--			}
 		end,
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {

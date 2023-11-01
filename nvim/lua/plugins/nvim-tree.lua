@@ -9,7 +9,6 @@ return {
 				view = {
 					width = 50,
 				},
-				update_cwd = true,
 			}
 		end,
 	},
