@@ -4,7 +4,16 @@ return {
 		version = '*',
 		dependencies = { 'nvim-lua/plenary.nvim' },
 		config = function()
-			require('telescope').setup{}
+			require('telescope').setup{
+				find_files = {
+					path_display = 'truncate',
+				},
+				defaults = {
+					layout_config = {
+						vertical = { width = max },
+					},
+				},
+			}
 		end,
 	} 
 }

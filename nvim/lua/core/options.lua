@@ -14,3 +14,4 @@ opt.cursorline = true
 opt.confirm = true
 opt.clipboard = "unnamedplus"
 opt.completeopt = 'menuone,noselect'
+opt.shell = "pwsh"
