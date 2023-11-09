@@ -1,7 +1,12 @@
 return {
 	'nvim-lualine/lualine.nvim',
+	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	config = function()
-		require('lualine').setup{
+		local lualine = require('lualine')
+		local lazy_status = require('lazy.status')
+
+
+		lualine.setup{
 			sections = {
 				lualine_a = {
 					{
@@ -22,6 +27,16 @@ return {
 							newfile = '[New]',     -- Text to show for newly created file before first write
 						}
 					}
+				},
+				lualine_x = {
+					{
+            			lazy_status.updates,
+			            cond = lazy_status.has_updates,
+            			color = { fg = "#ff9e64" },
+					},
+					{ "encoding" },
+					{ "fileformat" },
+					{ "filetype" },
 				},
 			},
 		}

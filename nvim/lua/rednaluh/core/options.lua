@@ -1,12 +1,27 @@
 local opt = vim.opt
 
+-- line numbers
 opt.number = true
 opt.relativenumber = true
+
+-- tabs & indentation
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = false
+
+-- line wrapping
+opt.wrap = false
+
+--search settings
+opt.ignorecase = true
+opt.smartcase = true
+
+-- turn off swapfile
+opt.swapfile = false
+
+-- other settings
 opt.mouse = 'a'
 opt.hlsearch = false
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = false
 opt.wrap = false
 opt.termguicolors = true
 opt.smartindent = true
