@@ -14,11 +14,6 @@ vim.keymap.set('n', '<leader>e', '<C-W>j', { desc = 'Go to the down window' })
 vim.keymap.set('n', '<leader>i', '<C-W>l', { desc = 'Go to the right window' })
 vim.keymap.set('n', '<leader>u', '<C-W>k', { desc = 'Go to the up window' })
 
--- telescope
-vim.keymap.set('n', '<leader>ff', '<cmd>:Telescope find_files<cr>', { desc = 'Find files' })
-vim.keymap.set('n', '<leader>fs', '<cmd>:Telescope live_grep<cr>', { desc = 'Live grep' })
-vim.keymap.set('n', '<leader>gf', '<cmd>:Telescope git_files<cr>', { desc = 'Git files' })
-
 -- terminal
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
