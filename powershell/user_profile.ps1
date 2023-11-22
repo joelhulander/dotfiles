@@ -20,18 +20,38 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 
+# Modify table
+# Update-FormatData -Prepend C:\Users\joelhu\.config\powershell\FileFormat.format.ps1xml
 
 # Alias
-
-function cdSA { set-location "~\source\repos\SA" }
-function cdHome { set-location "~" }
+function cdSA { 
+	set-location "~\source\repos\SA" 
+}
+function cdHome { 
+	set-location "~" 
+}
 function cdBack { 
 	$localPath = Get-Location | Split-Path -Parent
 	set-location $localPath
 }
 function getAll {
-	Get-ChildItem -force
+	Get-ChildItem -force | Format-Wide
 }
+
+# Define a script block to be executed when the current directory changes
+$directoryChangedScriptBlock = {
+	$Host.UI.RawUI.WindowTitle = Get-Location | Split-Path -Leaf
+}
+
+# Create a FileSystemWatcher to monitor directory changes
+$watcher = New-Object System.IO.FileSystemWatcher
+$watcher.Path = (Get-Location).Path
+$watcher.IncludeSubdirectories = $false
+$watcher.EnableRaisingEvents = $true
+
+# Register the event for directory changes
+$eventSubscriber = Register-ObjectEvent -InputObject $watcher -EventName Changed -Action $directoryChangedScriptBlock
+
 
 Set-Alias n z
 Set-Alias g git
