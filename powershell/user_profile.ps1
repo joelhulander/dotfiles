@@ -32,7 +32,7 @@ function cdHome {
 }
 function cdBack { 
 	$localPath = Get-Location | Split-Path -Parent
-	set-location $localPath
+		set-location $localPath
 }
 function getAll {
 	Get-ChildItem -force | Format-Wide
@@ -63,6 +63,14 @@ Set-Alias sa cdSA
 Set-Alias ~ cdHome
 Set-Alias .. cdBack
 Set-Alias ls getAll
+Set-Alias build buildSA
+Set-Alias rebuild rebuildSA
+Set-Alias buildSln rebuildSln
+Set-Alias gd showGitDiff
+
+function showGitDiff {
+	git diff -w
+}
 
 # Utilities
 function which ($command) {
@@ -74,5 +82,30 @@ function which ($command) {
 function open {
 	param ($file)
 
-	Invoke-Item $file
+		Invoke-Item $file
+}
+
+function buildSA {
+	process
+	{
+		Write-Host "Building $(Get-Location | Split-Path -Leaf)" -foregroundcolor green
+			& "msbuild" -t:Build -m:12 -p:SolutionDir=C:\Users\joelhu\source\repos\SA\Application\SweetAutomation
+	}
+}
+
+
+function rebuildSA {
+	process
+	{
+		Write-Host "Rebuilding $(Get-Location | Split-Path -Leaf)" -foregroundcolor green
+			& "msbuild" -t:Rebuild -m:12 -p:SolutionDir=C:\Users\joelhu\source\repos\SA\Application\SweetAutomation 
+	}
+}
+
+function rebuildSln {
+	process
+	{
+		Write-Host "Rebuilding SweetAutomation" -foregroundcolor green
+			& "msbuild" C:\Users\joelhu\source\repos\SA\Application\SweetAutomation -t:Rebuild -m:12 
+	}
 }
