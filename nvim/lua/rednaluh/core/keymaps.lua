@@ -28,6 +28,9 @@ keymap.set("n", "sn", "<C-W>k", { desc = "Go to the up window", noremap = true }
 
 keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz", { noremap = true })
 keymap.set({ "n", "v" }, "<C-u>", "<C-u>zz", { noremap = true })
+keymap.set({ "n", "v" }, "n", "nzz", { noremap = true })
+keymap.set({ "n", "v" }, "N", "Nzz", { noremap = true })
+-- keymap.set({ "n", "v" }, "/<CR>", "zz", { noremap = true })
 
 -- Tabs
 -- Move to previous/next

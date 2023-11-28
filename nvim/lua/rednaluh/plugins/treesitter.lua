@@ -16,6 +16,7 @@ return {
 			"lua",
 			"javascript",
 			"json",
+			"javascript",
 			"markdown",
 			-- 'c_sharp',
 			"vim",

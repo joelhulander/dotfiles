@@ -44,6 +44,8 @@ return {
 				"stylua", -- lua formatter
 				"csharpier",
 				"clang-format",
+				"prettier",
+				"prettierd",
 				-- "isort", -- python formatter
 				--"black", -- python formatter
 				--"pylint", -- python linter
