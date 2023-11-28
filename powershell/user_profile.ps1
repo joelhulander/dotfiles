@@ -67,6 +67,7 @@ Set-Alias build buildSA
 Set-Alias rebuild rebuildSA
 Set-Alias buildSln rebuildSln
 Set-Alias gd showGitDiff
+Set-Alias copydir Copy-DirectoryWithConfirmation
 
 function showGitDiff {
 	git diff -w
@@ -108,4 +109,35 @@ function rebuildSln {
 		Write-Host "Rebuilding SweetAutomation" -foregroundcolor green
 			& "msbuild" C:\Users\joelhu\source\repos\SA\Application\SweetAutomation -t:Rebuild -m:12 
 	}
+}
+
+function Copy-DirectoryWithConfirmation {
+    param(
+        [string]$sourcePath,
+        [string]$destinationPath
+    )
+
+    # Check if source directory exists
+    if (-not (Test-Path $sourcePath -PathType Container)) {
+        Write-Host "Source directory '$sourcePath' not found."
+        return
+    }
+
+    # Build the full destination path including the source directory name
+    $fullDestinationPath = Join-Path -Path $destinationPath -ChildPath (Split-Path $sourcePath -Leaf)
+
+    # Check if destination directory exists
+    if (Test-Path $fullDestinationPath -PathType Container) {
+        # Destination directory exists, prompt for confirmation
+        $confirmation = Read-Host "Destination directory '$fullDestinationPath' already exists. Do you want to overwrite? (Y/N)"
+        if ($confirmation -ne 'Y') {
+            Write-Host "Copy operation canceled."
+            return
+        }
+    }
+
+    # Copy the directory and its contents
+    Copy-Item -Path $sourcePath -Destination $destinationPath -Recurse -Force
+
+    Write-Host "Directory '$sourcePath' successfully copied to '$fullDestinationPath'."
 }
