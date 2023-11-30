@@ -29,7 +29,7 @@ return {
 			ensure_installed = {
 				"csharp_ls",
 				"lua_ls",
-				"html",
+				-- "html",
 				"jsonls",
 				"cssls",
 				"sqlls",
@@ -46,9 +46,6 @@ return {
 				"clang-format",
 				"prettier",
 				"prettierd",
-				-- "isort", -- python formatter
-				--"black", -- python formatter
-				--"pylint", -- python linter
 			},
 		})
 	end,
