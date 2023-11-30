@@ -73,7 +73,12 @@ return {
 		lspconfig["html"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			cmd = { "vscode-html-language-server", "--stdio" },
+			init_options = {
+				provideFormatter = false,
+			},
 		})
+
 		-- configure css server
 		lspconfig["cssls"].setup({
 			capabilities = capabilities,
