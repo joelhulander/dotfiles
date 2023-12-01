@@ -30,3 +30,5 @@ opt.confirm = true
 opt.clipboard = "unnamedplus"
 opt.completeopt = "menuone,noselect"
 opt.shell = "pwsh"
+
+opt.pumheight = 10
