@@ -1,9 +1,9 @@
 return {
-	'folke/noice.nvim',
+	"folke/noice.nvim",
 	config = function()
-	require('noice').setup()
+		require("noice").setup()
 	end,
 	dependencies = {
-		'MunifTanjim/nui.nvim',
+		"MunifTanjim/nui.nvim",
 	},
 }

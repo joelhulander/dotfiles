@@ -18,10 +18,10 @@ return {
 				-- mappings = {
 				-- 	i = {
 				-- 		["<C-k>"] = actions.move_selection_previous, -- move to prev result
-				--         ["<C-j>"] = actions.move_selection_next, -- move to next result
-				--       	["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-				--     	},
-				--   	},
+				-- 		["<C-j>"] = actions.move_selection_next, -- move to next result
+				-- 		["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+				-- 	},
+				-- },
 			},
 		})
 		telescope.load_extension("fzf")
@@ -29,14 +29,41 @@ return {
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
 
-		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>",
-			{ desc = "Fuzzy find files in cwd", noremap = true, silent = true })
-		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>",
-			{ desc = "Fuzzy find recent files", noremap = true, silent = true })
-		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>",
-			{ desc = "Find string in cwd", noremap = true, silent = true })
-		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>",
-			{ desc = "Find string under cursor in cwd", noremap = true, silent = true })
+		keymap.set(
+			"n",
+			"<leader>ff",
+			"<cmd>Telescope find_files<cr>",
+			{ desc = "Fuzzy find files in cwd", noremap = true, silent = true }
+		)
+		keymap.set(
+			"n",
+			"<leader>fr",
+			"<cmd>Telescope oldfiles<cr>",
+			{ desc = "Fuzzy find recent files", noremap = true, silent = true }
+		)
+		keymap.set(
+			"n",
+			"<leader>fs",
+			"<cmd>Telescope live_grep<cr>",
+			{ desc = "Find string in cwd", noremap = true, silent = true }
+		)
+		keymap.set(
+			"n",
+			"<leader>fc",
+			"<cmd>Telescope grep_string<cr>",
+			{ desc = "Find string under cursor in cwd", noremap = true, silent = true }
+		)
+		keymap.set(
+			"n",
+			"<leader>fb",
+			"<cmd>Telescope buffers<cr>",
+			{ desc = "List buffers", noremap = true, silent = true }
+		)
+		keymap.set(
+			"n",
+			"<leader>fj",
+			"<cmd>Telescope jumplist<cr>",
+			{ desc = "List jump list", noremap = true, silent = true }
+		)
 	end,
 }
-

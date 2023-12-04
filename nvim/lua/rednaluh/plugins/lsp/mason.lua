@@ -29,7 +29,7 @@ return {
 			ensure_installed = {
 				"csharp_ls",
 				"lua_ls",
-				"html",
+				-- "html",
 				"jsonls",
 				"cssls",
 				"sqlls",

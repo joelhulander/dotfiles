@@ -25,7 +25,7 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory
 
 # Alias
 function cdSA { 
-	set-location "~\source\repos\SA" 
+	set-location "~\SA" 
 }
 function cdHome { 
 	set-location "~" 
@@ -53,8 +53,10 @@ $watcher.EnableRaisingEvents = $true
 $eventSubscriber = Register-ObjectEvent -InputObject $watcher -EventName Changed -Action $directoryChangedScriptBlock
 
 
-Set-Alias n z
 Set-Alias g git
+Set-Alias n nvim
+Set-Alias t z
+Set-Alias to z
 Set-Alias grep findstr
 Set-Alias tig 'C:\Program Files\Git\usr\bin\tig.exe'
 Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
@@ -65,7 +67,6 @@ Set-Alias .. cdBack
 Set-Alias ls getAll
 Set-Alias build buildSA
 Set-Alias rebuild rebuildSA
-Set-Alias buildSln rebuildSln
 Set-Alias gd showGitDiff
 Set-Alias copydir Copy-DirectoryWithConfirmation
 
@@ -87,57 +88,117 @@ function open {
 }
 
 function buildSA {
-	process
-	{
-		Write-Host "Building $(Get-Location | Split-Path -Leaf)" -foregroundcolor green
-			& "msbuild" -t:Build -m:12 -p:SolutionDir=C:\Users\joelhu\source\repos\SA\Application\SweetAutomation
+	$solutionDir = Get-Location;
+	$currentDirName = $solutionDir | Split-Path -Leaf;
+	if ($currentDirName -ne "SweetAutomation") {
+		$solutionDir = Join-Path -Path $solutionDir -ChildPath "..";
 	}
+
+	Write-Host "Building $(Get-Location | Split-Path -Leaf)" -foregroundcolor green
+		& "msbuild" -t:Build -m:12 -p:SolutionDir=$solutionDir;
 }
 
 
 function rebuildSA {
-	process
-	{
-		Write-Host "Rebuilding $(Get-Location | Split-Path -Leaf)" -foregroundcolor green
-			& "msbuild" -t:Rebuild -m:12 -p:SolutionDir=C:\Users\joelhu\source\repos\SA\Application\SweetAutomation 
+	$solutionDir = Get-Location;
+	$currentDirName = $solutionDir | Split-Path -Leaf;
+	if ($currentDirName -ne "SweetAutomation") {
+		$solutionDir = Join-Path -Path $solutionDir -ChildPath "..";
 	}
-}
-
-function rebuildSln {
-	process
-	{
-		Write-Host "Rebuilding SweetAutomation" -foregroundcolor green
-			& "msbuild" C:\Users\joelhu\source\repos\SA\Application\SweetAutomation -t:Rebuild -m:12 
-	}
+	Write-Host "Rebuilding $(Get-Location | Split-Path -Leaf)" -foregroundcolor green
+		& "msbuild" -t:Rebuild -m:12 -p:SolutionDir=$solutionDir;
 }
 
 function Copy-DirectoryWithConfirmation {
-    param(
-        [string]$sourcePath,
-        [string]$destinationPath
-    )
+	param(
+			[string]$sourcePath,
+			[string]$destinationPath
+		 )
 
-    # Check if source directory exists
-    if (-not (Test-Path $sourcePath -PathType Container)) {
-        Write-Host "Source directory '$sourcePath' not found."
-        return
-    }
+# Check if source directory exists
+		if (-not (Test-Path $sourcePath -PathType Container)) {
+			Write-Host "Source directory '$sourcePath' not found."
+				return
+		}
 
-    # Build the full destination path including the source directory name
-    $fullDestinationPath = Join-Path -Path $destinationPath -ChildPath (Split-Path $sourcePath -Leaf)
+# Build the full destination path including the source directory name
+	$fullDestinationPath = Join-Path -Path $destinationPath -ChildPath (Split-Path $sourcePath -Leaf)
 
-    # Check if destination directory exists
-    if (Test-Path $fullDestinationPath -PathType Container) {
-        # Destination directory exists, prompt for confirmation
-        $confirmation = Read-Host "Destination directory '$fullDestinationPath' already exists. Do you want to overwrite? (Y/N)"
-        if ($confirmation -ne 'Y') {
-            Write-Host "Copy operation canceled."
-            return
-        }
-    }
+# Check if destination directory exists
+		if (Test-Path $fullDestinationPath -PathType Container) {
+# Destination directory exists, prompt for confirmation
+			$confirmation = Read-Host "Destination directory '$fullDestinationPath' already exists. Do you want to overwrite? (Y/N)"
+				if ($confirmation -ne 'Y') {
+					Write-Host "Copy operation canceled."
+						return
+				}
+		}
 
-    # Copy the directory and its contents
-    Copy-Item -Path $sourcePath -Destination $destinationPath -Recurse -Force
+# Copy the directory and its contents
+	Copy-Item -Path $sourcePath -Destination $destinationPath -Recurse -Force
 
-    Write-Host "Directory '$sourcePath' successfully copied to '$fullDestinationPath'."
+		Write-Host "Directory '$sourcePath' successfully copied to '$fullDestinationPath'."
+}
+
+
+function deploy {
+	param (
+			[Parameter(Position = 0, Mandatory = $false, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
+			[string]$branch
+		  )
+
+		$iisDeploymentPath = "C:\Users\joelhu\Applications\SweetAutomation";
+	$currentDir = Get-Location;
+	$currentDirName = $currentDir | Split-Path -Leaf;
+
+	if ($currentDirName -eq "SweetAutomation") {
+		$dir = Join-Path -Path $currentDir -ChildPath "CM\*";
+	}
+	else {
+		$dir = Join-Path -Path $currentDir -ChildPath "Application\SweetAutomation\CM\*";
+	}
+
+	if ($branch -eq "dev") 
+	{
+		$dir = "C:\Users\joelhu\SA\development\Application\SweetAutomation\CM\*";
+	}
+
+	Copy-Item -Recurse -Force $dir $iisDeploymentPath;
+	if ($branch -eq "dev") {
+		Write-Host "Branch 'development' successfully deployed.";
+	}
+	else {
+		$branch = git rev-parse --abbrev-ref HEAD;
+			Write-Host "Branch '$branch' successfully deployed.";
+	}
+}
+
+function root {
+	$currentDir = Get-Location
+		$dir = Join-Path -Path $currentDir -ChildPath "Application\SweetAutomation"
+
+		set-location $dir
+}
+
+function branch {
+	$branch = git rev-parse --abbrev-ref HEAD;
+
+	return $branch;
+}
+
+function su {
+	param (
+			[Parameter(Position = 0, Mandatory = $false, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
+			[string]$folder
+		  )
+
+
+		$currentBranch = branch
+		if ($folder) {
+
+			Invoke-Expression "git branch --set-upstream-to=origin/$folder/$currentBranch";
+		}
+		else {
+			Invoke-Expression "git branch --set-upstream-to=origin/$currentBranch";
+		}
 }
