@@ -32,8 +32,6 @@ keymap.set({ "n", "v" }, "n", "nzz", { noremap = true })
 keymap.set({ "n", "v" }, "N", "Nzz", { noremap = true })
 -- keymap.set({ "n", "v" }, "/<CR>", "zz", { noremap = true })
 
--- Harpoon
-keymap.set("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", { desc = "Mark file", noremap = true })
 -- Tabs
 -- Move to previous/next
 -- keymap.set("n", "<tab>", "<Cmd>BufferNext<CR>", opts)
