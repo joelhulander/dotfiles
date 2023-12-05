@@ -18,7 +18,7 @@ return {
 			"json",
 			"javascript",
 			"markdown",
-			-- 'c_sharp',
+			"c_sharp",
 			"vim",
 			"regex",
 		},
