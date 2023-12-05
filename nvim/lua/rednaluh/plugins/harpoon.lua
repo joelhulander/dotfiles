@@ -21,16 +21,16 @@ return {
 		local ui = require("harpoon.ui")
 
 		local keymap = vim.keymap
-		keymap.set("n", "<leader>h1", function()
+		keymap.set("n", "<C-h>", function()
 			ui.nav_file(1)
 		end, { desc = "Go to file 1" })
-		keymap.set("n", "<leader>h2", function()
+		keymap.set("n", "<C-n>", function()
 			ui.nav_file(2)
 		end, { desc = "Go to file 2" })
-		keymap.set("n", "<leader>h3", function()
+		keymap.set("n", "<C-e>", function()
 			ui.nav_file(3)
 		end, { desc = "Go to file 3" })
-		keymap.set("n", "<leader>h4", function()
+		keymap.set("n", "<C-i>", function()
 			ui.nav_file(4)
 		end, { desc = "Go to file 4" })
 
@@ -44,6 +44,6 @@ return {
 
 		-- Harpoon user interface.
 		keymap.set("n", "<leader>hm", ui.toggle_quick_menu, { desc = "Toggle Harpoon menu" })
-		keymap.set("n", "<leader>ha", mark.add_file, { desc = "Add file to Harpoon" })
+		keymap.set("n", "<leader>a", mark.add_file, { desc = "Add file to Harpoon" })
 	end,
 }

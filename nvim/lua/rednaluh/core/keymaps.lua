@@ -3,7 +3,7 @@ local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 keymap.set("n", "<leader>w", "<cmd>write<cr>", { desc = "Save", noremap = true })
 keymap.set("n", "<leader>q", "<cmd>quit<cr>", { desc = "Quit", noremap = true })
-keymap.set("n", "<leader>a", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
+keymap.set("n", "<leader>sa", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
 keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 keymap.set("n", "<leader>o", "o<Esc>", opts)
 keymap.set("n", "<leader>O", "O<Esc>", opts)
