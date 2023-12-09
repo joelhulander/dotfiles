@@ -21,6 +21,7 @@ return {
 			"c_sharp",
 			"vim",
 			"regex",
+			"go",
 		},
 		-- incremental_selection = {
 		-- 	enable = true,

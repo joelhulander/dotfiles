@@ -1,5 +1,5 @@
 return {
-	'folke/tokyonight.nvim',
-	'tanvirtin/monokai.nvim',
-	'navarasu/onedark.nvim',
+	"folke/tokyonight.nvim",
+	"tanvirtin/monokai.nvim",
+	"navarasu/onedark.nvim",
 }

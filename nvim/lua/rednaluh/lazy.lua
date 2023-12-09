@@ -12,29 +12,32 @@ end
 
 vim.opt.runtimepath:prepend(lazypath)
 
-require("lazy").setup({ { import = "rednaluh.plugins" }, { import = "rednaluh.plugins.lsp" } }, {
-	checker = {
-		enabled = true,
-		notify = false,
-	},
-	performance = {
-		rtp = {
-			disabled_plugins = {
-				"gzip",
-				"matchit",
-				"matchparen",
-				"netrwPlugin",
-				"tarPlugin",
-				"tohtml",
-				"tutor",
-				"zipPlugin",
+require("lazy").setup(
+	{ { import = "rednaluh.plugins" }, { import = "rednaluh.plugins.lsp" }, { import = "rednaluh.plugins.debug" } },
+	{
+		checker = {
+			enabled = true,
+			notify = false,
+		},
+		performance = {
+			rtp = {
+				disabled_plugins = {
+					"gzip",
+					"matchit",
+					"matchparen",
+					"netrwPlugin",
+					"tarPlugin",
+					"tohtml",
+					-- "tutor",
+					"zipPlugin",
+				},
 			},
 		},
-	},
-	change_detection = {
-		notify = false,
-	},
-})
+		change_detection = {
+			notify = false,
+		},
+	}
+)
 require("onedark").setup({
 	style = "darker",
 })
