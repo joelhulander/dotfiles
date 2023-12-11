@@ -7,8 +7,8 @@ keymap.set("n", "<leader>w", "<cmd>write<cr>", { desc = "Save", noremap = true }
 keymap.set("n", "<leader>q", "<cmd>quit<cr>", { desc = "Quit", noremap = true })
 keymap.set("n", "<leader>sa", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
 -- keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
-keymap.set("n", "<leader>o", "o<Esc>", opts)
-keymap.set("n", "<leader>O", "O<Esc>", opts)
+keymap.set("n", "<leader>o", "o<Esc>", { desc = "Add line below", noremap = true, silent = true })
+keymap.set("n", "<leader>O", "O<Esc>", { desc = "Add line above", noremap = true, silent = true })
 
 -- windows
 keymap.set("n", "<leader>p", "<C-W>p", { desc = "Switch window" })
@@ -86,11 +86,11 @@ keymap.set("n", "<leader>fj", "<cmd>Telescope jumplist<cr>", { desc = "List jump
 
 -- DAP
 keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
-keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")
-keymap.set("n", "<F2>", ":lua require'dap'.step_into()<CR>")
+keymap.set("n", "<F10>", ":lua require'dap'.step_over()<CR>")
+keymap.set("n", "<F11>", ":lua require'dap'.step_into()<CR>")
 keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>")
-keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
-keymap.set("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
-keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+keymap.set("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
+keymap.set("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+keymap.set("n", "<leader>dl", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
 keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
 keymap.set("n", "<leader>dt", ":lua require'dap-go'.debug_test()<CR>")
