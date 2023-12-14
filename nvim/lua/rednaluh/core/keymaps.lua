@@ -83,14 +83,20 @@ keymap.set(
 )
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "List buffers", noremap = true, silent = true })
 keymap.set("n", "<leader>fj", "<cmd>Telescope jumplist<cr>", { desc = "List jump list", noremap = true, silent = true })
+keymap.set(
+	"n",
+	"<leader>fm",
+	"<cmd>Telescope keymaps<cr>",
+	{ desc = "List all keymaps", noremap = true, silent = true }
+)
 
 -- DAP
-keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
-keymap.set("n", "<F10>", ":lua require'dap'.step_over()<CR>")
-keymap.set("n", "<F11>", ":lua require'dap'.step_into()<CR>")
-keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>")
+keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>", { noremap = true, silent = true })
+keymap.set("n", "<F2>", ":lua require'dap'.step_over()<CR>")
+keymap.set("n", "<F1>", ":lua require'dap'.step_into()<CR>")
+keymap.set("n", "<F3>", ":lua require'dap'.step_out()<CR>")
 keymap.set("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
 keymap.set("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 keymap.set("n", "<leader>dl", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
-keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
-keymap.set("n", "<leader>dt", ":lua require'dap-go'.debug_test()<CR>")
+keymap.set("n", "<leader>dR", ":lua require'dap'.repl.open()<CR>")
+keymap.set("n", "<leader>dgt", ":lua require'dap-go'.debug_test()<CR>")

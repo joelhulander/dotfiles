@@ -51,6 +51,7 @@ return {
 				"goimports-reviser",
 				"golines",
 				"delve",
+				"netcoredbg",
 			},
 		})
 	end,

@@ -6,7 +6,6 @@ return {
 	},
 	config = function()
 		require("nvim-dap-virtual-text").setup()
-		require("dapui").setup()
 
 		local dap, dapui = require("dap"), require("dapui")
 
@@ -19,5 +18,22 @@ return {
 		dap.listeners.before.event_exited["dapui_config"] = function()
 			dapui.close()
 		end
+
+		-- dap.adapters.coreclr = {
+		-- 	type = "executable",
+		-- 	command = "C:/Users/JHU02/AppData/Local/nvim-data/mason/bin/netcoredbg.cmd",
+		-- 	args = { "--interpreter=vscode" },
+		-- }
+		--
+		-- dap.configurations.cs = {
+		-- 	{
+		-- 		type = "coreclr",
+		-- 		name = "Attach to process",
+		-- 		request = "attach",
+		-- 		processId = require("dap.utils").pick_process,
+		-- 	},
+		-- }
+
+		dapui.setup()
 	end,
 }
