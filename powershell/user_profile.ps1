@@ -44,13 +44,13 @@ $directoryChangedScriptBlock = {
 }
 
 # Create a FileSystemWatcher to monitor directory changes
-$watcher = New-Object System.IO.FileSystemWatcher
-$watcher.Path = (Get-Location).Path
-$watcher.IncludeSubdirectories = $false
-$watcher.EnableRaisingEvents = $true
+# $watcher = New-Object System.IO.FileSystemWatcher
+# $watcher.Path = (Get-Location).Path
+# $watcher.IncludeSubdirectories = $false
+# $watcher.EnableRaisingEvents = $true
 
 # Register the event for directory changes
-$eventSubscriber = Register-ObjectEvent -InputObject $watcher -EventName Changed -Action $directoryChangedScriptBlock
+# $eventSubscriber = Register-ObjectEvent -InputObject $watcher -EventName Changed -Action $directoryChangedScriptBlock
 
 
 Set-Alias g git
