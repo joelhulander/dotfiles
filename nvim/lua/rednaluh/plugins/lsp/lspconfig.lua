@@ -22,16 +22,16 @@ return {
 
 			-- set keybinds
 			opts.desc = "Show LSP references"
-			keymap.set("n", "<leader>fR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+			keymap.set("n", "<leader>lfR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
 			opts.desc = "Go to declaration"
 			keymap.set("n", "<leader>lgD", vim.lsp.buf.declaration, opts) -- go to declaration
 
-			opts.desc = "Show LSP definitions"
-			keymap.set("n", "<leader>fd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+			opts.desc = "Go to definition"
+			keymap.set("n", "<leader>lgd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
 
 			opts.desc = "Show LSP type definitions"
-			keymap.set("n", "<leader>ft", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+			keymap.set("n", "<leader>lft", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
 			opts.desc = "See available code actions"
 			keymap.set({ "n", "v" }, "<leader>lca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
@@ -40,7 +40,7 @@ return {
 			keymap.set("n", "<leader>lrn", vim.lsp.buf.rename, opts) -- smart rename
 
 			opts.desc = "Show buffer diagnostics"
-			keymap.set("n", "<leader>fD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+			keymap.set("n", "<leader>lfD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
 			opts.desc = "Show line diagnostics"
 			keymap.set("n", "<leader>lD", vim.diagnostic.open_float, opts) -- show diagnostics for line
@@ -52,7 +52,7 @@ return {
 			keymap.set("n", "<leader>]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
 			opts.desc = "Show documentation for what is under cursor"
-			keymap.set("n", "<leader>K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+			keymap.set("n", "<leader>lK", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
 			opts.desc = "Restart LSP"
 			keymap.set("n", "<leader>lrs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
