@@ -25,7 +25,7 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory
 
 # Alias
 function cdSA { 
-	set-location "~\SA" 
+	set-location "C:\SA" 
 }
 function cdHome { 
 	set-location "~" 
@@ -39,9 +39,9 @@ function getAll {
 }
 
 # Define a script block to be executed when the current directory changes
-$directoryChangedScriptBlock = {
-	$Host.UI.RawUI.WindowTitle = Get-Location | Split-Path -Leaf
-}
+# $directoryChangedScriptBlock = {
+# 	$Host.UI.RawUI.WindowTitle = Get-Location | Split-Path -Leaf
+# }
 
 # Create a FileSystemWatcher to monitor directory changes
 # $watcher = New-Object System.IO.FileSystemWatcher

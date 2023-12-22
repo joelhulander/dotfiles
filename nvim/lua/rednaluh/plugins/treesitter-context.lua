@@ -4,7 +4,7 @@ return {
 		local context = require("treesitter-context")
 
 		context.setup({
-			max_lines = 1,
+			max_lines = 3,
 		})
 	end,
 }
