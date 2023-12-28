@@ -29,6 +29,6 @@ opt.cursorline = true
 opt.confirm = true
 opt.clipboard = "unnamedplus"
 opt.completeopt = "menuone,noselect"
-opt.shell = "pwsh"
+opt.shell = "zsh"
 
 opt.pumheight = 10
