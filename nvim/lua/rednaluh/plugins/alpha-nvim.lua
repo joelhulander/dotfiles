@@ -20,7 +20,8 @@ return {
 		}
 		dashboard.section.buttons.val = {
 			dashboard.button("n", "  > New File", "<cmd>ene<CR>", opts),
-			dashboard.button("SPC tt", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>", opts),
+			-- dashboard.button("SPC tt", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>", opts),
+			dashboard.button("-", " > Open parent directory", "<cmd>Oil<CR>", opts),
 			dashboard.button("SPC ff", "󰱼 > Find File", "<cmd>Telescope find_files<CR>", opts),
 			dashboard.button("SPC fs", "  > Find Word", "<cmd>Telescope live_grep<CR>", opts),
 			dashboard.button(

@@ -53,6 +53,7 @@ return {
 				"golines",
 				"delve",
 				"netcoredbg",
+				"eslint_d",
 			},
 		})
 	end,

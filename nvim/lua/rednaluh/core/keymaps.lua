@@ -35,26 +35,26 @@ keymap.set({ "n", "v" }, "<C-u>", "<C-u>zz", { noremap = true })
 keymap.set({ "n", "v" }, "n", "nzz", { noremap = true })
 keymap.set({ "n", "v" }, "N", "Nzz", { noremap = true })
 
---NvimTree
-keymap.set("n", "<leader>tt", "<cmd>:NvimTreeToggle<cr>", { desc = "NvimTree", noremap = true, silent = true })
-keymap.set(
-	"n",
-	"<leader>tf",
-	"<cmd>NvimTreeFindFileToggle<CR>",
-	{ desc = "Toggle file explorer on current file", noremap = true, silent = true }
-) -- toggle file explorer on current file
-keymap.set(
-	"n",
-	"<leader>tc",
-	"<cmd>NvimTreeCollapse<CR>",
-	{ desc = "Collapse file explorer", noremap = true, silent = true }
-) -- collapse file explorer
-keymap.set(
-	"n",
-	"<leader>tr",
-	"<cmd>NvimTreeRefresh<CR>",
-	{ desc = "Refresh file explorer", noremap = true, silent = true }
-) -- refresh file explorer
+-- --NvimTree
+-- keymap.set("n", "<leader>tt", "<cmd>:nvimtreetoggle<cr>", { desc = "nvimtree", noremap = true, silent = true })
+-- keymap.set(
+-- 	"n",
+-- 	"<leader>tf",
+-- 	"<cmd>NvimTreeFindFileToggle<CR>",
+-- 	{ desc = "Toggle file explorer on current file", noremap = true, silent = true }
+-- ) -- toggle file explorer on current file
+-- keymap.set(
+-- 	"n",
+-- 	"<leader>tc",
+-- 	"<cmd>NvimTreeCollapse<CR>",
+-- 	{ desc = "Collapse file explorer", noremap = true, silent = true }
+-- ) -- collapse file explorer
+-- keymap.set(
+-- 	"n",
+-- 	"<leader>tr",
+-- 	"<cmd>NvimTreeRefresh<CR>",
+-- 	{ desc = "Refresh file explorer", noremap = true, silent = true }
+-- ) -- refresh file explorer
 
 --Telescope
 keymap.set(
@@ -115,35 +115,18 @@ keymap.set("i", "<C-c>", "<Esc>", opts)
 -- VIM keymaps for normal and visual mode
 keymap.set({ "n", "v" }, "k", "n", opts)
 keymap.set({ "n", "v" }, "K", "N", opts)
--- keymap.set({ "n", "v" }, "r", "s", opts)
--- keymap.set({ "n", "v" }, "R", "S", opts)
--- keymap.set({ "n", "v" }, "s", "d", opts)
--- keymap.set({ "n", "v" }, "S", "D", opts)
--- keymap.set({ "n", "v" }, "t", "f", opts)
--- keymap.set({ "n", "v" }, "T", "F", opts)
--- keymap.set({ "n", "v" }, "d", "g", opts)
--- keymap.set({ "n", "v" }, "D", "G", opts)
 keymap.set({ "n", "v" }, "n", "j", opts)
 keymap.set({ "n", "v" }, "N", "J", opts)
 keymap.set({ "n", "v" }, "e", "k", opts)
 keymap.set({ "n", "v" }, "E", "K", opts)
 keymap.set({ "n", "v" }, "i", "l", opts)
 keymap.set({ "n", "v" }, "I", "L", opts)
--- keymap.set({ "n", "v" }, "o", ";", opts)
--- keymap.set({ "n", "v" }, "O", ":", opts)
--- keymap.set({ "n", "v" }, "f", "e", opts)
--- keymap.set({ "n", "v" }, "F", "E", opts)
--- keymap.set({ "n", "v" }, "p", "r", opts)
--- keymap.set({ "n", "v" }, "P", "R", opts)
--- keymap.set({ "n", "v" }, "g", "t", opts)
--- keymap.set({ "n", "v" }, "G", "T", opts)
 keymap.set({ "n", "v" }, "j", "e", opts)
 keymap.set({ "n", "v" }, "J", "e", opts)
 keymap.set({ "n", "v" }, "l", "u", opts)
 keymap.set({ "n", "v" }, "L", "U", opts)
 keymap.set({ "n", "v" }, "u", "i", opts)
 keymap.set({ "n", "v" }, "U", "I", opts)
--- keymap.set({ "n", "v" }, "y", "o", opts)
--- keymap.set({ "n", "v" }, "Y", "O", opts)
--- keymap.set({ "n", "v" }, ";", "p", opts)
--- keymap.set({ "n", "v" }, ":", "P", opts)
+
+-- oil
+keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory", noremap = true, silent = true })
