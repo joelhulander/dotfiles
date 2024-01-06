@@ -9,7 +9,7 @@ return {
 		pcall(require("nvim-treesitter.install").update({ with_sync = true }))
 	end,
 	opts = {
-		highlight = { enable = true },
+		highlight = { enable = true, disable = { "txt" } },
 		indent = { enable = true },
 		context_commentstring = { enable = true, enable_autocmd = false },
 		ensure_installed = {
