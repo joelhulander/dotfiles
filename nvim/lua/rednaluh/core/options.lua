@@ -32,3 +32,6 @@ opt.completeopt = "menuone,noselect"
 opt.shell = "pwsh"
 
 opt.pumheight = 10
+opt.shortmess = {
+	I = true,
+}
