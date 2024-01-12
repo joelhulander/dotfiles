@@ -16,7 +16,7 @@ keymap.set("n", "<leader>p", "<C-W>p", { desc = "Switch window" })
 keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
 
 -- New tab
-keymap.set("n", "te", ":tabedit", opts)
+keymap.set("n", "te", ":tabedit<CR>", opts)
 
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
