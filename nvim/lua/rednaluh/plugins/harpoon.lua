@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+	event = { "BufReadPre", "BufNewFile" },
 	opts = {
 		global_settings = {
 			save_on_toggle = false,
