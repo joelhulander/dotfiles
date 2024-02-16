@@ -134,6 +134,9 @@ window_rules:
   - command: "move to workspace 4"
     match_process_name: "firefox"
 
+  - command: "move to workspace 4"
+    match_process_name: "chrome"
+
   - command: "move to workspace 5"
     match_process_name: "devenv"
 
@@ -145,9 +148,6 @@ window_rules:
 
   - command: "move to workspace 8"
     match_process_name: "InetMgr"
-
-  - command: "move to workspace 9"
-    match_process_name: "chrome"
 
   - command: "move to workspace 9"
     match_process_name: "Spotify"

@@ -42,3 +42,4 @@ nmap <C-I> :vsc View.NavigateForward<CR>
 nmap <leader>ff :vsc Edit.GoToAll<CR>
 nmap <leader>fp :vsc Window.QuickLaunch<CR>
 nmap <leader>ca :vsc View.QuickActions<CR>
+nmap gi :vsc Edit.GoToImplementation<CR>
