@@ -38,6 +38,23 @@ function getAll {
 	Get-ChildItem -force | Format-Wide
 }
 
+
+function Copy-FileToClipboard {
+    param(
+        [string]$FilePath
+    )
+
+    if (Test-Path $FilePath) {
+        Get-Content -Path $FilePath | Set-Clipboard
+        Write-Host "Contents of '$FilePath' copied to clipboard."
+    } else {
+        Write-Host "Error: File '$FilePath' not found."
+    }
+}
+
+# Create an alias for the function
+New-Alias -Name cc -Value Copy-FileToClipboard
+
 # Define a script block to be executed when the current directory changes
 # $directoryChangedScriptBlock = {
 # 	$Host.UI.RawUI.WindowTitle = Get-Location | Split-Path -Leaf
