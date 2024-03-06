@@ -1,6 +1,7 @@
 set ignorecase
 set smartcase
 set relativenumber 
+set number
 set hlsearch
 set incsearch
 set cursorline
