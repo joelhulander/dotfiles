@@ -29,6 +29,7 @@ opt.cursorline = true
 opt.confirm = true
 opt.clipboard = "unnamedplus"
 opt.completeopt = "menuone,noselect"
+
 opt.shell = "pwsh"
 opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -command'
 opt.shellxquote = ''

@@ -107,17 +107,17 @@ return {
 		})
 
 		local util = require("lspconfig.util")
-		lspconfig["csharp_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			cmd = { "csharp-ls", "--loglevel", "verbose" },
-			filetypes = { "cs" },
-			init_options = { AutomaticWorkspaceInit = true },
-			handlers = {
-				["textDocument/definition"] = require("csharpls_extended").handler,
-			},
-			root_dir = util.root_pattern("*.sln", "*.fsproj", "*.git"),
-		})
+		-- lspconfig["csharp_ls"].setup({
+		-- 	capabilities = capabilities,
+		-- 	on_attach = on_attach,
+		-- 	cmd = { "csharp-ls", "--loglevel", "verbose" },
+		-- 	filetypes = { "cs" },
+		-- 	init_options = { AutomaticWorkspaceInit = true },
+		-- 	handlers = {
+		-- 		["textDocument/definition"] = require("csharpls_extended").handler,
+		-- 	},
+		-- 	root_dir = util.root_pattern("*.sln", "*.fsproj", "*.git"),
+		-- })
 
 		lspconfig["gopls"].setup({
 			capabilities = capabilities,

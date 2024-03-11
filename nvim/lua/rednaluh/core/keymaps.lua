@@ -103,3 +103,6 @@ keymap.set("i", "EE", "<ESC>", opts )
 
 -- oil
 keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory", noremap = true, silent = true })
+
+--visual studio
+keymap.set("n", "<leader>vs", "<cmd>!devenv /edit %<cr>", { desc = "Edit file in Visual Studio", noremap = true, silent = true })
