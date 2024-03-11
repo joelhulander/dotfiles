@@ -10,7 +10,7 @@ general:
   toggle_workspace_on_refocus: true
 
   # Whether to show floating windows as always on top.
-  show_floating_on_top: false
+  show_floating_on_top: true
 
   # Amount to move floating windows by (eg. when using `alt+<hjkl>` on a floating window)
   floating_window_move_amount: "5%"
@@ -109,7 +109,7 @@ window_rules:
   # Task Manager requires admin privileges to manage and should be ignored unless running
   # the WM as admin.
   - command: "ignore"
-    match_process_name: "/Taskmgr|ScreenClippingHost/"
+    match_process_name: "/Taskmgr|ScreenClippingHost|Greenshot/"
 
   # Launches system dialogs as floating by default (eg. File Explorer save/open dialog).
   - command: "set floating"
@@ -253,21 +253,21 @@ keybindings:
 
   # Change focus to a workspace defined in `workspaces` config.
   - command: "focus workspace 1"
-    bindings: ["Alt+1", "Ctrl+Alt+1"]
+    bindings: ["Alt+1"]
   - command: "focus workspace 2"
-    bindings: ["Alt+2", "Ctrl+Alt+2"]
+    bindings: ["Alt+2"]
   - command: "focus workspace 3"
-    bindings: ["Alt+3", "Ctrl+Alt+3"]
+    bindings: ["Alt+3"]
   - command: "focus workspace 4"
-    bindings: ["Alt+4", "Ctrl+Alt+4"]
+    bindings: ["Alt+4"]
   - command: "focus workspace 5"
-    bindings: ["Alt+5", "Ctrl+Alt+5"]
+    bindings: ["Alt+5"]
   - command: "focus workspace 6"
-    bindings: ["Alt+6", "Ctrl+Alt+6"]
+    bindings: ["Alt+6"]
   - command: "focus workspace 7"
-    bindings: ["Alt+7", "Ctrl+Alt+7"]
+    bindings: ["Alt+7"]
   - command: "focus workspace 8"
-    bindings: ["Alt+8", "Ctrl+Alt+8"]
+    bindings: ["Alt+8"]
   # - command: "focus workspace 9"
   #   bindings: ["Alt+9", "Ctrl+Alt+9"]
 
