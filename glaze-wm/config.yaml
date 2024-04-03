@@ -93,15 +93,6 @@ workspaces:
     display_name: "Browser"
     keep_alive: true
   - name: "5"
-    display_name: "Visual Studio"
-    keep_alive: true
-  - name: "6"
-    display_name: "Postman"
-    keep_alive: true
-  - name: "7"
-    display_name: "SSMS"
-    keep_alive: true
-  - name: "8"
     display_name: "Other"
     keep_alive: true
 
@@ -131,6 +122,12 @@ window_rules:
   - command: "move to workspace 3"
     match_process_name: "devenv"
 
+  - command: "move to workspace 3"
+    match_process_name: "Postman"
+
+  - command: "move to workspace 3"
+    match_process_name: "Ssms"
+
   - command: "move to workspace 4"
     match_process_name: "firefox"
 
@@ -141,13 +138,10 @@ window_rules:
     match_process_name: "msedge"
 
   - command: "move to workspace 5"
-    match_process_name: "Postman"
-
-  - command: "move to workspace 6"
-    match_process_name: "Ssms"
-
-  - command: "move to workspace 7"
     match_process_name: "Spotify"
+
+  - command: "move to workspace 5"
+    match_process_name: "Discord"
 
   - command: "set floating"
     match_process_name: "/InetMgr|explorer/"
@@ -262,14 +256,14 @@ keybindings:
     bindings: ["Alt+4"]
   - command: "focus workspace 5"
     bindings: ["Alt+5"]
-  - command: "focus workspace 6"
-    bindings: ["Alt+6"]
-  - command: "focus workspace 7"
-    bindings: ["Alt+7"]
-  - command: "focus workspace 8"
-    bindings: ["Alt+8"]
+  # - command: "focus workspace 6"
+  #   bindings: ["Alt+6"]
+  # - command: "focus workspace 7"
+  #   bindings: ["Alt+7"]
+  # - command: "focus workspace 8"
+  #   bindings: ["Alt+8"]
   # - command: "focus workspace 9"
-  #   bindings: ["Alt+9", "Ctrl+Alt+9"]
+  #   bindings: ["Alt+9"]
 
   # Move focused workspace to a monitor in a given direction.
   - command: "move workspace left"
@@ -292,11 +286,11 @@ keybindings:
     binding: "Alt+Shift+4"
   - commands: ["move to workspace 5"]
     binding: "Alt+Shift+5"
-  - commands: ["move to workspace 6"]
-    binding: "Alt+Shift+6"
-  - commands: ["move to workspace 7"]
-    binding: "Alt+Shift+7"
-  - commands: ["move to workspace 8"]
-    binding: "Alt+Shift+8"
+  # - commands: ["move to workspace 6"]
+  #   binding: "Alt+Shift+6"
+  # - commands: ["move to workspace 7"]
+  #   binding: "Alt+Shift+7"
+  # - commands: ["move to workspace 8"]
+  #   binding: "Alt+Shift+8"
   # - commands: ["move to workspace 9"]
   #   bindings: ["Alt+Shift+9"]
