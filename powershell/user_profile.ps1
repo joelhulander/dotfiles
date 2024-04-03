@@ -1,3 +1,6 @@
+$env:Path += ';C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE'
+$env:LC_MESSAGES="en-US"
+
 # Set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 # Prompt
