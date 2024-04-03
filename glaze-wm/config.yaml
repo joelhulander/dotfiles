@@ -87,7 +87,7 @@ workspaces:
     display_name: "Teams"
     keep_alive: true
   - name: "3"
-    display_name: "Terminal"
+    display_name: "Dev"
     keep_alive: true
   - name: "4"
     display_name: "Browser"
@@ -128,6 +128,9 @@ window_rules:
   - command: "move to workspace 3"
     match_process_name: "WindowsTerminal"
 
+  - command: "move to workspace 3"
+    match_process_name: "devenv"
+
   - command: "move to workspace 4"
     match_process_name: "firefox"
 
@@ -138,15 +141,12 @@ window_rules:
     match_process_name: "msedge"
 
   - command: "move to workspace 5"
-    match_process_name: "devenv"
-
-  - command: "move to workspace 6"
     match_process_name: "Postman"
 
-  - command: "move to workspace 7"
+  - command: "move to workspace 6"
     match_process_name: "Ssms"
 
-  - command: "move to workspace 8"
+  - command: "move to workspace 7"
     match_process_name: "Spotify"
 
   - command: "set floating"
@@ -246,10 +246,10 @@ keybindings:
     binding: "Alt+Y"
 
   # Focus the next/previous workspace defined in `workspaces` config.
-  - command: "focus workspace next"
-    binding: "Alt+E"
-  - command: "focus workspace prev"
-    binding: "Alt+N"
+  # - command: "focus workspace next"
+  #   binding: "Alt+E"
+  # - command: "focus workspace prev"
+  #   binding: "Alt+N"
 
   # Change focus to a workspace defined in `workspaces` config.
   - command: "focus workspace 1"
