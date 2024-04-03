@@ -46,3 +46,6 @@ nmap <leader>ca :vsc View.QuickActions<CR>
 nmap gi :vsc Edit.GoToImplementation<CR>
 nmap gcc :vsc Edit.ToggleLineComment<CR>
 xmap gcc :vsc Edit.ToggleLineComment<CR><ESC>
+nmap <leader>fR :vsc Edit.FindAllReferences<CR>
+nmap <leader>db :vsc Debug.ToggleBreakpoint<CR>
+nmap <leader>t :vsc View.Terminal<CR>
