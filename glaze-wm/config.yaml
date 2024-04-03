@@ -31,7 +31,7 @@ gaps:
 # ** Exclusive to Windows 11 due to API limitations.
 focus_borders:
   active:
-    enabled: true
+    enabled: false
     color: "#ffffff"
 
   inactive:
@@ -247,15 +247,15 @@ keybindings:
 
   # Change focus to a workspace defined in `workspaces` config.
   - command: "focus workspace 1"
-    bindings: ["Alt+1"]
+    bindings: ["Alt+A"]
   - command: "focus workspace 2"
-    bindings: ["Alt+2"]
+    bindings: ["Alt+R"]
   - command: "focus workspace 3"
-    bindings: ["Alt+3"]
+    bindings: ["Alt+S"]
   - command: "focus workspace 4"
-    bindings: ["Alt+4"]
+    bindings: ["Alt+T"]
   - command: "focus workspace 5"
-    bindings: ["Alt+5"]
+    bindings: ["Alt+D"]
   # - command: "focus workspace 6"
   #   bindings: ["Alt+6"]
   # - command: "focus workspace 7"
@@ -266,14 +266,14 @@ keybindings:
   #   bindings: ["Alt+9"]
 
   # Move focused workspace to a monitor in a given direction.
-  - command: "move workspace left"
-    binding: "Alt+A"
-  - command: "move workspace right"
-    binding: "Alt+T"
-  - command: "move workspace up"
-    binding: "Alt+S"
-  - command: "move workspace down"
-    binding: "Alt+R"
+  # - command: "move workspace left"
+  #   binding: "Alt+A"
+  # - command: "move workspace right"
+  #   binding: "Alt+T"
+  # - command: "move workspace up"
+  #   binding: "Alt+S"
+  # - command: "move workspace down"
+  #   binding: "Alt+R"
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move to workspace 1"]
