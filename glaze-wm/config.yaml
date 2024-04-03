@@ -165,23 +165,23 @@ binding_modes:
 keybindings:
   # Shift focus in a given direction.
   - command: "focus left"
-    bindings: ["Alt+H", "Alt+Left"]
+    bindings: ["Alt+L", "Alt+Left"]
   - command: "focus right"
-    bindings: ["Alt+L", "Alt+Right"]
+    bindings: ["Alt+U", "Alt+Right"]
   - command: "focus up"
-    bindings: ["Alt+K", "Alt+Up"]
+    bindings: ["Alt+Up"]
   - command: "focus down"
-    bindings: ["Alt+J", "Alt+Down"]
+    bindings: ["Alt+Down"]
 
   # Move focused window in a given direction.
   - command: "move left"
     bindings: ["Alt+Shift+H", "Alt+Shift+Left"]
   - command: "move right"
-    bindings: ["Alt+Shift+L", "Alt+Shift+Right"]
+    bindings: ["Alt+Shift+I", "Alt+Shift+Right"]
   - command: "move up"
-    bindings: ["Alt+Shift+K", "Alt+Shift+Up"]
+    bindings: ["Alt+Shift+E", "Alt+Shift+Up"]
   - command: "move down"
-    bindings: ["Alt+Shift+J", "Alt+Shift+Down"]
+    bindings: ["Alt+Shift+N", "Alt+Shift+Down"]
 
   # Resize focused window by a percentage or pixel amount.
   # - command: "resize width -2%"
@@ -224,7 +224,7 @@ keybindings:
 
   # Kill GlazeWM process safely.
   - command: "exit wm"
-    binding: "Alt+Shift+E"
+    binding: "Alt+Shift+X"
 
   # Re-evaluate configuration file.
   - command: "reload config"
@@ -247,15 +247,15 @@ keybindings:
 
   # Change focus to a workspace defined in `workspaces` config.
   - command: "focus workspace 1"
-    bindings: ["Alt+A"]
+    bindings: ["Alt+N"]
   - command: "focus workspace 2"
-    bindings: ["Alt+R"]
+    bindings: ["Alt+E"]
   - command: "focus workspace 3"
-    bindings: ["Alt+S"]
+    bindings: ["Alt+I"]
   - command: "focus workspace 4"
-    bindings: ["Alt+T"]
+    bindings: ["Alt+O"]
   - command: "focus workspace 5"
-    bindings: ["Alt+D"]
+    bindings: ["Alt+K"]
   # - command: "focus workspace 6"
   #   bindings: ["Alt+6"]
   # - command: "focus workspace 7"
