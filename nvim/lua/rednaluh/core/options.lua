@@ -21,8 +21,9 @@ opt.swapfile = false
 
 -- other settings
 opt.mouse = "a"
-opt.hlsearch = false
+opt.hlsearch = true
 opt.wrap = false
+opt.scrolloff = 10
 opt.termguicolors = true
 opt.smartindent = true
 opt.cursorline = true
