@@ -8,6 +8,7 @@ keymap.set("n", "<leader>q", "<cmd>quit<cr>", { desc = "Quit", noremap = true })
 keymap.set("n", "<leader>sa", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
 keymap.set("n", "<leader>o", "o<Esc>", { desc = "Add line below", noremap = true, silent = true })
 keymap.set("n", "<leader>O", "O<Esc>", { desc = "Add line above", noremap = true, silent = true })
+keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- windows
 keymap.set("n", "<leader>p", "<C-W>p", { desc = "Switch window" })
@@ -19,8 +20,8 @@ keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
 keymap.set("n", "te", ":tabedit<CR>", opts)
 
 -- Split window
-keymap.set("n", "ss", ":split<Return>", opts)
-keymap.set("n", "sv", ":vsplit<Return>", opts)
+-- keymap.set("n", "ss", ":split<Return>", opts)
+-- keymap.set("n", "sv", ":vsplit<Return>", opts)
 
 -- Move window
 keymap.set("n", "sh", "<C-W>h", { desc = "Go to the left window", noremap = true })
@@ -99,7 +100,7 @@ keymap.set({ "n", "v" }, "e", "k", opts)
 keymap.set({ "n", "v" }, "E", "K", opts)
 keymap.set({ "n", "v" }, "j", "e", opts)
 keymap.set({ "n", "v" }, "J", "e", opts)
-keymap.set("i", "EE", "<ESC>", opts )
+keymap.set("i", "ii", "<ESC>", opts )
 
 -- oil
 keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory", noremap = true, silent = true })
