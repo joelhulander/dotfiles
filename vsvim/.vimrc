@@ -6,6 +6,7 @@ set hlsearch
 set incsearch
 set cursorline
 set clipboard=unnamed
+set scrolloff=15
 
 let mapleader = " "
 
@@ -14,6 +15,8 @@ nnoremap <leader>q :quit<CR>
 nnoremap <leader>sa ggVG<CR>
 nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>
+nnoremap <Esc> :nohlsearch<CR>
+inoremap ii <Esc> 
 
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
