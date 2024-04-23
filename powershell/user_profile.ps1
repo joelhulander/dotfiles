@@ -21,7 +21,7 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 
 # Fzf
 Import-Module PSFzf
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 
 # Modify table
 # Update-FormatData -Prepend C:\Users\joelhu\.config\powershell\FileFormat.format.ps1xml
@@ -55,8 +55,6 @@ function Copy-FileToClipboard {
     }
 }
 
-# Create an alias for the function
-New-Alias -Name cc -Value Copy-FileToClipboard
 
 # Define a script block to be executed when the current directory changes
 # $directoryChangedScriptBlock = {
