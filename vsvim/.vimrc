@@ -16,7 +16,6 @@ nnoremap <leader>sa ggVG<CR>
 nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>
 nnoremap <Esc> :nohlsearch<CR>
-inoremap ii <Esc> 
 
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
