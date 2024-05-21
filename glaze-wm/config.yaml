@@ -39,9 +39,9 @@ focus_borders:
     color: "#ff0000"
 
 bar:
-  height: "30px"
+  height: "25px"
   position: "top"
-  opacity: 1.0
+  opacity: 1.0 
   background: "#20242cc4"
   foreground: "#ffffff"
   font_family: "Segoe UI"
@@ -57,44 +57,44 @@ bar:
       focused_workspace_background: "#ffffff33"
       displayed_workspace_background: "#00000033"
       default_workspace_background: "transparent"
-  components_center:
-    - type: "window title"
+  # components_center:
+  #   - type: "window title"
   components_right:
     - type: "cpu"
       label: "CPU: {percent_usage}%"
-      refresh_interval_ms: 1000
-    - type: "system tray"
+      refresh_interval_ms: 1000 
+    # - type: "system tray"
     - type: "tiling direction"
       label_horizontal: "⮂"
       label_vertical: "⮁"
       background: "#ffffff33"
       margin: "0 4px"
       padding: "0 8px"
-    - type: "binding mode"
-      background: "#ffffff33"
-      margin: "0 4px 0 0"
-      padding: "0 8px"
-    - type: "clock"
+    # - type: "binding mode"
+    #   background: "#ffffff33"
+    #   margin: "0 4px 0 0"
+    #   padding: "0 8px"
+    # - type: "clock"
       # Documentation on formatting date/time string:
       # https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
-      time_formatting: "HH:mm:ss  dddd MMM d"
+      # time_formatting: "HH:mm:ss  dddd MMM d"
 
 workspaces:
   - name: "1"
     display_name: "Mail"
-    keep_alive: true
+    keep_alive: false
   - name: "2"
     display_name: "Teams"
-    keep_alive: true
+    keep_alive: false
   - name: "3"
     display_name: "Dev"
-    keep_alive: true
+    keep_alive: false
   - name: "4"
     display_name: "Browser"
-    keep_alive: true
+    keep_alive: false
   - name: "5"
     display_name: "Other"
-    keep_alive: true
+    keep_alive: false
 
 window_rules:
   # Task Manager requires admin privileges to manage and should be ignored unless running
@@ -165,23 +165,23 @@ binding_modes:
 keybindings:
   # Shift focus in a given direction.
   - command: "focus left"
-    bindings: ["Alt+L", "Alt+Left"]
+    bindings: ["Alt+Shift+H", "Alt+Shift+Left"]
   - command: "focus right"
-    bindings: ["Alt+U", "Alt+Right"]
+    bindings: ["Alt+Shift+I", "Alt+Shift+Right"]
   - command: "focus up"
-    bindings: ["Alt+Up"]
+    bindings: ["Alt+Shift+E", "Alt+Shift+Up"]
   - command: "focus down"
-    bindings: ["Alt+Down"]
+    bindings: ["Alt+Shift+N", "Alt+Shift+Down"]
 
   # Move focused window in a given direction.
   - command: "move left"
-    bindings: ["Alt+Shift+H", "Alt+Shift+Left"]
+    bindings: ["Alt+J", "Alt+Left"]
   - command: "move right"
-    bindings: ["Alt+Shift+I", "Alt+Shift+Right"]
+    bindings: ["Alt+Y", "Alt+Right"]
   - command: "move up"
-    bindings: ["Alt+Shift+E", "Alt+Shift+Up"]
+    bindings: ["Alt+U", "Alt+Up"]
   - command: "move down"
-    bindings: ["Alt+Shift+N", "Alt+Shift+Down"]
+    bindings: ["Alt+L", "Alt+Down"]
 
   # Resize focused window by a percentage or pixel amount.
   # - command: "resize width -2%"
@@ -199,8 +199,11 @@ keybindings:
     # binding: "Alt+R"
 
   # Change tiling direction. This determines where new tiling windows will be inserted.
-  # - command: "tiling direction toggle"
-  #   binding: "Alt+V"
+  - command: "tiling direction toggle"
+    binding: "Alt+V"
+
+  - command: "set tiling"
+    binding: "Alt+Shift+T"
 
   # Change focus between floating / tiling windows.
   # - command: "focus mode toggle"
@@ -211,8 +214,8 @@ keybindings:
     binding: "Alt+Shift+Space"
 
   # Change the focused window to be maximized / unmaximized.
-  # - command: "toggle maximized"
-  #   binding: "Alt+X"
+  - command: "toggle maximized"
+    binding: "Alt+X"
 
   # Minimize focused window.
   - command: "set minimized"
@@ -236,8 +239,8 @@ keybindings:
   #   binding: "Alt+Enter"
 
   # Focus the workspace that last had focus.
-  - command: "focus workspace recent"
-    binding: "Alt+Y"
+  # - command: "focus workspace recent"
+  #   binding: "Alt+Y"
 
   # Focus the next/previous workspace defined in `workspaces` config.
   # - command: "focus workspace next"
