@@ -100,7 +100,7 @@ keymap.set({ "n", "v" }, "e", "k", opts)
 keymap.set({ "n", "v" }, "E", "K", opts)
 keymap.set({ "n", "v" }, "j", "e", opts)
 keymap.set({ "n", "v" }, "J", "e", opts)
-keymap.set("i", "ii", "<ESC>", opts )
+-- keymap.set("i", "ii", "<ESC>", opts )
 
 -- oil
 keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory", noremap = true, silent = true })
