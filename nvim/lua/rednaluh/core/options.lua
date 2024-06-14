@@ -39,3 +39,4 @@ opt.pumheight = 10
 opt.shortmess = {
 	I = true,
 }
+opt.diffopt:append('iwhite')

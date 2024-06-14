@@ -83,23 +83,23 @@ workspaces:
   - name: "1"
     display_name: "Mail"
     keep_alive: false
-    bind_to_monitor: 2
+    bind_to_monitor: 1
   - name: "2"
     display_name: "Teams"
     keep_alive: false
-    bind_to_monitor: 2
+    bind_to_monitor: 1
   - name: "3"
     display_name: "Dev"
     keep_alive: false
-    bind_to_monitor: 1
+    bind_to_monitor: 2
   - name: "4"
     display_name: "Browser"
     keep_alive: false
-    bind_to_monitor: 1
+    bind_to_monitor: 2
   - name: "5"
     display_name: "Other"
     keep_alive: false
-    bind_to_monitor: 1
+    bind_to_monitor: 2
 
 window_rules:
   # Task Manager requires admin privileges to manage and should be ignored unless running
@@ -117,6 +117,9 @@ window_rules:
 
   - command: "move to workspace 1"
     match_process_name: "OUTLOOK"
+
+  - command: "move to workspace 1"
+    match_process_name: "mlk"
 
   - command: "move to workspace 2"
     match_process_name: "ms-teams"

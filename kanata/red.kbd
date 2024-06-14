@@ -23,8 +23,8 @@
 )
 
 (deflayer misc 
-  @grl    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    
-  _    _    _    mbck mfwd _    _    home C-u   end  del  _    _    
+  @grl f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    
+  _    _    C-w  mbck mfwd _    _    home C-u   end  del  _    _    
   _    _    _    esc  lctl C-d  left down up   rght bspc _    _    _    
   _    _    _    C-x  C-c  C-v  _    _    _    _    _    _    _    
   _    _    _              ret              _    _    _
