@@ -5,9 +5,7 @@ $env:LC_MESSAGES="en-US"
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 # Prompt
 Import-Module posh-git
-$omp_config = Join-Path $PSScriptRoot ".\joelhu.omp.json" # Custom
-# $omp_config = Join-Path $PSScriptRoot ".\bubblesextra.omp.json" # Bubbles 
-# $omp_config = Join-Path $PSScriptRoot ".\iTerm2.omp.json" # iTerm2
+$omp_config = "~/.dotfiles/ohmyposh/config.yaml"
 oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
 
 Import-Module -Name Terminal-Icons
