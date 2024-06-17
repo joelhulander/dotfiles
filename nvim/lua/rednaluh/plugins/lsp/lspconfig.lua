@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = { "BufReadPre", "BufNewFile" },
+	-- event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
@@ -9,7 +9,7 @@ return {
 	},
 	config = function()
 		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
+		local lspconfig = require"lspconfig"
 
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -17,7 +17,8 @@ return {
 		local keymap = vim.keymap -- for conciseness
 
 		local opts = { noremap = true, silent = true }
-		local on_attach = function(client, bufnr)
+
+		local on_attach = function(_, bufnr)
 			opts.buffer = bufnr
 
 			-- set keybinds
@@ -70,18 +71,18 @@ return {
 		end
 
 		-- configure html server
-		lspconfig["html"].setup({
+		lspconfig.html.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 		-- configure css server
-		lspconfig["cssls"].setup({
+		lspconfig.cssls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure lua server (with special settings)
-		lspconfig["lua_ls"].setup({
+		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = { -- custom settings for lua
@@ -101,25 +102,26 @@ return {
 			},
 		})
 
-		lspconfig["tsserver"].setup({
+		lspconfig.tsserver.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		local util = require("lspconfig.util")
-		-- lspconfig["csharp_ls"].setup({
-		-- 	capabilities = capabilities,
-		-- 	on_attach = on_attach,
-		-- 	cmd = { "csharp-ls", "--loglevel", "verbose" },
-		-- 	filetypes = { "cs" },
-		-- 	init_options = { AutomaticWorkspaceInit = true },
-		-- 	handlers = {
-		-- 		["textDocument/definition"] = require("csharpls_extended").handler,
-		-- 	},
-		-- 	root_dir = util.root_pattern("*.sln", "*.fsproj", "*.git"),
-		-- })
 
-		lspconfig["gopls"].setup({
+		lspconfig.csharp_ls.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			cmd = { "csharp-ls" },
+			filetypes = {"cs", "razor", "csproj", "fs", "fsproj"},
+			init_options = { AutomaticWorkspaceInit = true },
+			handlers = {
+				["textDocument/definition"] = require("csharpls_extended").handler,
+			},
+			root_dir = util.root_pattern("*.sln", "*.fsproj", "*.git"),
+		})
+
+		lspconfig.gopls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			cmd = { "gopls" },
@@ -135,7 +137,7 @@ return {
 				},
 			},
 		})
-		-- lspconfig["omnisharp"].setup({
+		-- lspconfig.omnisharp.setup({
 		-- 	capabilities = capabilities,
 		-- 	on_attach = on_attach,
 		-- 	cmd = {

@@ -25,9 +25,9 @@ keymap.set("n", "te", ":tabedit<CR>", opts)
 
 -- Move window
 keymap.set("n", "sh", "<C-W>h", { desc = "Go to the left window", noremap = true })
-keymap.set("n", "sj", "<C-W>j", { desc = "Go to the down window", noremap = true })
-keymap.set("n", "sl", "<C-W>l", { desc = "Go to the right window", noremap = true })
-keymap.set("n", "sk", "<C-W>k", { desc = "Go to the up window", noremap = true })
+keymap.set("n", "sn", "<C-W>j", { desc = "Go to the down window", noremap = true })
+keymap.set("n", "si", "<C-W>l", { desc = "Go to the right window", noremap = true })
+keymap.set("n", "se", "<C-W>k", { desc = "Go to the up window", noremap = true })
 
 --Navigation
 keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz", { noremap = true })
