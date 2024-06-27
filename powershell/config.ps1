@@ -75,6 +75,7 @@ Set-Alias g git
 Set-Alias n nvim
 Set-Alias t z
 Set-Alias to z
+Set-Alias lg lazygit
 Set-Alias grep findstr
 Set-Alias tig 'C:\Program Files\Git\usr\bin\tig.exe'
 Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
