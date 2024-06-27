@@ -7,7 +7,8 @@ $env:TERM='xterm-256color'
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 # Prompt
 Import-Module posh-git
-$omp_config = "~/.dotfiles/ohmyposh/config.yaml"
+# $omp_config = "~/.dotfiles/ohmyposh/config.yaml"
+$omp_config = "~/.dotfiles/ohmyposh/catppuccin.yaml"
 oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
 
 Import-Module -Name Terminal-Icons

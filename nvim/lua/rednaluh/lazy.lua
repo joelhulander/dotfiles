@@ -40,4 +40,8 @@ require("lazy").setup(
 require("onedark").setup({
 	style = "darker",
 })
-require("onedark").load()
+-- require("onedark").load()
+require("catppuccin").setup({
+	flavour = "macchiato" -- latte, frappe, macchiato, mocha
+})
+require("catppuccin").load()
