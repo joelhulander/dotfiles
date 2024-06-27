@@ -1,5 +1,7 @@
 $env:Path += ';C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE'
+$Host.UI.RawUI.WindowTitle = 'Terminal'
 $env:LC_MESSAGES="en-US"
+$env:TERM='xterm-256color'
 
 # Set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding

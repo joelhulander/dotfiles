@@ -36,6 +36,7 @@ return {
 				"omnisharp",
 				"gopls",
 				"tsserver",
+				"rust_analyzer"
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
@@ -45,6 +46,7 @@ return {
 			ensure_installed = {
 				"stylua", -- lua formatter
 				-- "csharpier",
+				"trivy",
 				"clang-format",
 				"prettier",
 				"prettierd",
@@ -52,6 +54,7 @@ return {
 				"goimports-reviser",
 				"golines",
 				"delve",
+				"cpptools",
 				-- "netcoredbg",
 				"eslint_d",
 			},

@@ -18,10 +18,11 @@ keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
 
 -- New tab
 keymap.set("n", "te", ":tabedit<CR>", opts)
+keymap.set("n", "tn", ":tabnew<CR>", opts)
 
 -- Split window
--- keymap.set("n", "ss", ":split<Return>", opts)
--- keymap.set("n", "sv", ":vsplit<Return>", opts)
+keymap.set("n", "ss", ":split<Return>", opts)
+keymap.set("n", "sv", ":vsplit<Return>", opts)
 
 -- Move window
 keymap.set("n", "sh", "<C-W>h", { desc = "Go to the left window", noremap = true })
