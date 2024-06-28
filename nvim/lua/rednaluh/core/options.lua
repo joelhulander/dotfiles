@@ -3,7 +3,6 @@ local opt = vim.opt
 -- line numbers
 opt.number = true
 opt.relativenumber = true
-vim.opt.cmdheight = 0
 
 -- tabs & indentation
 opt.tabstop = 4
@@ -31,7 +30,6 @@ opt.cursorline = true
 opt.confirm = true
 opt.clipboard = "unnamedplus"
 opt.completeopt = "menuone,noselect"
-opt.shortmess:append { F = true }
 
 opt.shell = "pwsh"
 opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -command'
