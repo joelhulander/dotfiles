@@ -6,3 +6,4 @@
 #### Cross platform
 1. ripgrep
 2. fzf
+3. lsd

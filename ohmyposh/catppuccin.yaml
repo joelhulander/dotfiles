@@ -37,4 +37,4 @@ final_space: true
 version: 2
 transient_prompt:
   foreground: "#f5bde6"
-  template: "{{ .Shell }}❯ "
+  template: "\n{{ .Shell }}❯ "

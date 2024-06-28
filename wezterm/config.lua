@@ -3,12 +3,13 @@ local wezterm = require 'wezterm'
 local config = {}
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-  config.default_prog = {"pwsh.exe"}
-elseif wezterm.target_triple == "x86_64-apple-darwin" then
-  config.default_prog = {"/bin/zsh"}
+	config.default_prog = {"pwsh.exe"}
+elseif wezterm.target_triple == "aarch64-apple-darwin" then
+	config.default_prog = { "/bin/zsh", "-l", "-i" }
 else
-  config.default_prog = {"/bin/bash"}
+	config.default_prog = {"/bin/bash"}
 end
+
 -- Catppuccin Macchiato colors
 local colors = {
   rosewater = "#f4dbd6",
