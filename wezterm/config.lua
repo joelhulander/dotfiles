@@ -2,6 +2,13 @@ local wezterm = require 'wezterm'
 
 local config = {}
 
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+  config.default_prog = {"pwsh.exe"}
+elseif wezterm.target_triple == "x86_64-apple-darwin" then
+  config.default_prog = {"/bin/zsh"}
+else
+  config.default_prog = {"/bin/bash"}
+end
 -- Catppuccin Macchiato colors
 local colors = {
   rosewater = "#f4dbd6",
@@ -81,7 +88,7 @@ config.colors = {
 }
 
 config.font = wezterm.font("Hack Nerd Font", {weight="Regular", stretch="Normal", style="Normal"})
-config.font_size = 14.5
+config.font_size = 12
 
 -- Custom tab title format
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
