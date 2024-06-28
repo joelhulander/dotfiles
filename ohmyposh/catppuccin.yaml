@@ -5,14 +5,14 @@ blocks:
     alignment: left
     segments:
       - type: shell
-        background: "#24273a"
-        foreground: "#8aadf4"
+        background: "#8aadf4"
+        foreground: "#1e2030"
         leading_diamond: "\ue0b6"
         style: diamond
         template: " {{ .Name }} "
       - type: path
-        background: "#363a4f"
-        foreground: "#cad3f5"
+        background: "#494d64"
+        foreground: "#c2cbec"
         powerline_symbol: "\ue0b0"
         properties:
           style: full
