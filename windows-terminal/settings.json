@@ -139,7 +139,7 @@
                 "name": "PowerShell",
                 "padding": "10, 10, 10, 10",
                 "source": "Windows.Terminal.PowershellCore",
-                "startingDirectory": null
+                "startingDirectory": "%USERPROFILE%"
             }
         ]
     },
