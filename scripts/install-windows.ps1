@@ -83,6 +83,9 @@ function Install-ModuleIfNotPresent(${moduleName}) {
     }
 }
 
+Write-ColoredOutput "Enable long path support since it is recommended for komorebi" "Magenta"
+Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
+
 # Install winget packages
 ${wingetPackages} = @(
     @{Id="Microsoft.PowerShell"; Command="pwsh"},
@@ -91,7 +94,9 @@ ${wingetPackages} = @(
     @{Id="Git.Git"; Command="git"},
     @{Id="Neovim.Neovim"; Command="nvim"},
     @{Id="jesseduffield.lazygit"; Command="lazygit"},
-    @{Id="wez.wezterm"; Command="wezterm"}
+    @{Id="wez.wezterm"; Command="wezterm"},
+	@{Id="LGUG2Z.komorebi"; Command="komorebi"},
+	@{Id="LGUG2Z.whkd"; Command="whkd"}
 )
 
 Write-ColoredOutput "Installing Winget packages..." "Magenta"
@@ -215,8 +220,12 @@ ${symlinks} = @(
     @{Source="${dotfilesDir}\wezterm\config.lua"; Destination="${env:USERPROFILE}\.wezterm.lua"},
     @{Source="${dotfilesDir}\ohmyposh\catppuccin.yaml"; Destination="${env:USERPROFILE}\Documents\PowerShell\catppuccin.omp.yaml"},
     @{Source="${dotfilesDir}\kanata\red.kbd"; Destination="${env:USERPROFILE}\kanata.kbd"},
+    @{Source="${dotfilesDir}\vsvim\.vimrc"; Destination="${env:USERPROFILE}\.vimrc"},
     @{Source="${dotfilesDir}\glaze-wm\config.yaml"; Destination="${env:USERPROFILE}\.glaze-wm\config.yaml"},
-    @{Source="${dotfilesDir}\zellij\config.kdl"; Destination="${env:USERPROFILE}\.config\zellij\config.kdl"}
+    @{Source="${dotfilesDir}\zellij\config.kdl"; Destination="${env:USERPROFILE}\.config\zellij\config.kdl"},
+    @{Source="${dotfilesDir}\komorebi\komorebi.json"; Destination="${env:USERPROFILE}\.config\komorebi\komorebi.json"},
+    @{Source="${dotfilesDir}\komorebi\applications.yaml"; Destination="${env:USERPROFILE}\.config\komorebi\applications.yaml"},
+    @{Source="${dotfilesDir}\komorebi\whkdrc"; Destination="${env:USERPROFILE}\.config\whkdrc"}
 )
 
 Write-ColoredOutput "Creating symlinks..." "Magenta"
