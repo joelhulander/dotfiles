@@ -30,31 +30,67 @@
 			"workspaces": [
 				{
 					"name": "I",
-					"layout": "BSP"
+					"layout": "Grid",
+					"initial_workspace_rules": [
+						{
+							"kind": "Exe",
+							"id": "olk.exe"
+						}
+					]
 				},
 				{
 					"name": "II",
-					"layout": "BSP"
+					"layout": "Grid",
+					"initial_workspace_rules": [
+						{
+							"kind": "Exe",
+							"id": "ms-teams.exe"
+						}
+					]
 				},
 				{
 					"name": "III",
-					"layout": "BSP"
+					"layout": "Grid",
+					"initial_workspace_rules": [
+						{
+							"kind": "Exe",
+							"id": "devenv.exe"
+						},
+						{
+							"kind": "Exe",
+							"id": "wezterm-gui.exe"
+						},
+						{
+							"kind": "Exe",
+							"id": "Ssms.exe"
+						},
+						{
+							"kind": "Exe",
+							"id": "Postman.exe"
+						}
+					]
 				},
 				{
 					"name": "IV",
-					"layout": "BSP"
+					"layout": "Grid",
+					"initial_workspace_rules": [
+						{
+							"kind": "Exe",
+							"id": "msedge.exe"
+						}
+					]
 				},
 				{
 					"name": "V",
-					"layout": "BSP"
+					"layout": "Grid"
 				},
 				{
 					"name": "VI",
-					"layout": "BSP"
+					"layout": "Grid"
 				},
 				{
 					"name": "VII",
-					"layout": "BSP"
+					"layout": "Grid"
 				}
 			]
 		}
