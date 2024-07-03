@@ -16,10 +16,10 @@
 		"unfocused": "#808080"
 	},
 	"stackbar": {
-		"height": 40,
+		"height": 0,
 		"mode": "OnStack",
 		"tabs": {
-			"width": 300,
+			"width": 0,
 			"focused_text": "#00a542",
 			"unfocused_text": "#b3b3b3",
 			"background": "#141414"
