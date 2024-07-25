@@ -82,7 +82,18 @@
 				},
 				{
 					"name": "V",
-					"layout": "Grid"
+					"layout": "Grid",
+					"initial_workspace_rules": [
+						{
+							"kind": "Exe",
+							"id": "Discord.exe"
+						},
+						{
+							"kind": "Exe",
+							"id": "Spotify.exe"
+						}
+						
+					]
 				},
 				{
 					"name": "VI",
