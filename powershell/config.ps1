@@ -57,6 +57,19 @@ function Copy-FileToClipboard {
     }
 }
 
+# Function to write colored output
+function Write-ColoredOutput($message, $color) {
+    Write-Host $message -ForegroundColor $color
+}
+
+# Function to check if a command exists
+function Test-Command(${command}) {
+    try {
+        if (Get-Command ${command} -ErrorAction Stop) { return $true }
+    } catch {
+        return $false
+    }
+}
 
 # Define a script block to be executed when the current directory changes
 # $directoryChangedScriptBlock = {

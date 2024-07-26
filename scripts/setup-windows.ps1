@@ -1,17 +1,3 @@
-# Function to write colored output
-function Write-ColoredOutput($message, $color) {
-    Write-Host $message -ForegroundColor $color
-}
-
-# Function to check if a command exists
-function Test-Command(${command}) {
-    try {
-        if (Get-Command ${command} -ErrorAction Stop) { return $true }
-    } catch {
-        return $false
-    }
-}
-
 # Function to install or update a Scoop package
 function Install-OrUpdateScoopPackage(${packageName}) {
     if (-not (scoop info ${packageName})) {
