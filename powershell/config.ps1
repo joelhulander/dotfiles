@@ -23,7 +23,7 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 
 # Fzf
 Import-Module PSFzf
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r' -EnableAliasFuzzyKillProcess
 
 # Modify table
 # Update-FormatData -Prepend C:\Users\joelhu\.config\powershell\FileFormat.format.ps1xml
@@ -103,9 +103,14 @@ Set-Alias build buildSA
 Set-Alias rebuild rebuildSA
 Set-Alias gd showGitDiff
 Set-Alias copydir Copy-DirectoryWithConfirmation
+Set-Alias yasb startYasb
 
 function showGitDiff {
 	git diff -w
+}
+
+function startYasb {
+	pythonw ${env:USERPROFILE}\tools\yasb\src\main.py
 }
 
 # Utilities
