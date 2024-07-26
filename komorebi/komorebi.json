@@ -94,14 +94,6 @@
 						}
 						
 					]
-				},
-				{
-					"name": "VI",
-					"layout": "Grid"
-				},
-				{
-					"name": "VII",
-					"layout": "Grid"
 				}
 			]
 		}
