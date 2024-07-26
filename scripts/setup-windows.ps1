@@ -223,7 +223,8 @@ ${wingetPackages} = @(
     @{Id="wez.wezterm"; Command="wezterm"},
     @{Id="LGUG2Z.komorebi"; Command="komorebi"},
     @{Id="LGUG2Z.whkd"; Command="whkd"},
-    @{Id="glzr-io.glazewm"; Command="GlazeWM"}
+    @{Id="glzr-io.glazewm"; Command="GlazeWM"},
+	@{Id="Python.Python.3.10"; Command="Python"}
 )
 
 Write-ColoredOutput "Installing or updating Winget packages..." "Magenta"
@@ -268,7 +269,9 @@ ${symlinks} = @(
     @{Source="${dotfilesDir}\zellij\config.kdl"; Destination="${env:USERPROFILE}\.config\zellij\config.kdl"},
     @{Source="${dotfilesDir}\komorebi\komorebi.json"; Destination="${env:USERPROFILE}\.config\komorebi\komorebi.json"},
     @{Source="${dotfilesDir}\komorebi\applications.yaml"; Destination="${env:USERPROFILE}\.config\komorebi\applications.yaml"},
-    @{Source="${dotfilesDir}\komorebi\whkdrc"; Destination="${env:USERPROFILE}\.config\whkdrc"}
+    @{Source="${dotfilesDir}\komorebi\whkdrc"; Destination="${env:USERPROFILE}\.config\whkdrc"},
+	@{Source="${dotfilesDir}\yasb\config.yaml"; Destination="${env:USERPROFILE}\.yasb\config.yaml"},
+	@{Source="${dotfilesDir}\yasb\styles.css"; Destination="${env:USERPROFILE}\.yasb\styles.css"}
 )
 
 Write-Host ""
