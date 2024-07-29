@@ -3,10 +3,10 @@
 	"app_specific_configuration_path": "$Env:KOMOREBI_CONFIG_HOME/applications.yaml",
 	"window_hiding_behaviour": "Cloak",
 	"cross_monitor_move_behaviour": "Insert",
-	"default_workspace_padding": 0,
-	"default_container_padding": 0,
+	"default_workspace_padding": 20,
+	"default_container_padding": 6,
 	"border": false,
-	"border_width": 4,
+	"border_width": 0,
 	"border_offset": -1,
 	"border_style": "System",
 	"border_colours": {
