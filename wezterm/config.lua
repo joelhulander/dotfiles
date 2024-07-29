@@ -47,6 +47,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.tab_max_width = 32
 config.window_decorations = "RESIZE"
 config.native_macos_fullscreen_mode = true
+config.window_background_opacity = 0.9
 
 config.initial_cols = 130
 config.initial_rows = 45
