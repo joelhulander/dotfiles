@@ -1,13 +1,13 @@
 * {
     /* Bar measurement icons: https://github.com/and3rson/graph-bars-font */
     /* Icon set: https://fontawesome.com/v5.15/how-to-use/on-the-desktop/setup/getting-started */
-    font-family: 'Courier New', 'Bars', 'Font Awesome 5 Free';
+    font-family: 'Hack Nerd Font', 'Bars', 'Font Awesome 5 Free';
     font-size: 14px;
     color: #cad3f5; /* Macchiato text color */
 }
 .bar {
-    background: rgba(24, 25, 38, 0.3); /* Macchiato crust color with opacity */
-    border: 1px solid #181926; /* Macchiato crust color */
+    background: rgba(24, 25, 38, 0.1); /* Macchiato crust color with opacity */
+    /* border: 1px solid #181926;  */
     padding: 0 5px;
 }
 .container-right .widget {
@@ -77,13 +77,15 @@
   border-radius: 5px;
 }
 .traffic-widget .label {
-    background: #91d7e3; /* Macchiato sky color */
+    background: #91d7e3; 
 }
 .wifi-widget .label {
-  background: #a6da95; /* Macchiato green color */
+  /* background: #a6da95;  */
+  background: #c6a0f6; 
 }
 .cpu-widget .label {
-  background: #c6a0f6; /* Macchiato mauve color */
+  /* background: #c6a0f6;  */
+  background: #ed8796;
 }
 .battery-widget .label.status-critical {
   background: #ed8796; /* Macchiato red color */
