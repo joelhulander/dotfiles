@@ -64,7 +64,7 @@ widgets:
     options:
       label: "\uf200 CPU: {info[percent][total]}%" 
       label_alt: "\uf200 {info[histograms][cpu_percent]} | freq: {info[freq][current]:.2f} Mhz"
-      update_interval: 500
+      update_interval: 1000
       histogram_icons:
         - '\u2581' # 0%
         - '\u2581' # 10%
