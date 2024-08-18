@@ -137,6 +137,14 @@ return {
 				},
 			},
 		})
+
+		lspconfig.svelte.setup({
+			cmd = { "svelteserver", "--stdio"},
+			filetypes = { "svelte" },
+			root_dir = util.root_pattern("package.json", ".git"),
+			on_attach = on_attach
+		})
+
 		-- lspconfig.omnisharp.setup({
 		-- 	capabilities = capabilities,
 		-- 	on_attach = on_attach,

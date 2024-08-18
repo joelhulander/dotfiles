@@ -22,7 +22,9 @@ return {
 			"vim",
 			"regex",
 			"go",
-			"kdl"
+			"kdl",
+			"vimdoc",
+			"svelte"
 		},
 		-- incremental_selection = {
 		-- 	enable = true,

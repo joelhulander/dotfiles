@@ -36,7 +36,8 @@ return {
 				"omnisharp",
 				"gopls",
 				"tsserver",
-				"rust_analyzer"
+				"rust_analyzer",
+				"svelte"
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
