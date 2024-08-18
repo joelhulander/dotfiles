@@ -171,7 +171,7 @@ main() {
 	create_symlink "$dotfiles_dir/nvim" "$HOME/.config/nvim"
 	create_symlink "$dotfiles_dir/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
 	create_symlink "$dotfiles_dir/wezterm/config.lua" "$HOME/.wezterm.lua"
-	create_symlink "$dotfiles_dir/kanata/red.kbd" "$HOME/.config/kanata/red.kbd"
+	create_symlink "$dotfiles_dir/kanata/mac.kbd" "$HOME/.config/kanata/kanata.kbd"
 	create_symlink "$dotfiles_dir/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
 	create_symlink "$dotfiles_dir/tmux/tmux.conf" "$HOME/.tmux.conf"
 	create_symlink "$dotfiles_dir/zsh/zshrc" "$HOME/.zshrc"
