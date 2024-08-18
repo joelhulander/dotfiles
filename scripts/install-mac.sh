@@ -175,6 +175,7 @@ main() {
 	create_symlink "$dotfiles_dir/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
 	create_symlink "$dotfiles_dir/tmux/tmux.conf" "$HOME/.tmux.conf"
 	create_symlink "$dotfiles_dir/zsh/zshrc" "$HOME/.zshrc"
+	create_symlink "$dotfiles_dir/aerospace/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
 
 	echo ""
 	print_success "Installation completed! (Please restart the terminal or source the .zshrc file)"
