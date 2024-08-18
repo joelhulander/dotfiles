@@ -263,7 +263,7 @@ ${symlinks} = @(
     @{Source="${dotfilesDir}\lazygit\config.yml"; Destination="${env:APPDATA}\lazygit\config.yml"},
     @{Source="${dotfilesDir}\wezterm\config.lua"; Destination="${env:USERPROFILE}\.wezterm.lua"},
     @{Source="${dotfilesDir}\ohmyposh\catppuccin.yaml"; Destination="${env:USERPROFILE}\Documents\PowerShell\catppuccin.omp.yaml"},
-    @{Source="${dotfilesDir}\kanata\red.kbd"; Destination="${env:USERPROFILE}\kanata.kbd"},
+    @{Source="${dotfilesDir}\kanata\windows.kbd"; Destination="${env:USERPROFILE}\kanata.kbd"},
     @{Source="${dotfilesDir}\vsvim\.vimrc"; Destination="${env:USERPROFILE}\.vimrc"},
     @{Source="${dotfilesDir}\glaze-wm\config.yaml"; Destination="${env:USERPROFILE}\.glaze-wm\config.yaml"},
     @{Source="${dotfilesDir}\zellij\config.kdl"; Destination="${env:USERPROFILE}\.config\zellij\config.kdl"},
