@@ -104,6 +104,9 @@ Set-Alias rebuild rebuildSA
 Set-Alias gd showGitDiff
 Set-Alias copydir Copy-DirectoryWithConfirmation
 Set-Alias yasb startYasb
+Set-Alias rb rebuild
+Set-Alias b build
+Set-Alias c cleanSlnOrProject
 
 function showGitDiff {
 	git diff -w
@@ -124,6 +127,18 @@ function open {
 	param ($file)
 
 		Invoke-Item $file
+}
+
+function rebuild {
+	msbuild /t:Rebuild /maxcpucount:3
+}
+
+function build {
+	msbuild /maxcpucount:3
+}
+
+function cleanSlnOrProject {
+	msbuild /t:clean /maxcpucount:3
 }
 
 function buildSA {
