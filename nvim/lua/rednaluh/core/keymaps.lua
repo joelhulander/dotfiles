@@ -6,8 +6,10 @@ local opts = { noremap = true, silent = true }
 keymap.set("n", "<leader>w", "<cmd>write<cr>", { desc = "Save", noremap = true })
 keymap.set("n", "<leader>q", "<cmd>quit<cr>", { desc = "Quit", noremap = true })
 keymap.set("n", "<leader>sa", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
-keymap.set("n", "<leader>o", "o<Esc>", { desc = "Add line below", noremap = true, silent = true })
-keymap.set("n", "<leader>O", "O<Esc>", { desc = "Add line above", noremap = true, silent = true })
+opts.desc = "Add line below"
+keymap.set("n", "<leader>o", "o<Esc>", opts)
+opts.desc = "Add line above"
+keymap.set("n", "<leader>O", "O<Esc>", opts)
 keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- windows
@@ -17,18 +19,26 @@ keymap.set("n", "<leader>p", "<C-W>p", { desc = "Switch window" })
 keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
 
 -- New tab
-keymap.set("n", "te", ":tabedit<CR>", opts)
-keymap.set("n", "tn", ":tabnew<CR>", opts)
+keymap.set("n", "<leader>te", ":tabedit<CR>", opts)
+keymap.set("n", "<leader>tn", ":tabnew<CR>", opts)
 
 -- Split window
-keymap.set("n", "ss", ":split<Return>", opts)
-keymap.set("n", "sv", ":vsplit<Return>", opts)
+opts.desc = "Split window"
+keymap.set("n", "<leader>ss", ":split<Return>", opts)
+opts.desc = "Split window vertically"
+keymap.set("n", "<leader>sv", ":vsplit<Return>", opts)
+opts.desc = "Split vertically to empty file"
+keymap.set("n", "<leader>sn", ":vne<Return>", opts)
 
 -- Move window
-keymap.set("n", "sh", "<C-W>h", { desc = "Go to the left window", noremap = true })
-keymap.set("n", "sn", "<C-W>j", { desc = "Go to the down window", noremap = true })
-keymap.set("n", "si", "<C-W>l", { desc = "Go to the right window", noremap = true })
-keymap.set("n", "se", "<C-W>k", { desc = "Go to the up window", noremap = true })
+opts.desc = "Go to the left window"
+keymap.set("n", "sh", "<C-W>h", opts)
+opts.desc = "Go to the down window"
+keymap.set("n", "sn", "<C-W>j", opts)
+opts.desc = "Go to the right window"
+keymap.set("n", "si", "<C-W>l", opts)
+opts.desc = "Go to the up window"
+keymap.set("n", "se", "<C-W>k", opts)
 
 --Navigation
 keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz", { noremap = true })
@@ -37,37 +47,49 @@ keymap.set({ "n", "v" }, "n", "nzz", { noremap = true })
 keymap.set({ "n", "v" }, "N", "Nzz", { noremap = true })
 
 --Telescope
+opts.desc = "Find files"
 keymap.set(
 	"n",
 	"<leader>ff",
 	"<cmd>Telescope find_files<cr>",
-	{ desc = "Fuzzy find files in cwd", noremap = true, silent = true }
+	opts
 )
+opts.desc = "Find recent files"
 keymap.set(
 	"n",
 	"<leader>fr",
 	"<cmd>Telescope oldfiles<cr>",
-	{ desc = "Fuzzy find recent files", noremap = true, silent = true }
+	opts
 )
+
+opts.desc = "Find string"
 keymap.set(
 	"n",
 	"<leader>fs",
 	"<cmd>Telescope live_grep<cr>",
-	{ desc = "Find string in cwd", noremap = true, silent = true }
+	opts
 )
+
+opts.desc = "Find string under cursor in cwd"
 keymap.set(
 	"n",
 	"<leader>fc",
 	"<cmd>Telescope grep_string<cr>",
-	{ desc = "Find string under cursor in cwd", noremap = true, silent = true }
+	opts
 )
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "List buffers", noremap = true, silent = true })
-keymap.set("n", "<leader>fj", "<cmd>Telescope jumplist<cr>", { desc = "List jump list", noremap = true, silent = true })
+
+opts.desc = "List buffes"
+keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
+
+opts.desc = "List jump list"
+keymap.set("n", "<leader>fj", "<cmd>Telescope jumplist<cr>", opts)
+
+opts.desc = "List all keymaps"
 keymap.set(
 	"n",
 	"<leader>fm",
 	"<cmd>Telescope keymaps<cr>",
-	{ desc = "List all keymaps", noremap = true, silent = true }
+	opts
 )
 
 -- DAP

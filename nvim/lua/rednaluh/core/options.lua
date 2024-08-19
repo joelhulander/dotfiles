@@ -28,6 +28,7 @@ opt.termguicolors = true
 opt.smartindent = true
 opt.cursorline = true
 opt.confirm = true
+opt.splitright = true
 opt.clipboard = "unnamedplus"
 opt.completeopt = "menuone,noselect"
 
