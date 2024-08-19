@@ -92,12 +92,5 @@ config.colors = {
 config.font = wezterm.font("Hack Nerd Font", {weight="Regular", stretch="Normal", style="Normal"})
 config.font_size = 12
 
--- Custom tab title format
-wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
-  local title = ' ' .. tab.active_pane.title .. ' '
-  return {
-    {Text=title},
-  }
-end)
 
 return config
