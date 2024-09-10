@@ -44,11 +44,11 @@ nmap <C-O> :vsc View.NavigateBackward<CR>
 nmap <C-I> :vsc View.NavigateForward<CR>
 nmap <leader>ff :vsc Edit.GoToAll<CR>
 nmap <leader>fp :vsc Window.QuickLaunch<CR>
-nmap <leader>ca :vsc View.QuickActions<CR>
+nmap <leader>lca :vsc View.QuickActions<CR>
 nmap gi :vsc Edit.GoToImplementation<CR>
 nmap gcc :vsc Edit.ToggleLineComment<CR>
 xmap gcc :vsc Edit.ToggleLineComment<CR><ESC>
-nmap <leader>fr :vsc Edit.FindAllReferences<CR>
+nmap <leader>lfr :vsc Edit.FindAllReferences<CR>
 nmap <leader>db :vsc Debug.ToggleBreakpoint<CR>
-nmap <leader>t :vsc View.Terminal<CR>
+nmap <leader>tt :vsc View.Terminal<CR>
 nmap <leader>1 :vsc Window.ApplyWindowLayout1<CR>
