@@ -3,11 +3,20 @@ return {
 	event = { "BufReadPre", "BufNewFile"},
 	opts = {
 		signs = {
-			add = { text = '┃' },
-			change = { text = '┃' },
-			delete = { text = '_' },
-			topdelete = { text = '‾' },
+			add          = { text = '┃' },
+			change       = { text = '┃' },
+			delete       = { text = '_' },
+			topdelete    = { text = '‾' },
 			changedelete = { text = '~' },
+			untracked    = { text = '┆' },
+		},
+		signs_staged = {
+			add          = { text = '┃' },
+			change       = { text = '┃' },
+			delete       = { text = '_' },
+			topdelete    = { text = '‾' },
+			changedelete = { text = '~' },
+			untracked    = { text = '┆' },
 		},
 		on_attach = function (bufnr)
 			local gitsigns = require('gitsigns')
@@ -19,25 +28,28 @@ return {
 				vim.keymap.set(mode, l, r, opts)
 			end
 
+			-- Actions
+			local opts = { noremap = true, silent = true }
+
 			-- Navigation
+			opts.desc = "Go to next hunk"
 			map('n', ']c', function()
 				if vim.wo.diff then
 					vim.cmd.normal({']c', bang = true})
 				else
-					gitsigns.nav_hunk('next')
+					gitsigns.nav_hunk('next', { target = 'all' } )
 				end
-			end)
+			end, opts)
 
+			opts.desc = "Go to previous hunk"
 			map('n', '[c', function()
 				if vim.wo.diff then
 					vim.cmd.normal({'[c', bang = true})
 				else
-					gitsigns.nav_hunk('prev')
+					gitsigns.nav_hunk('prev', { target = 'all' } )
 				end
-			end)
+			end, opts)
 
-			-- Actions
-			local opts = { noremap = true, silent = true }
 
 			opts.desc = "Stage hunk"
 			map('n', '<leader>gs', gitsigns.stage_hunk, opts)
