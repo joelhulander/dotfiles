@@ -9,8 +9,6 @@ $Env:KOMOREBI_CONFIG_HOME = "${Env:USERPROFILE}\.config\komorebi"
 # Prompt
 Import-Module posh-git
 # $omp_config = "~/.dotfiles/ohmyposh/config.yaml"
-$omp_config = "~/.dotfiles/ohmyposh/catppuccin.yaml"
-oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
 
 Import-Module -Name Terminal-Icons
 
@@ -42,7 +40,6 @@ function cdBack {
 function getAll {
 	Get-ChildItem -force | Format-Wide
 }
-
 
 function Copy-FileToClipboard {
     param(
@@ -256,3 +253,21 @@ function su {
 			Invoke-Expression "git branch --set-upstream-to=origin/$currentBranch";
 		}
 }
+
+function Set-EnvVar
+{
+  $p = $executionContext.SessionState.Path.CurrentLocation
+  $osc7 = ""
+  if ($p.Provider.Name -eq "FileSystem")
+  {
+    $ansi_escape = [char]27
+    $provider_path = $p.ProviderPath -Replace "\\", "/"
+    $osc7 = "$ansi_escape]7;file://${env:COMPUTERNAME}/${provider_path}${ansi_escape}\"
+  }
+  $env:OSC7=$osc7
+}
+New-Alias -Name 'Set-PoshContext' -Value 'Set-EnvVar' -Scope Global -Force
+
+# Invoke-Expression (&starship init powershell)
+$omp_config = "~/.dotfiles/ohmyposh/catppuccin.yaml"
+oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression

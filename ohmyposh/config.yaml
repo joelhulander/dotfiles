@@ -57,4 +57,3 @@ blocks:
       properties:
         always_enabled: true
     newline: true
-osc99: true
