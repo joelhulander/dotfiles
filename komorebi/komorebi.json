@@ -15,6 +15,7 @@
 		"monocle": "#ff3399",
 		"unfocused": "#808080"
 	},
+	"mouse_follows_focus": false,
 	"stackbar": {
 		"height": 0,
 		"mode": "OnStack",
