@@ -25,7 +25,7 @@ bars:
       bottom: 0
       right: 0
     widgets:
-      left:   ["komorebi_workspaces", "komorebi_active_layout", "active_window"]
+      left:   ["komorebi_workspaces", "komorebi_active_layout" ]
       center: ["clock"]
       right:  ["explorer_button", "wifi", "cpu", "battery"]
 
