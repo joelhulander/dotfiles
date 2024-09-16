@@ -135,7 +135,7 @@ config.keys = {
 	{ key = "e",          mods = "LEADER",      action = act.ActivatePaneDirection("Up") },
 	{ key = "i",          mods = "LEADER",      action = act.ActivatePaneDirection("Right") },
 	{ key = "q",          mods = "LEADER",      action = act.CloseCurrentPane { confirm = true } },
-	{ key = "m",          mods = "LEADER",      action = act.TogglePaneZoomState },
+	{ key = "z",          mods = "LEADER",      action = act.TogglePaneZoomState },
 	{ key = "o",          mods = "LEADER",      action = act.RotatePanes "Clockwise" },
 	-- We can make separate keybindings for resizing panes
 
