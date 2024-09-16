@@ -13,7 +13,7 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup(
-	{ { import = "rednaluh.plugins" }, { import = "rednaluh.plugins.lsp" }, { import = "rednaluh.plugins.debug" } },
+	{ { import = "rednaluh.plugins" }, { import = "rednaluh.plugins.lsp" }, { import = "rednaluh.plugins.debug" }, { import = "rednaluh.plugins.db" } },
 	{
 		checker = {
 			enabled = true,

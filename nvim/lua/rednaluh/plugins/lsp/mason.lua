@@ -35,7 +35,7 @@ return {
 				"sqlls",
 				"omnisharp",
 				"gopls",
-				"tsserver",
+				"ts_ls",
 				"rust_analyzer",
 				"svelte"
 			},
