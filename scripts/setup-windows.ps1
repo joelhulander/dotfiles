@@ -223,7 +223,6 @@ ${wingetPackages} = @(
     @{Id="wez.wezterm"; Command="wezterm"},
     @{Id="LGUG2Z.komorebi"; Command="komorebi"},
     @{Id="LGUG2Z.whkd"; Command="whkd"},
-    @{Id="glzr-io.glazewm"; Command="GlazeWM"},
 	@{Id="Python.Python.3.10"; Command="Python"}
 )
 
@@ -265,7 +264,6 @@ ${symlinks} = @(
     @{Source="${dotfilesDir}\ohmyposh\catppuccin.yaml"; Destination="${env:USERPROFILE}\Documents\PowerShell\catppuccin.omp.yaml"},
     @{Source="${dotfilesDir}\kanata\windows.kbd"; Destination="${env:USERPROFILE}\kanata.kbd"},
     @{Source="${dotfilesDir}\vsvim\.vimrc"; Destination="${env:USERPROFILE}\.vimrc"},
-    @{Source="${dotfilesDir}\glaze-wm\config.yaml"; Destination="${env:USERPROFILE}\.glaze-wm\config.yaml"},
     @{Source="${dotfilesDir}\zellij\config.kdl"; Destination="${env:USERPROFILE}\.config\zellij\config.kdl"},
     @{Source="${dotfilesDir}\komorebi\komorebi.json"; Destination="${env:USERPROFILE}\.config\komorebi\komorebi.json"},
     @{Source="${dotfilesDir}\komorebi\applications.yaml"; Destination="${env:USERPROFILE}\.config\komorebi\applications.yaml"},
