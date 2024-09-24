@@ -16,18 +16,21 @@ return {
 				html = { "prettier" },
 				json = { "prettier" },
 				-- yaml = { "prettier" },
-				cs = { "clang-format" },
+				-- cs = { "clang-format" },
+				cs = { "dotnet_format" },
 				markdown = { "prettier" },
 				-- graphql = { "prettier" },
 				lua = { "stylua" },
 				-- python = { "isort", "black" },
 				go = { "gofumpt", "goimports-reviser", "golines" },
 			},
-			-- format_on_save = {
-			-- 	lsp_fallback = true,
-			-- 	async = false,
-			-- 	timeout_ms = 1000,
-			-- },
+			formatters = {
+				dotnet_format = {
+					command = "dotnet",
+					args = { "format", "whitespace" },
+					stdin = false,
+				},
+			},
 		})
 
 		vim.keymap.set({ "n", "v" }, "<leader>af", function()
@@ -39,3 +42,4 @@ return {
 		end, { desc = "Format file or range (in visual mode)", noremap = true, silent = true })
 	end,
 }
+

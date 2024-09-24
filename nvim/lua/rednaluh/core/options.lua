@@ -51,3 +51,4 @@ vim.diagnostic.config({
 	severity_sort = false,
 })
 
+opt.conceallevel = 1

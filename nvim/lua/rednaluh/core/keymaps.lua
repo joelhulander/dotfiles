@@ -126,7 +126,10 @@ keymap.set({ "n", "v" }, "J", "e", opts)
 -- keymap.set("i", "ii", "<ESC>", opts )
 
 -- oil
-keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory", noremap = true, silent = true })
+keymap.set("n", "-", "<cmd>lua require('oil').open_float()<CR>", { noremap = true, silent = true })
 
 --visual studio
 keymap.set("n", "<leader>vs", "<cmd>!devenv /edit %<cr>", { desc = "Edit file in Visual Studio", noremap = true, silent = true })
+
+-- dotnet format
+keymap.set({ "v", "n"}, "<leader>=", "<cmd>!dotnet format whitespace<cr>", { desc = "Format file ", noremap = true, silent = true })
