@@ -224,7 +224,8 @@ ${wingetPackages} = @(
     @{Id="LGUG2Z.komorebi"; Command="komorebi"},
     @{Id="LGUG2Z.whkd"; Command="whkd"},
 	@{Id="Python.Python.3.10"; Command="Python"},
-	@{Id="JernejSimoncic.Wget"; Command="Wget"}
+	@{Id="JernejSimoncic.Wget"; Command="Wget"},
+	@{Id="Yarn.Yarn"; Command="Yarn"}
 )
 
 Write-ColoredOutput "Installing or updating Winget packages..." "Magenta"
