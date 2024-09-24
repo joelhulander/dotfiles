@@ -223,7 +223,8 @@ ${wingetPackages} = @(
     @{Id="wez.wezterm"; Command="wezterm"},
     @{Id="LGUG2Z.komorebi"; Command="komorebi"},
     @{Id="LGUG2Z.whkd"; Command="whkd"},
-	@{Id="Python.Python.3.10"; Command="Python"}
+	@{Id="Python.Python.3.10"; Command="Python"},
+	@{Id="JernejSimoncic.Wget"; Command="Wget"}
 )
 
 Write-ColoredOutput "Installing or updating Winget packages..." "Magenta"
@@ -236,7 +237,7 @@ Write-ColoredOutput "Enable long path support since it is recommended for komore
 Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
 
 # Install or update Scoop packages
-${scoopPackages} = @("kanata", "PSReadLine", "PSFzf") 
+${scoopPackages} = @("kanata", "PSReadLine", "PSFzf", "silicon") 
 
 Write-Host ""
 Write-ColoredOutput "Installing or updating Scoop packages..." "Magenta"
@@ -260,6 +261,8 @@ ${symlinks} = @(
     @{Source="${dotfilesDir}\powershell\config.ps1"; Destination="${env:USERPROFILE}\OneDrive - Sweet Systems AB\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"},
     @{Source="${dotfilesDir}\nvim"; Destination="${env:LOCALAPPDATA}\nvim"},
     @{Source="${dotfilesDir}\lazygit\config.yml"; Destination="${env:APPDATA}\lazygit\config.yml"},
+    @{Source="${dotfilesDir}\silicon"; Destination="${env:APPDATA}\silicon"},
+    @{Source="${dotfilesDir}\bat"; Destination="${env:APPDATA}\bat"},
     @{Source="${dotfilesDir}\wezterm"; Destination="${env:USERPROFILE}\.config/wezterm"},
     @{Source="${dotfilesDir}\ohmyposh\catppuccin.yaml"; Destination="${env:USERPROFILE}\Documents\PowerShell\catppuccin.omp.yaml"},
     @{Source="${dotfilesDir}\kanata\windows.kbd"; Destination="${env:USERPROFILE}\kanata.kbd"},
