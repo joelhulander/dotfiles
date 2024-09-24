@@ -41,7 +41,7 @@ require("onedark").setup({
 	style = "darker",
 })
 require("catppuccin").setup({
-	flavour = "macchiato",-- latte, frappe, macchiato, mocha
-	transparent_background = true,
+	flavour = "mocha",-- latte, frappe, macchiato, mocha
+	-- transparent_background = true,
 })
 require("catppuccin").load()
