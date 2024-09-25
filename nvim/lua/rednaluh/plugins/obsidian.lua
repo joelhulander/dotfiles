@@ -2,7 +2,9 @@ return {
 	"epwalsh/obsidian.nvim",
 	version = "*",
 	lazy = true,
-	ft = "markdown",
+	event = {
+		"BufReadPre C:/Users/JoelHulander/obsidian/*.md",
+	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
@@ -35,5 +37,8 @@ return {
 				opts = { buffer = true },
 			},
 		},
+		ui = {
+			enable = false
+		}
 	},
 }
