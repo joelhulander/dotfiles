@@ -27,6 +27,7 @@ opt.scrolloff = 10
 opt.termguicolors = true
 opt.smartindent = true
 opt.cursorline = true
+opt.guicursor = "n-v-c-i:block"
 opt.confirm = true
 opt.splitright = true
 opt.clipboard = "unnamedplus"
