@@ -68,7 +68,7 @@ config.tab_bar_at_bottom = true
 config.show_tabs_in_tab_bar = false
 config.tab_max_width = 32
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.98
 
 config.initial_cols = 130
 config.initial_rows = 45
