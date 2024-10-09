@@ -1,24 +1,85 @@
 (defsrc
   grv 1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    f    p    g    j    l    u    y    ;    [    ]
-  caps a    r    s    t    d    h    n    e    i    o    '    \    ret    
-  lsft <    z    x    c    v    b    k    m    ,    .    /    rsft
+	  tab  q    w    e    r    t    y    u    i    o    p    [    ]
+  caps a    s    d    f    g    h    j    k    l    ;    '    \    ret    
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(defalias
+  	grl (tap-hold 200 100 grv (layer-toggle layers))
+	swe (tap-hold 200 100 ralt (layer-toggle swedish))
+	lsft (multi lsft (layer-toggle swedishUpper))
+	sft (multi lsft (layer-toggle bracketsUpper))
+	pro (tap-hold 200 100 ralt (layer-toggle brackets))
+	cmu (multi lsft (layer-toggle swedishColemakUpper))
+	squ (multi lsft (layer-toggle swedishQwertyUpper))
+	spe (tap-hold 200 100 ralt (layer-toggle swedishQwertySpecial))
+
+  	clm (layer-switch colemak)
+  	sclm (layer-switch swedishColemak)
+  	qwr (layer-switch qwerty)
+  	sqw (layer-switch swedishQwerty)
+	mis (layer-switch misc)
+
+	cap (layer-while-held misc)
+
 )
 
 (deflayer colemak 
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    f    p    g    j    l    u    y    ;    [    ]
   @cap a   r    s    t    d    h    n    e    i    o    '    \    ret    
-  lsft <    z    x    c    v    b    k    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
+  lsft z    x    c    v    b    k    m    ,    .    /    rsft
+  lctl lmet lalt           spc            @swe rmet rctl
+)
+
+
+(deflayer swedishColemak 
+  @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    f    p    g    j    l    u    y    (unicode ö) (unicode å)    ;
+  @cap a   	r    s    t    d    h    n    e    i    o    (unicode ä)    '    ret    
+  @cmu z    x    c    v    b    k    m    ,    .    /    rsft
+  lctl lmet lalt           spc            @pro rmet rctl
+)
+
+(deflayer swedishColemakUpper 
+  @grl _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    (unicode Ö)    (unicode Å)    _    
+  _    _    _    _    _    _    _    _    _    _    _    (unicode Ä)    _    _ 
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              @sft _    _
 )
 
 (deflayer qwerty
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ] 
-  caps a    s    d    f    g    h    j    k    l    ;    '    \    ret
-  lsft <    z    x    c    v    b    n    m    ,    .    /    rsft
+  @cap a    s    d    f    g    h    j    k    l    ;    '    \    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayer swedishQwerty
+  @grl 1    2    3    4    5    6    7    8    9    0    +    grv    bspc
+  tab  q    w    e    r    t    y    u    i    o    p     (unicode å) _
+  @cap a    s    d    f    g    h    j    k    l    (unicode ö) (unicode ä)   '    ret    
+  @squ z    x    c    v    b    n    m    ,    .    -    rsft
+  lctl lmet lalt           spc            @spe rmet rctl
+)
+
+(deflayer swedishQwertyUpper
+  @grl (unicode !) (unicode r#"""#) (unicode #) (unicode ¤) (unicode %) (unicode &) (unicode /) (unicode "(") (unicode ")") (unicode =) (unicode ?) grv bspc
+  tab  _    _    _    _    _    _    _    _    _    _    (unicode Å) _
+  @cap _    _    _    _    _    _    _    _    _    (unicode Ö) (unicode Ä)   (unicode *)    ret    
+  lsft _    _    _    _    _    _    _    ;    (unicode :)    _    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayer swedishQwertySpecial
+  @grl _ (unicode @) (unicode £) (unicode $) (unicode €) _ (unicode {) [ ] (unicode }) \ _ bspc
+  tab  _    _    _    _    _    _    _    _    _    _    _    _
+  @cap _    _    _    _    _    _    _    _    _    _    _    _    ret    
+  _    _    _    _    _    _    _    _    _    _    _    _
   lctl lmet lalt           spc            ralt rmet rctl
 )
 
@@ -26,30 +87,53 @@
   @grl f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    
   _    _    C-w  mbck mfwd _    _    home C-u   end  del  _    _    
   _    _    _    lctl esc  C-d  left down up   rght bspc C-'    _    _    
-  _    _    _    C-x  C-c  C-v  _    _    _    _    _    _    _    
+  _    _    C-x  C-c  C-v  _    _    _    _    _    _    _    
   _    _    _              ret              _    _    _
 )
 
-(defalias
-  	grl (tap-hold 200 200 grv (layer-toggle layers))
+(deflayer swedish 
+ @grl  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    (unicode ä) (unicode å)  _    _    _    _    _    _    _    _    _    _    
+  _    _    _    _    _    _    _    _    _    _ (unicode ö)  _    _    _ 
+  @lsft _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              ret              _    _    _
+)
 
-  	clm (layer-switch colemak)
-  	qwr (layer-switch qwerty)
-	misc (layer-switch misc)
+(deflayer swedishUpper
+  @grl _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    (unicode Ä) (unicode Å)  _    _    _    _    _    _    _    _    _    _    
+  _    _    _    _    _    _    _    _    _    _ (unicode Ö)  _    _    _ 
+  @lsft _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              ret              _    _    _
+)
 
-	cap (layer-while-held misc)
+(deflayer brackets
+  @grl _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    [    ]    
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _ 
+  @sft _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
+)
+
+(deflayer bracketsUpper
+  @grl _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    {    }    
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _ 
+  @sft _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
 )
 
 (deflayer layers
-  _    @clm @misc @qwr lrld _   _    _    _    _    _    _    _    _
+  _   @clm @sclm @qwr @sqw @mis _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    
-  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _
 )
 
 (defcfg
   windows-altgr add-lctl-release
+  process-unmapped-keys yes
 )
 
 (defvar
