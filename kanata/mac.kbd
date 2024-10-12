@@ -1,79 +1,63 @@
 (deflocalkeys-macos
-  §   41
-  ´   13 ;; Acute accent. Opposite to the grave accent (grv).
-  å   26
-  ö   39
-  ä   40
-  ¨   27
-  '   43
+	§    86
 )
 
 (defsrc
-    §    1    2    3    4    5    6    7    8    9    0    +    ´    bspc
-    tab  q    w    e    r    t    y    u    i    o    p    å    ¨
-    caps a    s    d    f    g    h    j    k    l    ö    ä    '    ret
-    lsft <    z    x    c    v    b    n    m    ,    .    -    rsft
-    fn   lctl lalt lmet           spc            rmet ralt
-  )
-
-;; Empty layer that matches the Swedish layout
-(deflayer swedish-clm
-  @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    f    p    g    j    l    u    y    ö    å    ¨
-  @cap a    r    s    t    d    h    n    e    i    o    ä    '    ret    
-  lsft <    z    x    c    v    b    k    m    ,    .    -    rsft
-  fn   lctl lmet lalt           spc            ralt rmet 
+	§    1    2    3    4    5    6    7    8    9    0    -    =    bspc
+	tab  q    w    e    r    t    y    u    i    o    p    [    ]
+ 	caps a    s    d    f    g    h    j    k    l    ;    '    \    ret    
+ 	lsft z    x    c    v    b    n    m    ,    .    /    rsft
+ 	fn   lctl lalt lmet            spc            rmet rctl
 )
 
 (deflayer colemak 
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    f    p    g    j    l    u    y    ;    [    ]
-  @cap a   r    s    t    d    h    n    e    i    o    '    \    ret    
-  lsft <    z    x    c    v    b    k    m    ,    .    /    rsft
-  fn   lctl lmet lalt           spc            rmet ralt
+  @cap a    r    s    t    d    h    n    e    i    o    '    \    ret    
+  lsft z    x    c    v    b    k    m    ,    .    /    rsft
+  fn   lctl lalt lmet          spc            rmet rctl
 )
 
 (deflayer qwerty
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ] 
-  caps a    s    d    f    g    h    j    k    l    ;    '    \    ret
-  lsft <    z    x    c    v    b    n    m    ,    .    /    rsft
-  fn   lctl lmet lalt           spc            rmet ralt 
+  @cap a    s    d    f    g    h    j    k    l    ;    '    \    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  fn   lctl lalt lmet          spc            rmet rctl
 )
 
 (deflayer misc 
   @grl f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    
   _    _    C-w  mbck mfwd _    _    home C-u   end  del  _    _    
-  _    _    _    esc  lctl C-d  left down up   rght bspc _    _    _    
-  _    _    _    C-x  C-c  C-v  _    _    _    _    _    _    _    
-  _    _    _    _              ret              _    _    
-)
-
-
-(defalias
-	;; tap: backtick (grave), hold: toggle layer-switching layer while held
-  	grl (tap-hold 200 200 § (layer-toggle layers))
-
-  	;; layer-switch changes the base layer.
-	default (layer-switch swedish-clm) 
-  	clm (layer-switch colemak)
-  	qwr (layer-switch qwerty)
-	misc (layer-switch misc)
-
-  	cap (tap-hold-release 200 200 esc (layer-while-held misc))
-;;	cap (layer-while-held misc)
+  _    _    _    lctl esc  C-d  left down up   rght bspc C-'    _    _    
+  _    _    C-x  C-c  C-v  _    _    _    _    _    _    _    
+  _    _    _    _              ret              _    _
 )
 
 (deflayer layers
-  _    @default @clm @misc @qwr _    _    _    _    _    _   _    _    _
+  _   @clm @qwr  @mis _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _              _              _    _    
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _              _              _    _
+)
+
+(defalias
+  	grl (tap-hold 200 100 § (layer-toggle layers))
+
+  	clm (layer-switch colemak)
+  	qwr (layer-switch qwerty)
+	mis (layer-switch misc)
+
+	cap (layer-while-held misc)
+
 )
 
 (defcfg
-  windows-altgr add-lctl-release
+  process-unmapped-keys yes
+  macos-dev-names-include (
+    "Magic Keyboard"
+  )
 )
 
 (defvar
