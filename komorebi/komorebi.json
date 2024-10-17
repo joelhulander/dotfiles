@@ -68,7 +68,11 @@
 						{
 							"kind": "Exe",
 							"id": "Postman.exe"
-						}
+						},
+						{
+							"kind": "Exe",
+							"id": "Firefox.exe"
+						},
 					]
 				},
 				{

@@ -7,7 +7,7 @@
 )
 
 (defalias
-  	grl (tap-hold 200 100 grv (layer-toggle layers))
+  	grl (tap-hold 200 150 grv (layer-toggle layers))
 	swe (tap-hold 200 100 ralt (layer-toggle swedish))
 	lsft (multi lsft (layer-toggle swedishUpper))
 	sft (multi lsft (layer-toggle bracketsUpper))
