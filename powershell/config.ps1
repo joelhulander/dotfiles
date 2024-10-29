@@ -119,6 +119,45 @@ function which ($command) {
 		Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
+function komo {
+    param(
+        [Parameter(Position=0, Mandatory=$true)]
+        [string]$Command,
+        
+        [Parameter(Position=1)]
+        [string]$Config = "komorebi"
+    )
+    
+    switch ($Command.ToLower()) {
+        "start" {
+            # Kill existing instances if running
+            Get-Process komorebi -ErrorAction SilentlyContinue | Stop-Process
+            Get-Process whkd -ErrorAction SilentlyContinue | Stop-Process
+            Get-Process pythonw -ErrorAction SilentlyContinue | Stop-Process
+            
+            # Start Komorebi with specific config
+            $configPath = "$env:USERPROFILE\.config\komorebi\$Config.json"
+            if (Test-Path $configPath) {
+				& komorebic start --whkd -c ${configPath}
+				& yasb
+                Write-Host "Started Komorebi and whkd with config: $Config"
+            } else {
+                Write-Host "Error: Config file not found at $configPath"
+            }
+        }
+        "stop" {
+			& komorebic stop --whkd
+            Get-Process pythonw -ErrorAction SilentlyContinue | Stop-Process
+            Write-Host "Stopped Komorebi and whkd"
+        }
+        default {
+            Write-Host "Usage:"
+            Write-Host "  komo start [config]  - Start Komorebi and whkd with optional config name"
+            Write-Host "  komo stop            - Stop Komorebi and whkd"
+        }
+    }
+}
+
 # Functions
 function open {
 	param ($file)
@@ -186,72 +225,16 @@ function Copy-DirectoryWithConfirmation {
 		}
 
 # Copy the directory and its contents
-	Copy-Item -Path $sourcePath -Destination $destinationPath -Recurse -Force
+	Copy-Item -Path $sourcePath -Destination $destinationPath -Recurse -Force;
 
-		Write-Host "Directory '$sourcePath' successfully copied to '$fullDestinationPath'."
+	Write-Host "Directory '$sourcePath' successfully copied to '$fullDestinationPath'."
 }
 
-
-function deploy {
-	param (
-			[Parameter(Position = 0, Mandatory = $false, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
-			[string]$branch
-		  )
-
-		$iisDeploymentPath = "C:\Users\joelhu\Applications\SweetAutomation";
-	$currentDir = Get-Location;
-	$currentDirName = $currentDir | Split-Path -Leaf;
-
-	if ($currentDirName -eq "SweetAutomation") {
-		$dir = Join-Path -Path $currentDir -ChildPath "CM\*";
-	}
-	else {
-		$dir = Join-Path -Path $currentDir -ChildPath "Application\SweetAutomation\CM\*";
-	}
-
-	if ($branch -eq "dev") 
-	{
-		$dir = "C:\Users\joelhu\SA\development\Application\SweetAutomation\CM\*";
-	}
-
-	Copy-Item -Recurse -Force $dir $iisDeploymentPath;
-	if ($branch -eq "dev") {
-		Write-Host "Branch 'development' successfully deployed.";
-	}
-	else {
-		$branch = git rev-parse --abbrev-ref HEAD;
-			Write-Host "Branch '$branch' successfully deployed.";
-	}
-}
-
-function root {
-	$currentDir = Get-Location
-		$dir = Join-Path -Path $currentDir -ChildPath "Application\SweetAutomation"
-
-		set-location $dir
-}
 
 function branch {
 	$branch = git rev-parse --abbrev-ref HEAD;
 
 	return $branch;
-}
-
-function su {
-	param (
-			[Parameter(Position = 0, Mandatory = $false, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
-			[string]$folder
-		  )
-
-
-		$currentBranch = branch
-		if ($folder) {
-
-			Invoke-Expression "git branch --set-upstream-to=origin/$folder/$currentBranch";
-		}
-		else {
-			Invoke-Expression "git branch --set-upstream-to=origin/$currentBranch";
-		}
 }
 
 function Set-EnvVar

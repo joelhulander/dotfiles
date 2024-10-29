@@ -5,15 +5,15 @@
 	"cross_monitor_move_behaviour": "Insert",
 	"default_workspace_padding": 20,
 	"default_container_padding": 6,
-	"border": false,
-	"border_width": 0,
+	"border": true,
+	"border_width": 3,
 	"border_offset": -1,
 	"border_style": "System",
 	"border_colours": {
 		"single": "#42a5f5",
 		"stack": "#00a542",
 		"monocle": "#ff3399",
-		"unfocused": "#808080"
+		"unfocused": "#000000"
 	},
 	"mouse_follows_focus": false,
 	"stackbar": {
@@ -31,15 +31,45 @@
 			"workspaces": [
 				{
 					"name": "I",
-					"layout": "Grid",
+					"layout": "UltrawideVerticalStack",
+					"initial_workspace_rules": [
+						{
+							"kind": "Exe",
+							"id": "wezterm-gui.exe"
+						},
+						{
+							"kind": "Exe",
+							"id": "Firefox.exe"
+						},
+						{
+							"kind": "Exe",
+							"id": "msedge.exe"
+						},
+						{
+							"kind": "Exe",
+							"id": "zen.exe"
+						},
+						{
+							"kind": "Exe",
+							"id": "olk.exe"
+						},
+						{
+							"kind": "Exe",
+							"id": "OUTLOOK.exe"
+						},
+						{
+							"kind": "Exe",
+							"id": "ms-teams.exe"
+						}
+					]
+				},
+				{
+					"name": "II",
+					"layout": "UltrawideVerticalStack",
 					"initial_workspace_rules": [
 						{
 							"kind": "Exe",
 							"id": "devenv.exe"
-						},
-						{
-							"kind": "Exe",
-							"id": "wezterm-gui.exe"
 						},
 						{
 							"kind": "Exe",
@@ -49,53 +79,15 @@
 							"kind": "Exe",
 							"id": "Postman.exe"
 						},
-						{
-							"kind": "Exe",
-							"id": "Firefox.exe"
-						},
-					]
-				},
-				{
-					"name": "II",
-					"layout": "Grid",
-					"initial_workspace_rules": [
-						{
-							"kind": "Exe",
-							"id": "olk.exe"
-						},
-						{
-							"kind": "Exe",
-							"id": "OUTLOOK.exe"
-						}
 					]
 				},
 				{
 					"name": "III",
-					"layout": "Grid",
-					"initial_workspace_rules": [
-						{
-							"kind": "Exe",
-							"id": "ms-teams.exe"
-						}
-					]
+					"layout": "UltrawideVerticalStack",
 				},
 				{
 					"name": "IV",
-					"layout": "Grid",
-					"initial_workspace_rules": [
-						{
-							"kind": "Exe",
-							"id": "msedge.exe"
-						},
-						{
-							"kind": "Exe",
-							"id": "zen.exe"
-						}
-					]
-				},
-				{
-					"name": "V",
-					"layout": "Grid",
+					"layout": "UltrawideVerticalStack",
 					"initial_workspace_rules": [
 						{
 							"kind": "Exe",
@@ -105,10 +97,30 @@
 							"kind": "Exe",
 							"id": "Spotify.exe"
 						}
-						
 					]
+				},
+				{
+					"name": "V",
+					"layout": "UltrawideVerticalStack",
 				}
 			]
+		}
+	],
+	"float_rules": [
+		{
+			"kind": "Title",
+			"id": "WindowsFormsParkingWindow",
+			"matching_strategy": "Equals"
+		},
+		{
+			"kind": "Exe",
+			"id": "ServiceHub.ThreadedWaitDialog.exe",
+			"matching_strategy": "Equals"
+		},
+		{
+			"kind": "Exe",
+			"id": "logioptionsplus.exe",
+			"matching_strategy": "Equals"
 		}
 	]
 }
