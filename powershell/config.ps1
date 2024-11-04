@@ -113,6 +113,15 @@ function startYasb {
 	pythonw ${env:USERPROFILE}\tools\yasb\src\main.py
 }
 
+function kanata {
+	kanata --port 12345 &;
+}
+
+
+function komokana {
+	komokana -t -p 12345 -d colemak -c .\komokana.yaml &
+}
+
 # Utilities
 function which ($command) {
 	Get-Command -Name $command -ErrorAction SilentlyContinue | 

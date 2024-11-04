@@ -228,10 +228,10 @@ ${wingetPackages} = @(
 	@{Id="Yarn.Yarn"; Command="Yarn"}
 )
 
-Write-ColoredOutput "Installing or updating Winget packages..." "Magenta"
-foreach (${package} in ${wingetPackages}) {
-    Install-OrUpdateWingetPackage ${package}.Id ${package}.Command
-}
+# Write-ColoredOutput "Installing or updating Winget packages..." "Magenta"
+# foreach (${package} in ${wingetPackages}) {
+#     Install-OrUpdateWingetPackage ${package}.Id ${package}.Command
+# }
 
 Write-Host ""
 Write-ColoredOutput "Enable long path support since it is recommended for komorebi" "Magenta"
@@ -241,19 +241,19 @@ Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'Long
 ${scoopPackages} = @("kanata", "PSReadLine", "PSFzf", "silicon") 
 
 Write-Host ""
-Write-ColoredOutput "Installing or updating Scoop packages..." "Magenta"
-foreach(${package} in ${scoopPackages}) {
-	Install-OrUpdateScoopPackage ${package}
-}
+# Write-ColoredOutput "Installing or updating Scoop packages..." "Magenta"
+# foreach(${package} in ${scoopPackages}) {
+# 	Install-OrUpdateScoopPackage ${package}
+# }
 
 # Install or update PowerShell modules
 ${psModules} = @("posh-git", "Terminal-Icons") 
 
 Write-Host ""
-Write-ColoredOutput "Installing or updating PowerShell modules..." "Magenta"
-foreach (${module} in ${psModules}) {
-    Install-OrUpdateModule ${module}
-}
+# Write-ColoredOutput "Installing or updating PowerShell modules..." "Magenta"
+# foreach (${module} in ${psModules}) {
+#     Install-OrUpdateModule ${module}
+# }
 
 # Create symlinks
 ${dotfilesDir} = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine(${env:USERPROFILE}, ".dotfiles"))
@@ -267,9 +267,11 @@ ${symlinks} = @(
     @{Source="${dotfilesDir}\wezterm"; Destination="${env:USERPROFILE}\.config/wezterm"},
     @{Source="${dotfilesDir}\ohmyposh\catppuccin.yaml"; Destination="${env:USERPROFILE}\Documents\PowerShell\catppuccin.omp.yaml"},
     @{Source="${dotfilesDir}\kanata\windows.kbd"; Destination="${env:USERPROFILE}\kanata.kbd"},
+    @{Source="${dotfilesDir}\komokana\komokana.yaml"; Destination="${env:USERPROFILE}\komokana.yaml"},
     @{Source="${dotfilesDir}\vsvim\.vimrc"; Destination="${env:USERPROFILE}\.vimrc"},
     @{Source="${dotfilesDir}\zellij\config.kdl"; Destination="${env:USERPROFILE}\.config\zellij\config.kdl"},
     @{Source="${dotfilesDir}\komorebi\komorebi.json"; Destination="${env:USERPROFILE}\.config\komorebi\komorebi.json"},
+    @{Source="${dotfilesDir}\komorebi\komorebi-ultrawide.json"; Destination="${env:USERPROFILE}\.config\komorebi\uw.json"},
     @{Source="${dotfilesDir}\komorebi\applications.yaml"; Destination="${env:USERPROFILE}\.config\komorebi\applications.yaml"},
     @{Source="${dotfilesDir}\komorebi\whkdrc"; Destination="${env:USERPROFILE}\.config\whkdrc"},
 	@{Source="${dotfilesDir}\yasb\config.yaml"; Destination="${env:USERPROFILE}\.yasb\config.yaml"},

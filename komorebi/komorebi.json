@@ -5,8 +5,8 @@
 	"cross_monitor_move_behaviour": "Insert",
 	"default_workspace_padding": 20,
 	"default_container_padding": 6,
-	"border": false,
-	"border_width": 0,
+	"border": true,
+	"border_width": 3,
 	"border_offset": -1,
 	"border_style": "System",
 	"border_colours": {
@@ -109,6 +109,23 @@
 					]
 				}
 			]
+		}
+	],
+	"float_rules": [
+		{
+			"kind": "Title",
+			"id": "WindowsFormsParkingWindow",
+			"matching_strategy": "Equals"
+		},
+		{
+			"kind": "Exe",
+			"id": "ServiceHub.ThreadedWaitDialog.exe",
+			"matching_strategy": "Equals"
+		},
+		{
+			"kind": "Exe",
+			"id": "logioptionsplus.exe",
+			"matching_strategy": "Equals"
 		}
 	]
 }
