@@ -1,23 +1,40 @@
-# eval "$(oh-my-posh init zsh --config ~/.dotfiles/ohmyposh/config.yaml)"
-eval "$(oh-my-posh init zsh --config ~/.dotfiles/ohmyposh/catppuccin.yaml)"
-enable_poshtransientprompt
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git"
+# Remove macOS GOROOT and use Arch's default Go location
+export PATH=$PATH:$HOME/.local/bin
 
-source $(brew --prefix)/opt/zinit/zinit.zsh
+# Oh My Posh initialization
+# eval "$(oh-my-posh init zsh --config ~/.dotfiles/ohmyposh/catppuccin.yaml)"
+# enable_poshtransientprompt
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
+
+# zinit plugins
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zdharma/history-search-multi-word
 
+# Aliases
 alias g='git'
 alias n='nvim'
 alias lg='lazygit'
 alias sa='cd /path/to/SA'
 alias ~='cd ~'
 alias ..='cd ..'
-alias ls='lsd'
 
+# Functions
 cdBack() {
   cd ..
 }
@@ -27,28 +44,21 @@ showGitDiff() {
 }
 
 add_space() {
-	echo ""
+    echo ""
 }
 
-typeset -a preexec_functions
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+
+typeset -a preexec_functions
 preexec_functions+=(add_space)
 
-
-# fzf
-
-if [ -f $(brew --prefix)/opt/fzf/shell/completion.zsh ]; then
-  source $(brew --prefix)/opt/fzf/shell/completion.zsh
-fi
-
-if [ -f $(brew --prefix)/opt/fzf/shell/key-bindings.zsh ]; then
-  source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
-fi
+# FZF keybindings for Arch
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 bindkey '^T' fzf-file-widget
 bindkey '^R' fzf-history-widget
 
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
-export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git"
-export GOROOT=/opt/homebrew/Cellar/go/1.22.0/libexec
-export PATH=$PATH:$GOROOT/bin
+eval "$(starship init zsh)"

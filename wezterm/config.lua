@@ -10,10 +10,14 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 elseif wezterm.target_triple == "aarch64-apple-darwin" then
 	config.default_prog = { "/bin/zsh", "-l", "-i" }
 	config.native_macos_fullscreen_mode = true
+elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
+	config.default_prog = { "/usr/bin/zsh", "-l", "-i" }
 else
 	config.default_prog = {"/bin/bash"}
 end
 
+
+config.enable_wayland = false
 wezterm.on('update-right-status', function(window)
 	window:set_right_status(window:active_workspace())
 
@@ -116,7 +120,7 @@ config.inactive_pane_hsb = {
 	brightness = 0.55
 }
 
-config.font = wezterm.font("Hack Nerd Font", {weight="Regular", stretch="Normal", style="Normal"})
+config.font = wezterm.font("Meslo LGM Nerd Font", {weight="Regular", stretch="Normal", style="Normal"})
 config.font_size = 12
 config.debug_key_events = true
 
