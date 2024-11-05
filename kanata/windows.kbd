@@ -7,23 +7,33 @@
 )
 
 (defalias
-  	grl (tap-hold 200 150 grv (layer-toggle layers))
-	swe (tap-hold 200 100 ralt (layer-toggle swedish))
+  	grl (tap-hold $tap-time $hold-time grv (layer-toggle layers))
+	swe (tap-hold $tap-time 100 ralt (layer-toggle swedish))
 	lsft (multi lsft (layer-toggle swedishUpper))
 	sft (multi lsft (layer-toggle bracketsUpper))
-	pro (tap-hold 200 100 ralt (layer-toggle brackets))
+	pro (tap-hold $tap-time 100 ralt (layer-toggle brackets))
 	cmu (multi lsft (layer-toggle swedishColemakUpper))
 	squ (multi lsft (layer-toggle swedishQwertyUpper))
-	spe (tap-hold 200 100 ralt (layer-toggle swedishQwertySpecial))
+	spe (tap-hold $tap-time 100 ralt (layer-toggle swedishQwertySpecial))
 
   	clm (layer-switch colemak)
   	sclm (layer-switch swedishColemak)
   	qwr (layer-switch qwerty)
   	sqw (layer-switch swedishQwerty)
 	mis (layer-switch misc)
+	hrm (layer-switch hrm)
 
 	cap (layer-while-held misc)
 
+	a (tap-hold-release-keys 100 $hold-time a lmet $left-hand-keys)
+	r (tap-hold-release-keys 100 $hold-time r lalt $left-hand-keys)
+	s (tap-hold-release-keys 100 $hold-time s lctl $left-hand-keys)
+	t (tap-hold-release-keys 100 $hold-time t lsft $left-hand-keys)
+	n (tap-hold-release-keys 100 $hold-time n rsft $right-hand-keys)
+	e (tap-hold-release-keys 100 $hold-time e rctl $right-hand-keys)
+	i (tap-hold-release-keys 100 $hold-time i ralt $right-hand-keys)
+	o (tap-hold-release-keys 100 $hold-time o rmet $right-hand-keys)
+	
 )
 
 (deflayer colemak 
@@ -123,8 +133,16 @@
   _    _    _              _              _    _    _
 )
 
+(deflayer hrm
+  @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    f    p    g    j    l    u    y    ;    [    ]
+  @cap @a   @r   @s   @t   d    h    @n   @e   @i   @o    '    \    ret    
+  lsft z    x    c    v    b    k    m    ,    .    /    rsft
+  lctl lmet lalt           spc            @swe rmet rctl
+)
+
 (deflayer layers
-  _   @clm @sclm @qwr @sqw @mis _    _    _    _    _    _    _    _
+  _   @clm @sclm @qwr @sqw @hrm @mis _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    
   _    _    _    _    _    _    _    _    _    _    _    _
@@ -139,5 +157,17 @@
 (defvar
   tap-time 200
   hold-time 150
+
+  left-hand-keys (
+    q w f p g
+    a r s t d
+    z x c v b
+  )
+  right-hand-keys (
+    j l u y ;
+    n e i o '
+    k m , . /
+  )
+
 )
 
