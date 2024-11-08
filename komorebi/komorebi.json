@@ -52,7 +52,7 @@
 						{
 							"kind": "Exe",
 							"id": "Firefox.exe"
-						},
+						}
 					]
 				},
 				{
@@ -66,13 +66,7 @@
 						{
 							"kind": "Exe",
 							"id": "OUTLOOK.EXE"
-						}
-					]
-				},
-				{
-					"name": "III",
-					"layout": "Grid",
-					"initial_workspace_rules": [
+						},
 						{
 							"kind": "Exe",
 							"id": "ms-teams.exe"
@@ -80,7 +74,7 @@
 					]
 				},
 				{
-					"name": "IV",
+					"name": "III",
 					"layout": "Grid",
 					"initial_workspace_rules": [
 						{
@@ -91,6 +85,12 @@
 							"kind": "Exe",
 							"id": "zen.exe"
 						}
+					]
+				},
+				{
+					"name": "IV",
+					"layout": "Grid",
+					"initial_workspace_rules": [
 					]
 				},
 				{

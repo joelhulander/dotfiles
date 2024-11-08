@@ -3,11 +3,12 @@ $Host.UI.RawUI.WindowTitle = 'Terminal'
 $env:LC_MESSAGES="en-US"
 $env:TERM='xterm-256color'
 $Env:KOMOREBI_CONFIG_HOME = "${Env:USERPROFILE}\.config\komorebi"
+$KanataConfigLocation = "${Env:USERPROFILE}\kanata.kbd"
 
 # Set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 # Prompt
-Import-Module posh-git
+# Import-Module posh-git
 # $omp_config = "~/.dotfiles/ohmyposh/config.yaml"
 
 Import-Module -Name Terminal-Icons
@@ -113,8 +114,8 @@ function startYasb {
 	pythonw ${env:USERPROFILE}\tools\yasb\src\main.py
 }
 
-function kanata {
-	kanata --port 12345 &;
+function kb {
+	kanata --port 12345 -c $KanataConfigLocation &
 }
 
 
@@ -261,5 +262,6 @@ function Set-EnvVar
 New-Alias -Name 'Set-PoshContext' -Value 'Set-EnvVar' -Scope Global -Force
 
 # Invoke-Expression (&starship init powershell)
-$omp_config = "~/.dotfiles/ohmyposh/catppuccin.yaml"
-oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
+# $omp_config = "~/.dotfiles/ohmyposh/catppuccin.yaml"
+# oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
+Invoke-Expression (&starship init powershell)

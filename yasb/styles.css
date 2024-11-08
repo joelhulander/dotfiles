@@ -68,6 +68,7 @@
     font-size: 14px;
 }
 .cpu-widget .label,
+.clock-widget .label,
 .wifi-widget .label,
 .memory-widget .label,
 .traffic-widget .label,
@@ -86,6 +87,10 @@
 .cpu-widget .label {
   /* background: #c6a0f6;  */
   background: #ed8796;
+}
+.clock-widget .label {
+  /* background: #c6a0f6;  */
+  /* background: #ed8796; */
 }
 .battery-widget .label.status-critical {
   background: #ed8796; /* Macchiato red color */

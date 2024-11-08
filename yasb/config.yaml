@@ -27,7 +27,7 @@ bars:
     widgets:
       left:   [ "komorebi_workspaces" ] 
       center: [ "clock" ]
-      right:  [ "kanata", "explorer_button", "wifi", "cpu", "battery"]
+      right:  [ "battery" ]
 
 widgets:
   active_window:
@@ -142,16 +142,6 @@ widgets:
   #
   # Some custom widgets
 
-  kanata:
-    type: "yasb.custom.CustomWidget"
-    options:
-      label: "{data}"
-      label_alt: "{data}"
-      class_name: "kanata-widget"
-      exec_options:
-        run_cmd: "cat '${Env:LocalAppData}\\Temp\\kanata_layer'"
-        run_interval: 300
-        return_format: "string"
   explorer_button:
     type: "yasb.custom.CustomWidget"
     options:

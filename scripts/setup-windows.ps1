@@ -256,7 +256,7 @@ Write-Host ""
 # }
 
 # Create symlinks
-${dotfilesDir} = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine(${env:USERPROFILE}, ".dotfiles"))
+${dotfilesDir} = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine(${env:USERPROFILE}, "dotfiles"))
 
 ${symlinks} = @(
     @{Source="${dotfilesDir}\powershell\config.ps1"; Destination="${env:USERPROFILE}\OneDrive - Sweet Systems AB\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"},
@@ -274,8 +274,9 @@ ${symlinks} = @(
     @{Source="${dotfilesDir}\komorebi\komorebi-ultrawide.json"; Destination="${env:USERPROFILE}\.config\komorebi\uw.json"},
     @{Source="${dotfilesDir}\komorebi\applications.yaml"; Destination="${env:USERPROFILE}\.config\komorebi\applications.yaml"},
     @{Source="${dotfilesDir}\komorebi\whkdrc"; Destination="${env:USERPROFILE}\.config\whkdrc"},
-	@{Source="${dotfilesDir}\yasb\config.yaml"; Destination="${env:USERPROFILE}\.yasb\config.yaml"},
-	@{Source="${dotfilesDir}\yasb\styles.css"; Destination="${env:USERPROFILE}\.yasb\styles.css"}
+    @{Source="${dotfilesDir}\yasb\config.yaml"; Destination="${env:USERPROFILE}\.yasb\config.yaml"},
+    @{Source="${dotfilesDir}\yasb\styles.css"; Destination="${env:USERPROFILE}\.yasb\styles.css"},
+    @{Source="${dotfilesDir}\starship\starship.toml"; Destination="${env:USERPROFILE}\.config\starship.toml"}
 )
 
 Write-Host ""
