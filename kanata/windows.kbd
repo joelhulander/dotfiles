@@ -25,15 +25,14 @@
 
 	cap (layer-while-held misc)
 
-	a (tap-hold-release-keys 100 $hold-time a lmet $left-hand-keys)
-	r (tap-hold-release-keys 100 $hold-time r lalt $left-hand-keys)
-	s (tap-hold-release-keys 100 $hold-time s lctl $left-hand-keys)
-	t (tap-hold-release-keys 100 $hold-time t lsft $left-hand-keys)
-	n (tap-hold-release-keys 100 $hold-time n rsft $right-hand-keys)
-	e (tap-hold-release-keys 100 $hold-time e rctl $right-hand-keys)
-	i (tap-hold-release-keys 100 $hold-time i ralt $right-hand-keys)
-	o (tap-hold-release-keys 100 $hold-time o rmet $right-hand-keys)
-	
+	a (tap-hold 200 300 a lmet)
+	r (tap-hold 200 300 r lalt)
+	s (tap-hold 200 300 s lctl)
+	t (tap-hold 200 300 t lsft)
+	n (tap-hold 200 300 n rsft)
+	e (tap-hold 200 300 e rctl)
+	i (tap-hold 200 300 i ralt)
+	o (tap-hold 200 300 o rmet)	
 )
 
 (deflayer colemak 
