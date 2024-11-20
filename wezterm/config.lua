@@ -17,6 +17,7 @@ else
 end
 
 
+config.front_end = "WebGpu"
 config.enable_wayland = false
 wezterm.on('update-right-status', function(window)
 	window:set_right_status(window:active_workspace())
@@ -32,37 +33,6 @@ wezterm.on('update-right-status', function(window)
 	})
 end)
 
-
--- Catppuccin Macchiato colors
-local colors = {
-	rosewater = "#f4dbd6",
-	flamingo = "#f0c6c6",
-	pink = "#f5bde6",
-	mauve = "#c6a0f6",
-	red = "#ed8796",
-	maroon = "#ee99a0",
-	peach = "#f5a97f",
-	yellow = "#eed49f",
-	green = "#a6da95",
-	teal = "#8bd5ca",
-	sky = "#91d7e3",
-	sapphire = "#7dc4e4",
-	blue = "#8aadf4",
-	lavender = "#b7bdf8",
-	text = "#cad3f5",
-	subtext1 = "#b8c0e0",
-	subtext0 = "#a5adcb",
-	overlay2 = "#939ab7",
-	overlay1 = "#8087a2",
-	overlay0 = "#6e738d",
-	surface2 = "#5b6078",
-	surface1 = "#494d64",
-	surface0 = "#363a4f",
-	base = "#24273a",
-	mantle = "#1e2030",
-	crust = "#181926",
-}
-
 -- Tab bar configuration
 
 config.show_new_tab_button_in_tab_bar = false
@@ -72,7 +42,7 @@ config.tab_bar_at_bottom = true
 config.show_tabs_in_tab_bar = false
 config.tab_max_width = 32
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.98
+config.window_background_opacity = 0.90
 
 config.initial_cols = 130
 config.initial_rows = 45
@@ -85,34 +55,7 @@ config.window_padding = {
 }
 
 -- Color scheme
-config.color_scheme = 'Catppuccin Macchiato'
-
--- Tab bar colors
-config.colors = {
-	tab_bar = {
-		background = colors.mantle,
-		active_tab = {
-			bg_color = colors.blue,
-			fg_color = colors.mantle,
-		},
-		inactive_tab = {
-			bg_color = colors.surface0,
-			fg_color = colors.subtext1,
-		},
-		inactive_tab_hover = {
-			bg_color = colors.surface1,
-			fg_color = colors.text,
-		},
-		new_tab = {
-			bg_color = colors.surface0,
-			fg_color = colors.subtext1,
-		},
-		new_tab_hover = {
-			bg_color = colors.surface1,
-			fg_color = colors.text,
-		},
-	},
-}
+config.color_scheme = 'Catppuccin Moccha'
 
 -- Dim inactive panes
 config.inactive_pane_hsb = {

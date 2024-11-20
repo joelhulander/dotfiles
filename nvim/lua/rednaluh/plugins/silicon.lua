@@ -5,7 +5,7 @@ return {
 		local silicon = require('silicon')
 
 		silicon.setup({ font = 'Hack Nerd Font=28',
-			theme = 'Nord',
+			theme = 'Catppuccin Macchiato',
 			output = {
 				clipboard = true,
 				format = "silicon_[year][month][day]_[hour][minute][second].png",

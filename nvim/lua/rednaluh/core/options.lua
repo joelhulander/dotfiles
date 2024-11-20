@@ -15,7 +15,6 @@ opt.wrap = false
 --search settings
 opt.ignorecase = true
 opt.smartcase = true
-
 -- turn off swapfile
 opt.swapfile = false
 
@@ -30,7 +29,6 @@ opt.cursorline = true
 opt.guicursor = "n-v-c-i:block"
 opt.confirm = true
 opt.splitright = true
-opt.clipboard = "unnamedplus"
 opt.completeopt = "menuone,noselect"
 
 opt.shell = "pwsh"

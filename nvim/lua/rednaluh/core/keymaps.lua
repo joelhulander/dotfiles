@@ -20,7 +20,7 @@ set("x", "<leader>p", "\"_dP", opts)
 set("t", "<Esc>", [[<C-\><C-n>]], opts)
 
 -- New tab
-set("n", "<leader>te", ":tabedit<CR>", opts)
+opts.desc = "Open new tab"
 set("n", "<leader>tn", ":tabnew<CR>", opts)
 
 -- Split window
@@ -55,11 +55,11 @@ set(
 	"<cmd>Telescope find_files<cr>",
 	opts
 )
-opts.desc = "Find recent files"
+opts.desc = "List registers"
 set(
 	"n",
 	"<leader>fr",
-	"<cmd>Telescope oldfiles<cr>",
+	"<cmd>Telescope registers<cr>",
 	opts
 )
 
@@ -85,7 +85,7 @@ set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
 opts.desc = "List jump list"
 set("n", "<leader>fj", "<cmd>Telescope jumplist<cr>", opts)
 
-opts.desc = "List all "
+opts.desc = "List all telescope commands"
 set(
 	"n",
 	"<leader>fm",
