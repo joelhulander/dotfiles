@@ -40,12 +40,19 @@ config.show_new_tab_button_in_tab_bar = false
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.show_tabs_in_tab_bar = false
+config.automatically_reload_config = true
 config.tab_max_width = 32
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.90
+config.window_background_opacity = 0.80
 
 config.initial_cols = 130
 config.initial_rows = 45
+
+config.colors = {
+	tab_bar = {
+		background = 'rgba(0,0,0,0)'
+	}
+}
 
 config.window_padding = {
 	left = 10,
@@ -55,7 +62,7 @@ config.window_padding = {
 }
 
 -- Color scheme
-config.color_scheme = 'Catppuccin Moccha'
+config.color_scheme = 'Catppuccin Mocha'
 
 -- Dim inactive panes
 config.inactive_pane_hsb = {
@@ -63,7 +70,7 @@ config.inactive_pane_hsb = {
 	brightness = 0.55
 }
 
-config.font = wezterm.font("Meslo LGM Nerd Font", {weight="Regular", stretch="Normal", style="Normal"})
+config.font = wezterm.font("Hack Nerd Font", {weight="Regular", stretch="Normal", style="Normal"})
 config.font_size = 12
 config.debug_key_events = true
 

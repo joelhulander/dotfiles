@@ -225,13 +225,14 @@ ${wingetPackages} = @(
     @{Id="LGUG2Z.whkd"; Command="whkd"},
 	@{Id="Python.Python.3.10"; Command="Python"},
 	@{Id="JernejSimoncic.Wget"; Command="Wget"},
+	@{Id="glzr-io.glazewm"; Command="glazewm"},
 	@{Id="Yarn.Yarn"; Command="Yarn"}
 )
 
 # Write-ColoredOutput "Installing or updating Winget packages..." "Magenta"
-# foreach (${package} in ${wingetPackages}) {
-#     Install-OrUpdateWingetPackage ${package}.Id ${package}.Command
-# }
+foreach (${package} in ${wingetPackages}) {
+    Install-OrUpdateWingetPackage ${package}.Id ${package}.Command
+}
 
 Write-Host ""
 Write-ColoredOutput "Enable long path support since it is recommended for komorebi" "Magenta"
@@ -242,18 +243,18 @@ ${scoopPackages} = @("kanata", "PSReadLine", "PSFzf", "silicon")
 
 Write-Host ""
 # Write-ColoredOutput "Installing or updating Scoop packages..." "Magenta"
-# foreach(${package} in ${scoopPackages}) {
-# 	Install-OrUpdateScoopPackage ${package}
-# }
+foreach(${package} in ${scoopPackages}) {
+	Install-OrUpdateScoopPackage ${package}
+}
 
 # Install or update PowerShell modules
 ${psModules} = @("posh-git", "Terminal-Icons") 
 
 Write-Host ""
 # Write-ColoredOutput "Installing or updating PowerShell modules..." "Magenta"
-# foreach (${module} in ${psModules}) {
-#     Install-OrUpdateModule ${module}
-# }
+foreach (${module} in ${psModules}) {
+    Install-OrUpdateModule ${module}
+}
 
 # Create symlinks
 ${dotfilesDir} = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine(${env:USERPROFILE}, "dotfiles"))
@@ -264,7 +265,7 @@ ${symlinks} = @(
     @{Source="${dotfilesDir}\lazygit\config.yml"; Destination="${env:APPDATA}\lazygit\config.yml"},
     @{Source="${dotfilesDir}\silicon"; Destination="${env:APPDATA}\silicon"},
     @{Source="${dotfilesDir}\bat"; Destination="${env:APPDATA}\bat"},
-    @{Source="${dotfilesDir}\wezterm"; Destination="${env:USERPROFILE}\.config/wezterm"},
+    @{Source="${dotfilesDir}\wezterm\config.lua"; Destination="${env:USERPROFILE}\.wezterm.lua"},
     @{Source="${dotfilesDir}\ohmyposh\catppuccin.yaml"; Destination="${env:USERPROFILE}\Documents\PowerShell\catppuccin.omp.yaml"},
     @{Source="${dotfilesDir}\kanata\windows.kbd"; Destination="${env:USERPROFILE}\kanata.kbd"},
     @{Source="${dotfilesDir}\komokana\komokana.yaml"; Destination="${env:USERPROFILE}\komokana.yaml"},
@@ -276,7 +277,9 @@ ${symlinks} = @(
     @{Source="${dotfilesDir}\komorebi\whkdrc"; Destination="${env:USERPROFILE}\.config\whkdrc"},
     @{Source="${dotfilesDir}\yasb\config.yaml"; Destination="${env:USERPROFILE}\.yasb\config.yaml"},
     @{Source="${dotfilesDir}\yasb\styles.css"; Destination="${env:USERPROFILE}\.yasb\styles.css"},
-    @{Source="${dotfilesDir}\starship\starship.toml"; Destination="${env:USERPROFILE}\.config\starship.toml"}
+    @{Source="${dotfilesDir}\starship\starship.toml"; Destination="${env:USERPROFILE}\.config\starship.toml"},
+    @{Source="${dotfilesDir}\glazewm"; Destination="${env:USERPROFILE}\.glzr\glazewm"},
+    @{Source="${dotfilesDir}\zebar"; Destination="${env:USERPROFILE}\.glzr\zebar"}
 )
 
 Write-Host ""

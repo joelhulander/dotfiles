@@ -40,7 +40,7 @@
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    f    p    g    j    l    u    y    ;    [    ]
   @cap a    r    s    t    d    h    n    e    i    o    '    \    ret    
-  XX   lsft z    x    c    v    b    k    m    ,    .   / 	  rsft
+  lsft lsft z    x    c    v    b    k    m    ,    .   / 	  rsft
   lctl lmet lalt           spc            ralt    rmet rctl
 )
 
@@ -49,7 +49,7 @@
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    f    p    g    j    l    u    y    (unicode ö) (unicode å)    ;
   @cap a   	r    s    t    d    h    n    e    i    o    (unicode ä)    '    ret    
-  XX   @cmu z    x    c    v    b    k    m    ,    .    /    rsft
+  @cmu lsft z    x    c    v    b    k    m    ,    .    /    rsft
   lctl lmet lalt           spc            @pro rmet rctl
 )
 
@@ -57,7 +57,7 @@
   @grl _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    (unicode Ö)    (unicode Å)    _    
   _    _    _    _    _    _    _    _    _    _    _    (unicode Ä)    _    _ 
-  XX   _    _    _    _    _    _    _    _    _    _    _    _
+  lsft _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              @sft _    _
 )
 
@@ -65,7 +65,7 @@
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ] 
   @cap a    s    d    f    g    h    j    k    l    ;    '    \    ret
-  XX   lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lsft lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet rctl
 )
 
@@ -73,7 +73,7 @@
   @grl 1    2    3    4    5    6    7    8    9    0    +    grv    bspc
   tab  q    w    e    r    t    y    u    i    o    p     (unicode å) _
   @cap a    s    d    f    g    h    j    k    l    (unicode ö) (unicode ä)   '    ret    
-  XX   @squ z    x    c    v    b    n    m    ,    .    -    rsft
+  @squ lsft z    x    c    v    b    n    m    ,    .    -    rsft
   lctl lmet lalt           spc            @spe rmet rctl
 )
 
@@ -81,7 +81,7 @@
   @grl (unicode !) (unicode r#"""#) (unicode #) (unicode ¤) (unicode %) (unicode &) (unicode /) (unicode "(") (unicode ")") (unicode =) (unicode ?) grv bspc
   tab  _    _    _    _    _    _    _    _    _    _    (unicode Å) _
   @cap _    _    _    _    _    _    _    _    _    (unicode Ö) (unicode Ä)   (unicode *)    ret    
-  XX    lsft _    _    _    _    _    _    _    ;    (unicode :)    _    rsft
+  lsft lsft _    _    _    _    _    _    _    ;    (unicode :)    _    rsft
   lctl lmet lalt           spc            ralt rmet rctl
 )
 
@@ -89,23 +89,23 @@
   @grl _ (unicode @) (unicode £) (unicode $) (unicode €) _ (unicode {) [ ] (unicode }) \ _ bspc
   tab  _    _    _    _    _    _    _    _    _    _    _    _
   @cap _    _    _    _    _    _    _    _    _    _    _    _    ret    
-  XX   _    _    _    _    _    _    _    _    _    _    _    _
+  lsft _    _    _    _    _    _    _    _    _    _    _    _
   lctl lmet lalt           spc            ralt rmet rctl
 )
 
 (deflayer misc 
   @grl f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    
-  _    C-z  C-w  mbck mfwd _    _ home C-u  end  del  _    _    
-  _    C-a  C-r    _    lctl C-d  left down up rght bspc C-'  _    _    
-  XX   _    _    C-x  C-c  C-v  _   esc   _    _    _    _    _
-  _    _    _              tab            _    _    _
+  _    C-z  C-w  mbck C-v  _    home end  C-u  C-c (unicode :)    del     _    
+  _    C-a  C-r  lctl esc  C-d  left down up rght bspc C-'  _    _    
+  lsft _    _    C-x  C-c  S-v  _   tab    _    _    _    _    _
+  _    _    _              esc            _    _    _
 )
 
 (deflayer brackets
   @grl _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    [    ]    
   _    _    _    _    _    _    _    _    _    _    _    _    _    _ 
-  XX   @sft _    _    _    _    _    _    _    _    _    _    _
+  @sft lsft _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _
 )
 
@@ -113,7 +113,7 @@
   @grl _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    {    }    
   _    _    _    _    _    _    _    _    _    _    _    _    _    _ 
-  XX   @sft _    _    _    _    _    _    _    _    _    _    _
+  @sft lsft _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _
 )
 
@@ -121,7 +121,7 @@
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    f    p    g    j    l    u    y    ;    [    ]
   @cap @a   @r   @s   @t   d    h    @n   @e   @i   @o    '    \    ret    
-  XX   lsft z    x    c    v    b    k    m    ,    .    /    rsft
+  lsft lsft z    x    c    v    b    k    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet rctl
 )
 

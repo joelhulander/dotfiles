@@ -31,7 +31,7 @@
 			"workspaces": [
 				{
 					"name": "I",
-					"layout": "Grid",
+					"layout": "BSP",
 					"initial_workspace_rules": [
 						{
 							"kind": "Exe",
@@ -57,7 +57,7 @@
 				},
 				{
 					"name": "II",
-					"layout": "Grid",
+					"layout": "BSP",
 					"initial_workspace_rules": [
 						{
 							"kind": "Exe",
@@ -75,7 +75,7 @@
 				},
 				{
 					"name": "III",
-					"layout": "Grid",
+					"layout": "BSP",
 					"initial_workspace_rules": [
 						{
 							"kind": "Exe",
@@ -89,7 +89,7 @@
 				},
 				{
 					"name": "IV",
-					"layout": "Grid",
+					"layout": "BSP",
 					"initial_workspace_rules": [
 					]
 				},
