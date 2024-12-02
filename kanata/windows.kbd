@@ -94,11 +94,11 @@
 )
 
 (deflayer misc 
-  @grl f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    
-  _    C-z  C-w  mbck C-v  _    home end  C-u  C-c (unicode :)    del     _    
-  _    C-a  C-r  lctl esc  C-d  left down up rght bspc C-'  _    _    
-  lsft _    _    C-x  C-c  S-v  _   tab    _    _    _    _    _
-  _    _    _              esc            _    _    _
+  @grl f1   f2   f3   f4   f5 _  (unicode &) (unicode *) (unicode "(") (unicode ")") (unicode _) (unicode +)  _    
+  _    C-z  C-w  mbck C-v  _    _    home C-u  end (unicode :) S-[ S-]
+  _    C-a  C-r  lctl esc  C-d  left down up rght bspc S-'   _    _    
+  lsft _    _    C-x  C-c  S-v  _   del   C-' (unicode <) (unicode >) (unicode ?) _
+  _    _    _              ret            _    _    _
 )
 
 (deflayer brackets
