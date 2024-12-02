@@ -121,9 +121,9 @@ config.keys = {
 	{ key = "}", mods = "LEADER|SHIFT", action = act.MoveTabRelative(1) },
 
 	-- Workspace
-	{ key = "w", mods = "LEADER",       action = act.ShowLauncherArgs { flags = "FUZZY|WORKSPACES" } },
+	{ key = "m", mods = "LEADER",       action = act.ShowLauncherArgs { flags = "FUZZY|WORKSPACES" } },
 	{
-		key = 'k',
+		key = 'n',
 		mods = 'LEADER',
 		action = act.PromptInputLine {
 			description = wezterm.format {
