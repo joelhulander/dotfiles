@@ -165,7 +165,7 @@ main() {
 	echo ""
 	# Create symlinks
 	print_header "Creating Symlinks"
-	dotfiles_dir="$HOME/.dotfiles"
+	dotfiles_dir="$HOME/dotfiles"
 
 	echo ""
 	create_symlink "$dotfiles_dir/nvim" "$HOME/.config/nvim"

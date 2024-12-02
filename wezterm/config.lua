@@ -64,6 +64,12 @@ config.window_padding = {
 -- Color scheme
 config.color_scheme = 'Catppuccin Mocha'
 
+config.colors = {
+	tab_bar = {
+		background = 'rgba(0,0,0,0)'
+	}
+}
+
 -- Dim inactive panes
 config.inactive_pane_hsb = {
 	saturation = 0.80,
