@@ -21,19 +21,8 @@
   	qwr (layer-switch qwerty)
   	sqw (layer-switch swedishQwerty)
 	mis (layer-switch misc)
-	hrm (layer-switch hrm)
 
 	cap (layer-while-held misc)
-
-	a (tap-hold 200 300 a lmet)
-	r (tap-hold 200 300 r lalt)
-	s (tap-hold 200 300 s lctl)
-	t (tap-hold 200 300 t lsft)
-	n (tap-hold 200 300 n rsft)
-	e (tap-hold 200 300 e rctl)
-	i (tap-hold 200 300 i ralt)
-	o (tap-hold 200 300 o rmet)	
-
 
 	/ (tap-hold 200 300 / rsft)
 )
@@ -129,15 +118,6 @@
   _    _    _              _              _    _    _
 )
 
-(deflayer hrm
-  esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  
-  @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    f    p    g    j    l    u    y    ;    [    ]
-  @cap @a   @r   @s   @t   d    h    @n   @e   @i   @o    '    \    ret    
-  lsft lsft z    x    c    v    b    k    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
-)
-
 (deflayer split 
   esc  1    2    3    4    5    6    7    8    9    0    -    =
   @grl q    w    f    p    g    j    l    u    y    ;    [    ]    bspc
@@ -149,7 +129,7 @@
 
 (deflayer layers
   esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  
-  _   @clm @sclm @qwr @sqw @hrm @mis _    _    _    _    _    _    _
+  _   @clm @sclm @qwr @sqw @mis _    _    _    _    _    _    _    _
   _   @spl  _    _    _    _    _    _    _    _    _    _    _    
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    
   _    _    _    _    _    _    _    _    _    _    _    _    _
@@ -164,17 +144,6 @@
 (defvar
   tap-time 200
   hold-time 150
-
-  left-hand-keys (
-    q w f p g
-    a r s t d
-    z x c v b
-  )
-  right-hand-keys (
-    j l u y ;
-    n e i o '
-    k m , . /
-  )
 
 )
 
