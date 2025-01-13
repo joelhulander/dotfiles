@@ -10,8 +10,6 @@ set scrolloff=15
 
 let mapleader = " "
 
-nnoremap <leader>w :write<CR>
-nnoremap <leader>q :quit<CR>
 nnoremap <leader>sa ggVG<CR>
 nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>

@@ -1,5 +1,5 @@
 return {
-	"iamcco/markdown-preview.nvim",
+	"Tweekism/markdown-preview.nvim",
 	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 	build = "cd app && yarn install",
 	init = function()

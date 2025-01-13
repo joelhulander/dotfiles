@@ -17,7 +17,6 @@ else
 end
 
 
-config.front_end = "WebGpu"
 config.enable_wayland = false
 wezterm.on('update-right-status', function(window)
 	window:set_right_status(window:active_workspace())
@@ -43,7 +42,7 @@ config.show_tabs_in_tab_bar = false
 config.automatically_reload_config = true
 config.tab_max_width = 32
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.80
+config.window_background_opacity = 1
 
 config.initial_cols = 130
 config.initial_rows = 45

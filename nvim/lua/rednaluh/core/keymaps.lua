@@ -6,10 +6,6 @@ local opts = { noremap = true, silent = true }
 -- set("n", "<leader>w", "<cmd>write<cr>", { desc = "Save", noremap = true })
 -- set("n", "<leader>q", "<cmd>quit<cr>", { desc = "Quit", noremap = true })
 set("n", "<leader>sa", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
-opts.desc = "Add line below"
-set("n", "<leader>o", "o<Esc>", opts)
-opts.desc = "Add line above"
-set("n", "<leader>O", "O<Esc>", opts)
 set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 set("x", "<leader>p", "\"_dP", opts)
 
@@ -134,3 +130,6 @@ set("n", "<leader>vs", "<cmd>!devenv /edit %<cr>", { desc = "Edit file in Visual
 
 -- dotnet format
 set({ "v", "n"}, "<leader>=", "<cmd>!dotnet format whitespace<cr>", { desc = "Format file ", noremap = true, silent = true })
+
+-- obsidian
+set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Open note in Obsidian", noremap = true, silent = true})

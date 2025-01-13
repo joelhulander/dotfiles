@@ -8,23 +8,70 @@
 )
 
 (defalias
-  	grl (tap-hold $tap-time $hold-time grv (layer-toggle layers))
-	sft (multi lsft (layer-toggle bracketsUpper))
+	grl (tap-hold $tap-time $hold-time grv (layer-toggle layers))
 	pro (tap-hold $tap-time 100 ralt (layer-toggle brackets))
-	cmu (multi lsft (layer-toggle swedishColemakUpper))
-	squ (multi lsft (layer-toggle swedishQwertyUpper))
-	spe (tap-hold $tap-time 100 ralt (layer-toggle swedishQwertySpecial))
-
-  	clm (layer-switch colemak)
-  	spl (layer-switch split)
-  	sclm (layer-switch swedishColemak)
-  	qwr (layer-switch qwerty)
-  	sqw (layer-switch swedishQwerty)
+	spe (multi ralt (layer-toggle swedishQwertySpecial))
+	clm (layer-switch colemak)
+	spl (layer-switch split)
+	sclm (layer-switch swedishColemak)
+	qwr (layer-switch qwerty)
+	sqw (layer-switch swedishQwerty)
 	mis (layer-switch misc)
 
 	cap (layer-while-held misc)
+	
+	ca (layer-while-held misc-split)
+	sym (layer-while-held symbols)
 
 	/ (tap-hold 200 300 / rsft)
+
+	oe (fork (unicode ö) (unicode Ö) (lsft rsft))
+	ao (fork (unicode å) (unicode Å) (lsft rsft))
+	ae (fork (unicode ä) (unicode Ä) (lsft rsft))
+	lb (fork [ (unicode {) (lsft rsft))
+	rb (fork ] (unicode }) (lsft rsft))
+	s1 (fork 1 (unicode !) (lsft rsft))
+	s2 (fork 2 (unicode r#"""#) (lsft rsft))
+	s3 (fork 3 (unicode #) (lsft rsft))
+	s4 (fork 4 (unicode ¤) (lsft rsft))
+	s5 (fork 5 (unicode %) (lsft rsft))
+	s6 (fork 6 (unicode &) (lsft rsft))
+	s7 (fork 7 (unicode /) (lsft rsft))
+	s8 (fork 8 (unicode "(") (lsft rsft))
+	s9 (fork 9 (unicode ")") (lsft rsft))
+	s0 (fork 0 (unicode =) (lsft rsft))
+	s+ (fork + (unicode ?) (lsft rsft))
+	st (fork ' (unicode *) (lsft rsft))
+	sc (fork . (unicode :) (lsft rsft))
+	at (fork 2 (unicode @) (ralt))
+	gbp (fork 3 (unicode £) (ralt))
+	usd (fork 4 (unicode $) (ralt))
+	eur (fork 5 (unicode €) (ralt))
+	cbo (fork 7 (unicode {) (ralt))
+	cbc (fork 0 (unicode }) (ralt))
+
+	and (unicode &)
+	ast (unicode *)
+	op (unicode "(")
+	cp (unicode ")")
+	usc (unicode _)
+	add (unicode +)
+	col (unicode :)
+	ask (unicode ?)
+	les (unicode <)
+	mor (unicode >)
+	exc (unicode !)
+	bar (unicode |)
+	til (unicode ~)
+	ocb (unicode {) 
+	ccb (unicode }) 
+	dol (unicode $)
+	hsh (unicode #)
+	per (unicode %)
+	2at (unicode @)
+
+	asf (multi lalt lsft) 
+
 )
 
 (deflayer colemak 
@@ -36,23 +83,13 @@
   lctl lmet lalt           spc            ralt    rmet rctl
 )
 
-
 (deflayer swedishColemak 
   esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    f    p    g    j    l    u    y    (unicode ö) (unicode å)    ;
-  @cap a   	r    s    t    d    h    n    e    i    o    (unicode ä)    '    ret    
-  @cmu lsft z    x    c    v    b    k    m    ,    .    /    rsft
+  tab  q    w    f    p    g    j    l    u    y    @oe  @ao  ;
+  @cap a   	r    s    t    d    h    n    e    i    o    @ae  '    ret    
+  lsft lsft z    x    c    v    b    k    m    ,    .    /    rsft
   lctl lmet lalt           spc            @pro rmet rctl
-)
-
-(deflayer swedishColemakUpper 
-  esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  
-  @grl _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    (unicode Ö)    (unicode Å)    _    
-  _    _    _    _    _    _    _    _    _    _    _    (unicode Ä)    _    _ 
-  lsft _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _              _              @sft _    _
 )
 
 (deflayer qwerty
@@ -66,25 +103,16 @@
 
 (deflayer swedishQwerty
   esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  
-  @grl 1    2    3    4    5    6    7    8    9    0    +    grv    bspc
-  tab  q    w    e    r    t    y    u    i    o    p     (unicode å) _
-  @cap a    s    d    f    g    h    j    k    l    (unicode ö) (unicode ä)   '    ret    
-  @squ lsft z    x    c    v    b    n    m    ,    .    -    rsft
+  @grl @s1  @s2  @s3  @s4  @s5  @s6  @s7  @s8  @s9  @s0  @s+  grv  bspc
+  tab  q    w    e    r    t    y    u    i    o    p    @ao  _
+  @cap a    s    d    f    g    h    j    k    l    @oe  @ae  @st  ret    
+  lsft lsft z    x    c    v    b    n    m    ,    .    -    rsft
   lctl lmet lalt           spc            @spe rmet rctl
-)
-
-(deflayer swedishQwertyUpper
-  esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  
-  @grl (unicode !) (unicode r#"""#) (unicode #) (unicode ¤) (unicode %) (unicode &) (unicode /) (unicode "(") (unicode ")") (unicode =) (unicode ?) grv bspc
-  tab  _    _    _    _    _    _    _    _    _    _    (unicode Å) _
-  @cap _    _    _    _    _    _    _    _    _    (unicode Ö) (unicode Ä)   (unicode *)    ret    
-  lsft lsft _    _    _    _    _    _    _    ;    (unicode :)    _    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
 )
 
 (deflayer swedishQwertySpecial
   esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  
-  @grl _ (unicode @) (unicode £) (unicode $) (unicode €) _ (unicode {) [ ] (unicode }) \ _ bspc
+  @grl _    @at  @gbp @usd @eur _    @cbo [    ]    @cbc \    _    bspc
   tab  _    _    _    _    _    _    _    _    _    _    _    _
   @cap _    _    _    _    _    _    _    _    _    _    _    _    ret    
   lsft _    _    _    _    _    _    _    _    _    _    _    _
@@ -93,37 +121,46 @@
 
 (deflayer misc 
   esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  
-  @grl f1   f2   f3   f4   f5 _  (unicode &) (unicode *) (unicode "(") (unicode ")") (unicode _) (unicode +)  _    
-  _    C-z  C-w  mbck C-v  _    _    home C-u  end (unicode :) S-[ S-]
-  _    C-a  C-r  lctl esc  C-d  left down up rght bspc S-'   _    _    
-  lsft _    _    C-x  C-c  S-v  _   del   C-' (unicode <) (unicode >) (unicode ?) _
+  @grl f1   f2   f3   f4   f5 	_ 	 @and @ast @op  @cp  @usc @add _    
+  _    C-z  C-w  _    S-v  tab  _    home C-u  end  @col S-[  S-]
+  _    C-a  C-r  lctl esc  C-d  left down up   rght bspc S-'  _    _    
+  lsft _    _    C-x  C-c  C-v  _    del  C-'  @les @mor @ask _
   _    _    _              ret            _    _    _
 )
 
 (deflayer brackets
   esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  
   @grl _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    [    ]    
+  _    _    _    _    _    _    _    _    _    _    _    @lb  @rb    
   _    _    _    _    _    _    _    _    _    _    _    _    _    _ 
-  @sft lsft _    _    _    _    _    _    _    _    _    _    _
-  _    _    _              _              _    _    _
-)
-
-(deflayer bracketsUpper
-  esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  
-  @grl _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    {    }    
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _ 
-  @sft lsft _    _    _    _    _    _    _    _    _    _    _
+  lsft lsft _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _
 )
 
 (deflayer split 
   esc  1    2    3    4    5    6    7    8    9    0    -    =
-  @grl q    w    f    p    g    j    l    u    y    ;    [    ]    bspc
-  _    a    r    s    t    d    h    n    e    i    o    '    \    
-  _    z    x    c    v    b    k    m    ,    .    /    _    _    _ 
-  _    _    _    _    lalt lsft _    spc  _    _    _    _    _
+  @grl q    w    f    p    g    j    l    u    y    @oe  @ao  _    bspc
+  @ca  a    r    s    t    d    h    n    e    i    o    @ae  \    
+  tab  z    x    c    v    b    k    m    ,    .    /    _    _    _ 
+  _    _    _    lctl lalt lsft _    @sym rctl _    _    _    _
+  _    _    _                   spc            _    _    _
+)
+
+(deflayer misc-split
+  esc  F1   F2   F3   F4   F5   _    @and @ast @op  @cp  @usc @add
+  @grl C-z  C-w  mbck C-v  _    _    home C-u  end  @col S-[  S-]  _
+  _    _    _    lctl esc  tab  left down up   rght bspc '    _ 
+  _    _    _    _    _    _    del  C-'  _    _    _    _    _    _    
+  _    _    _    _    @asf _    _    _    _    _    _    _    _
+  _    _    _                   ret            _    _    _ 
+) 
+
+(deflayer symbols 
+  _    _    _    _    _    _    _    _    _    _    _    _    _    
+  _    @hsh @2at  [    ]   @bar _    7    8    9    0    _    _    _    
+  _    @exc @dol @op  @cp  grv  -    4    5    6    ;    =    _    
+  lalt @per _    @ocb @ccb @til @and 1    2    3    '    _    _    _ 
+  _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _
 )
 
@@ -144,6 +181,5 @@
 (defvar
   tap-time 200
   hold-time 150
-
 )
 

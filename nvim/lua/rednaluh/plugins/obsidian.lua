@@ -16,13 +16,30 @@ return {
 			}
 		},
 		daily_notes = {
-			folder = "Daily notes",
-			date_format = "%Y-%m-%d",
-			alias_format = "%B %-d, %Y",
+			folder = "Daily Notes",
+			date_format = "%Y-%m-%d-%A",
+			-- Make the note_id_func return the full path structure
+			note_id_func = function(date)
+				local year = os.date("%Y", date)
+				local month_num = os.date("%m", date)
+				local month_name = os.date("%B", date)
+				local filename = os.date("%Y-%m-%d-%A", date)
+
+				return string.format("%s/%s-%s/%s",
+					year,           -- YYYY
+					month_num,      -- MM
+					month_name,     -- MMMM
+					filename        -- YYYY-MM-DD-dddd
+				)
+			end,
 			default_tags = { "daily-notes" },
-			template = nil
+			template = "Templates/Daily Note Template"
 		},
-		preferred_link_style = "wiki",
+		templates = {
+			folder = "Templates"
+		},
+		preferred_link_style = "markdown",
+		disable_frontmatter = true,
 		mappings = {
 			["gf"] = {
 				action = function()

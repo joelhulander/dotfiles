@@ -215,7 +215,7 @@ if (-not (Test-Command scoop)) {
 # Install or update winget packages
 ${wingetPackages} = @(
     @{Id="Microsoft.PowerShell"; Command="pwsh"},
-    @{Id="JanDeDobbeleer.OhMyPosh"; Command="oh-my-posh"},
+    @{Id="JanDeDobbeleer.OhMyPosh"; Command="Oh My Posh"},
     @{Id="fzf"; Command="fzf"},
     @{Id="Git.Git"; Command="git"},
     @{Id="Neovim.Neovim"; Command="nvim"},
@@ -226,7 +226,9 @@ ${wingetPackages} = @(
 	@{Id="Python.Python.3.10"; Command="Python"},
 	@{Id="JernejSimoncic.Wget"; Command="Wget"},
 	@{Id="glzr-io.glazewm"; Command="glazewm"},
-	@{Id="Yarn.Yarn"; Command="Yarn"}
+	@{Id="Yarn.Yarn"; Command="Yarn"},
+	@{Id="sxyazi.yazi"; Command="Yazi"},
+	@{Id="JohnMacFarlane.Pandoc"; Command="Pandoc"}
 )
 
 # Write-ColoredOutput "Installing or updating Winget packages..." "Magenta"

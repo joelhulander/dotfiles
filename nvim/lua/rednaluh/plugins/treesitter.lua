@@ -18,6 +18,7 @@ return {
 			"json",
 			"javascript",
 			"markdown",
+			"markdown_inline",
 			"c_sharp",
 			"vim",
 			"regex",
