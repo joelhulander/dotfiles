@@ -37,9 +37,6 @@ function cdBack {
 	$localPath = Get-Location | Split-Path -Parent
 		set-location $localPath
 }
-function getAll {
-	Get-ChildItem -force | Format-Wide
-}
 
 function Copy-FileToClipboard {
     param(
@@ -95,7 +92,6 @@ Set-Alias PATH $Env:Path
 Set-Alias sa cdSA
 Set-Alias ~ cdHome
 Set-Alias .. cdBack
-Set-Alias ls getAll
 Set-Alias build buildSA
 Set-Alias rebuild rebuildSA
 Set-Alias gd showGitDiff
@@ -269,6 +265,16 @@ function Invoke-Starship-PreCommand {
         $prompt = "$ansi_escape]7;file://${env:COMPUTERNAME}/${provider_path}$ansi_escape\"
     }
     $host.ui.Write($prompt)
+}
+
+function y {
+    $tmp = [System.IO.Path]::GetTempFileName()
+    yazi $args --cwd-file="$tmp"
+    $cwd = Get-Content -Path $tmp -Encoding UTF8
+    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+        Set-Location -LiteralPath ([System.IO.Path]::GetFullPath($cwd))
+    }
+    Remove-Item -Path $tmp
 }
 
 # Invoke-Expression (&starship init powershell)

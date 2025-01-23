@@ -241,7 +241,7 @@ Write-ColoredOutput "Enable long path support since it is recommended for komore
 Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
 
 # Install or update Scoop packages
-${scoopPackages} = @("kanata", "PSReadLine", "PSFzf", "silicon") 
+${scoopPackages} = @("kanata", "PSReadLine", "PSFzf", "silicon", "poppler")
 
 Write-Host ""
 # Write-ColoredOutput "Installing or updating Scoop packages..." "Magenta"
@@ -265,6 +265,7 @@ ${symlinks} = @(
     @{Source="${dotfilesDir}\powershell\config.ps1"; Destination="${env:USERPROFILE}\OneDrive - Sweet Systems AB\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"},
     @{Source="${dotfilesDir}\nvim"; Destination="${env:LOCALAPPDATA}\nvim"},
     @{Source="${dotfilesDir}\lazygit\config.yml"; Destination="${env:APPDATA}\lazygit\config.yml"},
+	@{Source="${dotfilesDir}\yazi"; Destination="${env:APPDATA}\yazi\config"},
     @{Source="${dotfilesDir}\silicon"; Destination="${env:APPDATA}\silicon"},
     @{Source="${dotfilesDir}\bat"; Destination="${env:APPDATA}\bat"},
     @{Source="${dotfilesDir}\wezterm\config.lua"; Destination="${env:USERPROFILE}\.wezterm.lua"},
