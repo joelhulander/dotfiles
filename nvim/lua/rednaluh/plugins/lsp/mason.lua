@@ -33,7 +33,6 @@ return {
 				"jsonls",
 				"cssls",
 				"sqlls",
-				"omnisharp",
 				"gopls",
 				"ts_ls",
 				"rust_analyzer",

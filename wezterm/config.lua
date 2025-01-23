@@ -126,7 +126,7 @@ config.keys = {
 	{ key = "}", mods = "LEADER|SHIFT", action = act.MoveTabRelative(1) },
 
 	-- Workspace
-	{ key = "m", mods = "LEADER",       action = act.ShowLauncherArgs { flags = "FUZZY|WORKSPACES" } },
+	{ key = "w", mods = "LEADER",       action = act.ShowLauncherArgs { flags = "FUZZY|WORKSPACES" } },
 	{
 		key = 'n',
 		mods = 'LEADER',

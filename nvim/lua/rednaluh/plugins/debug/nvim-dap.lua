@@ -19,20 +19,20 @@ return {
 			dapui.close()
 		end
 
-		-- dap.adapters.coreclr = {
-		-- 	type = "executable",
-		-- 	command = "C:/Users/JHU02/AppData/Local/nvim-data/mason/bin/netcoredbg.cmd",
-		-- 	args = { "--interpreter=vscode" },
-		-- }
-		--
-		-- dap.configurations.cs = {
-		-- 	{
-		-- 		type = "coreclr",
-		-- 		name = "Attach to process",
-		-- 		request = "attach",
-		-- 		processId = require("dap.utils").pick_process,
-		-- 	},
-		-- }
+		dap.adapters.coreclr = {
+			type = "executable",
+			command = "C:/Users/JHU02/AppData/Local/nvim-data/mason/bin/netcoredbg.cmd",
+			args = { "--interpreter=vscode" },
+		}
+
+		dap.configurations.cs = {
+			{
+				type = "coreclr",
+				name = "Attach to process",
+				request = "attach",
+				processId = require("dap.utils").pick_process,
+			},
+		}
 
 		dapui.setup()
 	end,
