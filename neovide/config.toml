@@ -1,0 +1,5 @@
+fork = true
+
+[font]
+normal = ["Hack Nerd Font"] 
+size = 12.0

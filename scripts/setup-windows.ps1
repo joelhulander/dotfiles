@@ -215,20 +215,22 @@ if (-not (Test-Command scoop)) {
 # Install or update winget packages
 ${wingetPackages} = @(
     @{Id="Microsoft.PowerShell"; Command="pwsh"},
-    @{Id="JanDeDobbeleer.OhMyPosh"; Command="Oh My Posh"},
+    # @{Id="JanDeDobbeleer.OhMyPosh"; Command="Oh My Posh"},
     @{Id="fzf"; Command="fzf"},
     @{Id="Git.Git"; Command="git"},
     @{Id="Neovim.Neovim"; Command="nvim"},
     @{Id="jesseduffield.lazygit"; Command="lazygit"},
     @{Id="wez.wezterm"; Command="wezterm"},
-    @{Id="LGUG2Z.komorebi"; Command="komorebi"},
-    @{Id="LGUG2Z.whkd"; Command="whkd"},
+    # @{Id="LGUG2Z.komorebi"; Command="komorebi"},
+    # @{Id="LGUG2Z.whkd"; Command="whkd"},
 	@{Id="Python.Python.3.10"; Command="Python"},
 	@{Id="JernejSimoncic.Wget"; Command="Wget"},
 	@{Id="glzr-io.glazewm"; Command="glazewm"},
 	@{Id="Yarn.Yarn"; Command="Yarn"},
 	@{Id="sxyazi.yazi"; Command="Yazi"},
-	@{Id="JohnMacFarlane.Pandoc"; Command="Pandoc"}
+	@{Id="JohnMacFarlane.Pandoc"; Command="Pandoc"},
+	@{Id="Neovide.Neovide"; Command="Neovide"},
+	@{Id="Starship.Starship"; Command="Starship"}
 )
 
 # Write-ColoredOutput "Installing or updating Winget packages..." "Magenta"
@@ -264,8 +266,10 @@ ${dotfilesDir} = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine(${env:U
 ${symlinks} = @(
     @{Source="${dotfilesDir}\powershell\config.ps1"; Destination="${env:USERPROFILE}\OneDrive - Sweet Systems AB\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"},
     @{Source="${dotfilesDir}\nvim"; Destination="${env:LOCALAPPDATA}\nvim"},
+    @{Source="${dotfilesDir}\neovide"; Destination="${env:LOCALAPPDATA}\neovide"},
     @{Source="${dotfilesDir}\lazygit\config.yml"; Destination="${env:APPDATA}\lazygit\config.yml"},
 	@{Source="${dotfilesDir}\yazi"; Destination="${env:APPDATA}\yazi\config"},
+	@{Source="${dotfilesDir}\neovide"; Destination="${env:APPDATA}\neovide"},
     @{Source="${dotfilesDir}\silicon"; Destination="${env:APPDATA}\silicon"},
     @{Source="${dotfilesDir}\bat"; Destination="${env:APPDATA}\bat"},
     @{Source="${dotfilesDir}\wezterm\config.lua"; Destination="${env:USERPROFILE}\.wezterm.lua"},
