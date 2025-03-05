@@ -150,16 +150,16 @@
   esc  F1   F2   F3   F4   F5   _    @and @ast @op  @cp  @usc @add
   @grl C-z  C-w  mbck S-v  tab  _    home C-u  end  @col S-[  S-]  _
   _    _    _    lctl esc  C-d  left down up   rght bspc '    _ 
-  _    _    C-x  C-c  C-v    _    del  C-'  _    _    _    _    _    _    
+  _    _    C-x  C-c  C-v  _    del  C-'  @les @mor @ask _    _    _    
   _    _    _    _    @asf _    _    _    _    _    _    _    _
   _    _    _                   ret            _    _    _ 
 ) 
 
 (deflayer symbols 
   _    _    _    _    _    _    _    _    _    _    _    _    _    
-  _    @hsh @2at  [    ]   @bar _    7    8    9    0    _    _    _    
-  _    @exc @dol @op  @cp  grv  -    4    5    6    ;    =    _    
-  lalt @per _    @ocb @ccb @til @and 1    2    3    '    _    _    _ 
+  _    @hsh @2at  [    ]   @bar _    _    _    _    _    _    _    _    
+  _    @exc @dol @op  @cp  grv  -    l    u    y    ;    =    _    
+  lalt @per _    @ocb @ccb @til @and _    _    _    '    _    _    _ 
   _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _
 )
