@@ -3,7 +3,6 @@ return {
 	version = "*",
 	lazy = true,
 	event = {
-		"BufReadPre C:/Users/JoelHulander/obsidian/*.md",
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -11,35 +10,44 @@ return {
 	opts = {
 		workspaces = {
 			{
-				name = "notes",
-				path = "~/obsidian",
+				name = "work",
 			}
 		},
 		daily_notes = {
-			folder = "Daily Notes",
-			date_format = "%Y-%m-%d-%A",
-			-- Make the note_id_func return the full path structure
-			note_id_func = function(date)
-				local year = os.date("%Y", date)
-				local month_num = os.date("%m", date)
-				local month_name = os.date("%B", date)
-				local filename = os.date("%Y-%m-%d-%A", date)
-
-				return string.format("%s/%s-%s/%s",
-					year,           -- YYYY
-					month_num,      -- MM
-					month_name,     -- MMMM
-					filename        -- YYYY-MM-DD-dddd
-				)
-			end,
-			default_tags = { "daily-notes" },
-			template = "Templates/Daily Note Template"
+			folder = "1 - Daily Notes",
+			date_format = "%Y/%m-%B/%Y-%m-%d-%A",
+			default_tags = { "daily-note" },
+			template = "5 - Templates/Daily (template)"
 		},
 		templates = {
-			folder = "Templates"
+			folder = "5 - Templates",
+			date_format = "%Y/%m-%B/%Y-%m-%d-%A",
+			substitutions = {
+				year = function()
+					return os.date("%Y", nil)
+				end,
+				month = function()
+					return os.date("%m", nil)
+				end,
+				monthName = function()
+					return os.date("%B", nil)
+				end,
+				day = function()
+					return os.date("%d", nil)
+				end,
+				weekday = function()
+					return os.date("%A", nil)
+				end,
+				dateUID = function()
+					return os.date("%Y%m%d%H%M")
+				end,
+				customDate = function()
+					return os.date("%Y-%m-%d")
+				end
+			}
 		},
 		preferred_link_style = "markdown",
-		disable_frontmatter = true,
+		disable_frontmatter = false,
 		mappings = {
 			["gf"] = {
 				action = function()
