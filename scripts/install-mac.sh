@@ -176,6 +176,8 @@ main() {
 	create_symlink "$dotfiles_dir/tmux/tmux.conf" "$HOME/.tmux.conf"
 	create_symlink "$dotfiles_dir/zsh/zshrc" "$HOME/.zshrc"
 	create_symlink "$dotfiles_dir/aerospace/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
+	create_symlink "$dotfiles_dir/sketchybar" "$HOME/.config/sketchybar"
+	create_symlink "$dotfiles_dir/kitty" "$HOME/.config/kitty"
 
 	echo ""
 	print_success "Installation completed! (Please restart the terminal or source the .zshrc file)"
