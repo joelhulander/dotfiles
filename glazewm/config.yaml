@@ -39,14 +39,14 @@ gaps:
   scale_with_dpi: true
 
   # Gap between adjacent windows.
-  inner_gap: '5px'
+  inner_gap: '2px'
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '60px'
-    right: '20px'
-    bottom: '20px'
-    left: '20px'
+    top: '48px'
+    right: '10px'
+    bottom: '13px'
+    left: '13px'
 
 window_effects:
   # Visual effects to apply to the focused window.
@@ -65,20 +65,20 @@ window_effects:
     # Change the corner style of the window's frame.
     # ** Exclusive to Windows 11 due to API limitations.
     corner_style:
-      enabled: false
+      enabled: true
       # Allowed values: 'square', 'rounded', 'small_rounded'.
-      style: 'square'
+      style: 'small_rounded'
 
   # Visual effects to apply to non-focused windows.
   other_windows:
     border:
-      enabled: true
+      enabled: false
       color: '#a1a1a1'
     hide_title_bar:
       enabled: false
     corner_style:
-      enabled: false
-      style: 'square'
+      enabled: true
+      style: 'small_rounded'
 
 window_behavior:
   # New windows are created in this state whenever possible.
