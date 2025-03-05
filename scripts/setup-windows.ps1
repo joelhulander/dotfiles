@@ -223,6 +223,7 @@ ${wingetPackages} = @(
     @{Id="wez.wezterm"; Command="wezterm"},
     # @{Id="LGUG2Z.komorebi"; Command="komorebi"},
     # @{Id="LGUG2Z.whkd"; Command="whkd"},
+    # @{Id="LGUG2Z.komokana"; Command="komokana"},
 	@{Id="Python.Python.3.10"; Command="Python"},
 	@{Id="JernejSimoncic.Wget"; Command="Wget"},
 	@{Id="glzr-io.glazewm"; Command="glazewm"},
@@ -230,7 +231,9 @@ ${wingetPackages} = @(
 	@{Id="sxyazi.yazi"; Command="Yazi"},
 	@{Id="JohnMacFarlane.Pandoc"; Command="Pandoc"},
 	@{Id="Neovide.Neovide"; Command="Neovide"},
-	@{Id="Starship.Starship"; Command="Starship"}
+	@{Id="Starship.Starship"; Command="Starship"},
+	@{Id="7zip.7zip"; Command="7-Zip"},
+	@{Id="raphamorim.rio"; Command="Rio Terminal"}
 )
 
 # Write-ColoredOutput "Installing or updating Winget packages..." "Magenta"
@@ -266,6 +269,7 @@ ${dotfilesDir} = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine(${env:U
 ${symlinks} = @(
     @{Source="${dotfilesDir}\powershell\config.ps1"; Destination="${env:USERPROFILE}\OneDrive - Sweet Systems AB\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"},
     @{Source="${dotfilesDir}\nvim"; Destination="${env:LOCALAPPDATA}\nvim"},
+    @{Source="${dotfilesDir}\rio"; Destination="${env:LOCALAPPDATA}\rio"},
     @{Source="${dotfilesDir}\neovide"; Destination="${env:LOCALAPPDATA}\neovide"},
     @{Source="${dotfilesDir}\lazygit\config.yml"; Destination="${env:APPDATA}\lazygit\config.yml"},
 	@{Source="${dotfilesDir}\yazi"; Destination="${env:APPDATA}\yazi\config"},
