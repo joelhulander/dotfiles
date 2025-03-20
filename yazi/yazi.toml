@@ -1,4 +1,4 @@
 [opener]
 edit = [
-	{ run = "neovide %*",  block = false, for = "windows" },
+	{ run = "nvim %*",  block = true, desc = "nvim", for = "windows" },
 ]
