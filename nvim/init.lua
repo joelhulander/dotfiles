@@ -10,11 +10,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
--- Load core modules
-require("options")   -- Vim options
-require("keymaps")   -- Key mappings
-require("autocommands") -- Autocommands
-
+require("options")
+require("keymaps")
+require("autocommands")
 
 -- Initialize lazy.nvim with plugins
 require("lazy").setup({
@@ -46,6 +44,9 @@ require("lazy").setup({
     notify = false,
   },
 })
+
+require("lsp")
+
 
 -- Set colorscheme (after plugins are loaded)
 vim.cmd.colorscheme("catppuccin")

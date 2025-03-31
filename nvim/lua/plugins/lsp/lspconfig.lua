@@ -62,12 +62,6 @@ return {
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
-
 		lspconfig.html.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
@@ -81,29 +75,6 @@ return {
 		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-		})
-
-		local util = require("lspconfig.util")
-
-		lspconfig.csharp_ls.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			cmd = { "csharp-ls" },
-			filetypes = {"cs", "razor", "csproj", "fs", "fsproj"},
-			init_options = { AutomaticWorkspaceInit = true },
-			handlers = {
-				["textDocument/definition"] = require("csharpls_extended").handler,
-			},
-			root_dir = util.root_pattern("*.sln", "*.fsproj", "*.git"),
-		})
-
-
-		lspconfig.svelte.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			cmd = { "svelteserver", "--stdio" },
-			filetypes = { "svelte" },
-			root_dir = util.root_pattern("package.json", ".git" )
 		})
 
 		-- lspconfig.omnisharp.setup({

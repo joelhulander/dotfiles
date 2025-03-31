@@ -1,5 +1,9 @@
+local config = require("config").plugins
+
 return {
-	'echasnovski/mini.nvim', version = false,
+	'echasnovski/mini.diff',
+	version = false,
+	enabled = config.mini_diff ~= false,
 	config = function()
 		require('mini.diff').setup(
 			{
@@ -19,14 +23,6 @@ return {
 				},
 			}
 		);
-		require('mini.git').setup(
-			{
-				command = {
-					split = 'vertical'
-				}
-			}
-		);
-		require('mini.pick').setup()
 	end
 }
 

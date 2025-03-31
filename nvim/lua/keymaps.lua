@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 local set = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-set("n", "<leader>sa", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
+set("n", "<leader>a", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
 set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 set("x", "<leader>p", "\"_dP", opts)
 set("i", "<C-c>", "<Esc>", opts)
@@ -43,79 +43,6 @@ set({ "n", "v" }, "<C-d>", "<C-d>zz", { noremap = true })
 set({ "n", "v" }, "<C-u>", "<C-u>zz", { noremap = true })
 set({ "n", "v" }, "n", "nzz", { noremap = true })
 set({ "n", "v" }, "N", "Nzz", { noremap = true })
-
---Snacks
-opts.desc = "Smart Find Files"
-set("n", "<leader><space>",	function() Snacks.picker.smart() end, opts)
-
-opts.desc = "Buffers"
-set("n", "<leader>fb", function() Snacks.picker.buffers() end, opts)
-
-opts.desc = "Find files"
-set("n", "<leader>ff", function() Snacks.picker.files() end, opts)
-
-opts.desc = "Find git files"
-set("n", "<leader>fg", function() Snacks.picker.git_files() end, opts)
-
-opts.desc = "Registers"
-set("n", '<leader "', function() Snacks.picker.registers() end, opts)
-
-opts.desc = "Grep"
-set("n", "<leader>/", function() Snacks.picker.grep() end, opts)
-
-opts.desc = "Command history"
-set("n", "<leader>:", function() Snacks.picker.command_history() end, opts)
-
-opts.desc = "Notification history"
-set("n", "<leader>n", function() Snacks.picker.notifications() end, opts)
-
-opts.desc = "File Explorer"
-set("n", "<leader>e", function() Snacks.picker.explorer() end, opts)
-
-opts.desc = "Git Branches" 
-set("n", "<leader>gb", function() Snacks.picker.git_branches() end, opts)
-
-opts.desc = "Git Log" 
-set("n", "<leader>gl", function() Snacks.picker.git_log() end, opts)
-
-opts.desc = "Git Log Line"
-set("n", "<leader>gL", function() Snacks.picker.git_log_line() end, opts)
-	
-opts.desc = "Git Status" 
-set("n", "<leader>gs", function() Snacks.picker.git_status() end, opts)
-
-opts.desc = "Git Stash" 
-set("n", "<leader>gS", function() Snacks.picker.git_stash() end, opts)
-
-opts.desc = "Git Diff (Hunks)" 
-set("n", "<leader>gd", function() Snacks.picker.git_diff() end, opts)
-
-opts.desc = "Git Log File" 
-set("n", "<leader>gf", function() Snacks.picker.git_log_file() end, opts)
-
-opts.desc = "Goto Definition" 
-set("n", "gd", function() Snacks.picker.lsp_definitions() end, opts)
-
-opts.desc = "Goto Declaration" 
-set("n", "gD", function() Snacks.picker.lsp_declarations() end, opts)
-
-opts.desc = "References" 
-set("n", "gr", function() Snacks.picker.lsp_references() end, opts)
-
-opts.desc = "Goto Implementation" 
-set("n", "gI", function() Snacks.picker.lsp_implementations() end, opts)
-
-opts.desc = "Goto T[y]pe Definition" 
-set("n", "gy", function() Snacks.picker.lsp_type_definitions() end, opts)
-
-opts.desc = "LSP Symbols" 
-set("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, opts)
-
-opts.desc = "LSP Workspace Symbols" 
-set("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, opts)
-
-opts.desc = "LazyGit" 
-set("n", "<leader>lg", function() Snacks.lazygit() end, opts)
 
 -- DAP
 opts.desc = "Continue/Run"
@@ -182,7 +109,7 @@ set("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert template", 
 -- mini.nvim
 set("n", "<leader>go", "<cmd>lua MiniDiff.toggle_overlay()<CR>", { desc = "Toggle overlay", noremap = true, silent = true})
 set("n", "<leader>gt", "<cmd>lua MiniDiff.toggle()<CR>", { desc = "Toggle mini diff", noremap = true, silent = true})
-set("n", "<leader>gd", "<cmd>Git diff<CR>", { desc = "Diff", noremap = true, silent = true})
+set("n", "<leader>gD", "<cmd>Git diff<CR>", { desc = "Mini Diff", noremap = true, silent = true})
 set("n", "<leader>gc", "<cmd>Git commit<CR>", { desc = "Commit", noremap = true, silent = true})
 set("n", "<leader>gp", "<cmd>Git pull<CR>", { desc = "Pull", noremap = true, silent = true})
 set("n", "<leader>gP", "<cmd>Git push<CR>", { desc = "Push", noremap = true, silent = true})

@@ -1,7 +1,7 @@
 local config = require("config").plugins
 
 return {
-	"epwalsh/obsidian.nvim",
+	"obsidian-nvim/obsidian.nvim",
 	enabled = config.obsidian ~= false,
 	version = "*",
 	lazy = true,
@@ -89,7 +89,7 @@ return {
 			},
 		},
 		ui = {
-			enable = false
+			enable = true
 		}
 	},
 }

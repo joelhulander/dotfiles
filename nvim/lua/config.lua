@@ -2,7 +2,7 @@ return {
 	plugins = {
 		alpha = false,
 		autopairs = true,
-		blink = false,
+		blink = true,
 		colorizer = true,
 		comment = true,
 		conform = true,
@@ -14,13 +14,15 @@ return {
 		indent_blankline = true,
 		lualine = true,
 		markdown_preview = true,
-		nvim_cmp = false,
+		mini_diff = true,
+		mini_git = true,
+		nvim_cmp = true,
 		nvim_navic = true,
-		nvim_tree = false,
 		obsidian = true,
 		oil = true,
 		render_markdown = false,
 		silicon = true,
+		snacks = true,
 		treesitter_context = true,
 		treesitter = true,
 		trouble = true,
@@ -39,7 +41,7 @@ return {
 
 		-- LSP
 		linting = true,
-		lspconfig = false,
+		lspconfig = true,
 		mason = true,
 
 		--Color schemes
