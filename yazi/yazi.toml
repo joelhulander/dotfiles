@@ -2,3 +2,10 @@
 edit = [
 	{ run = "nvim %*",  block = true, desc = "nvim", for = "windows" },
 ]
+
+[manager]
+ratio = [2,4,4]
+show_hidden = true
+show_symlink = true
+linemode = "size"
+

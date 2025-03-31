@@ -134,5 +134,16 @@ set({ "v", "n"}, "<leader>=", "<cmd>!dotnet format whitespace<cr>", { desc = "Fo
 -- obsidian
 set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Open note in Obsidian", noremap = true, silent = true})
 set("n", "<leader>od", "<cmd>ObsidianToday<CR>", { desc = "Open todays daily note", noremap = true, silent = true})
-set("n", "<leader>ot", "<cmd>ObsidianTags<CR>", { desc = "List tags", noremap = true, silent = true})
+set("n", "<leader>ft", "<cmd>ObsidianTags<CR>", { desc = "List tags", noremap = true, silent = true})
 set("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "Obsidian search", noremap = true, silent = true})
+set("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert template", noremap = true, silent = true})
+
+-- mini.nvim
+set("n", "<leader>go", "<cmd>lua MiniDiff.toggle_overlay()<CR>", { desc = "Toggle overlay", noremap = true, silent = true})
+set("n", "<leader>gt", "<cmd>lua MiniDiff.toggle()<CR>", { desc = "Toggle mini diff", noremap = true, silent = true})
+set("n", "<leader>gd", "<cmd>Git diff<CR>", { desc = "Diff", noremap = true, silent = true})
+set("n", "<leader>gc", "<cmd>Git commit<CR>", { desc = "Commit", noremap = true, silent = true})
+set("n", "<leader>gp", "<cmd>Git pull<CR>", { desc = "Pull", noremap = true, silent = true})
+set("n", "<leader>gP", "<cmd>Git push<CR>", { desc = "Push", noremap = true, silent = true})
+set("n", "<leader>gs", "<cmd>Git status<CR>", { desc = "Status", noremap = true, silent = true})
+
