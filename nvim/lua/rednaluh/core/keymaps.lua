@@ -8,9 +8,15 @@ local opts = { noremap = true, silent = true }
 set("n", "<leader>sa", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
 set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 set("x", "<leader>p", "\"_dP", opts)
+set("i", "<C-c>", "<Esc>", opts)
 
 -- windows
 -- set("n", "<leader>p", "<C-W>p", { desc = "Switch window" })
+
+-- folding
+
+opts.desc = "Fold to bottom"
+set("n", "<leader><leader>fG", "zfG", opts)
 
 -- terminal
 set("t", "<Esc>", [[<C-\><C-n>]], opts)
@@ -90,26 +96,39 @@ set(
 )
 
 -- DAP
-set("n", "<F5>", ":lua require'dap'.continue()<CR>", { noremap = true, silent = true })
-set("n", "<F2>", ":lua require'dap'.step_over()<CR>", { noremap = true, silent = true })
-set("n", "<F1>", ":lua require'dap'.step_into()<CR>", { noremap = true, silent = true })
-set("n", "<F3>", ":lua require'dap'.step_out()<CR>", { noremap = true, silent = true })
-set("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>", { noremap = true, silent = true })
+opts.desc = "Continue/Run"
+set("n", "<F5>", ":lua require'dap'.continue()<CR>", opts) 
+opts.desc = "Step over"
+set("n", "<F2>", ":lua require'dap'.step_over()<CR>", opts)
+opts.desc = "Step into"
+set("n", "<F1>", ":lua require'dap'.step_into()<CR>", opts)
+opts.desc = "Step out"
+set("n", "<F3>", ":lua require'dap'.step_out()<CR>", opts)
+opts.desc = "Toggle breakpoint"
+set("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>", opts)
+opts.desc = "Set breakpoint with condition"
 set(
 	"n",
 	"<leader>dB",
 	":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-	{ noremap = true, silent = true }
+	opts
 )
+opts.desc = "Log point message"
 set(
 	"n",
 	"<leader>dl",
 	":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-	{ noremap = true, silent = true }
+	opts
 )
-set("n", "<leader>dR", ":lua require'dap'.repl.open()<CR>", { noremap = true, silent = true })
-set("n", "<leader>dgt", ":lua require'dap-go'.debug_test()<CR>", { noremap = true, silent = true })
-set("i", "<C-c>", "<Esc>", opts)
+opts.desc = "Repl open"
+set("n", "<leader>dR", ":lua require'dap'.repl.open()<CR>", opts)
+opts.desc = "Debug test"
+set("n", "<leader>dgt", ":lua require'dap-go'.debug_test()<CR>", opts)
+
+-- DAP UI
+opts.desc = "Open DAP UI"
+set("n", "<leader>du", ":lua require'dapui'.toggle()<CR>", opts)
+
 
 -- VIM  for normal and visual mode
 set({ "n", "v" }, "k", "n", opts)
@@ -120,7 +139,6 @@ set({ "n", "v" }, "e", "k", opts)
 set({ "n", "v" }, "E", "K", opts)
 set({ "n", "v" }, "j", "e", opts)
 set({ "n", "v" }, "J", "e", opts)
--- set("i", "ii", "<ESC>", opts )
 
 -- oil
 set("n", "-", "<cmd>lua require('oil').open_float()<CR>", { noremap = true, silent = true })
@@ -146,4 +164,5 @@ set("n", "<leader>gc", "<cmd>Git commit<CR>", { desc = "Commit", noremap = true,
 set("n", "<leader>gp", "<cmd>Git pull<CR>", { desc = "Pull", noremap = true, silent = true})
 set("n", "<leader>gP", "<cmd>Git push<CR>", { desc = "Push", noremap = true, silent = true})
 set("n", "<leader>gs", "<cmd>Git status<CR>", { desc = "Status", noremap = true, silent = true})
+set("n", "<leader>gl", "<cmd>Git log<CR>", { desc = "Log", noremap = true, silent = true})
 

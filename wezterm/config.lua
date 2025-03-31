@@ -11,13 +11,12 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" then
 	config.default_prog = { "/bin/zsh", "-l", "-i" }
 	config.native_macos_fullscreen_mode = true
 elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
+	config.enable_wayland = false
 	config.default_prog = { "/usr/bin/zsh", "-l", "-i" }
 else
 	config.default_prog = {"/bin/bash"}
 end
 
-
-config.enable_wayland = false
 wezterm.on('update-right-status', function(window)
 	window:set_right_status(window:active_workspace())
 
@@ -39,10 +38,9 @@ config.show_new_tab_button_in_tab_bar = false
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.show_tabs_in_tab_bar = false
-config.automatically_reload_config = true
 config.tab_max_width = 32
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 1
+config.window_background_opacity = 0.8
 
 config.initial_cols = 130
 config.initial_rows = 45
@@ -54,8 +52,8 @@ config.colors = {
 }
 
 config.window_padding = {
-	left = 10,
-	right = 10,
+	left = 6,
+	right = 6,
 	top = 10,  -- This could be causing extra space at the top
 	bottom = 10,
 }

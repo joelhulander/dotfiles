@@ -19,7 +19,14 @@ return {
 				},
 			}
 		);
-		require('mini.git').setup()
+		require('mini.git').setup(
+			{
+				command = {
+					split = 'vertical'
+				}
+			}
+		);
+		require('mini.pick').setup()
 	end
 }
 

@@ -19,19 +19,43 @@ return {
 			dapui.close()
 		end
 
+		vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
+		vim.fn.sign_define('DapStopped', {text='▶️', texthl='', linehl='', numhl=''})
+
 		dap.adapters.coreclr = {
 			type = "executable",
-			command = "C:/Users/JHU02/AppData/Local/nvim-data/mason/bin/netcoredbg.cmd",
+			command = 'C:/Users/JoelHulander/AppData/Local/nvim-data/mason/bin/netcoredbg.cmd',
 			args = { "--interpreter=vscode" },
 		}
 
 		dap.configurations.cs = {
 			{
 				type = "coreclr",
-				name = "Attach to process",
-				request = "attach",
-				processId = require("dap.utils").pick_process,
+				name = ".NET Core Launch (web)",
+				request = "launch",
+				-- preLaunchTask = "build",
+				-- cwd = "${workspaceFolder}/SA",
+				program = function()
+					return vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/', 'file')
+				end,
+				serverReadyAction = {
+					action = "openExternally",
+					pattern = "\\bNow listening on:\\s+(https?://\\S+)"
+				},
+				stopAtEntry = false,
+				console = "integratedTerminal",
+				-- env = {
+				-- 	aspnetcore_environment = "Development"
+				-- },
 			},
+			{
+				type = "coreclr",
+				name = ".NET Core Attach",
+				request = "attach",
+				processId = function()
+					return require('dap.utils').pick_process()
+				end,
+			}
 		}
 
 		dapui.setup()

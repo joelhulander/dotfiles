@@ -1,6 +1,5 @@
 return {
 	"neovim/nvim-lspconfig",
-	-- event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
@@ -8,10 +7,8 @@ return {
 		"Decodetalkers/csharpls-extended-lsp.nvim",
 	},
 	config = function()
-		-- import lspconfig plugin
 		local lspconfig = require"lspconfig"
 
-		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local keymap = vim.keymap -- for conciseness
@@ -59,40 +56,33 @@ return {
 			keymap.set("n", "<leader>lRs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 		end
 
-		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		-- configure html server
 		lspconfig.html.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
-		-- configure css server
+
 		lspconfig.cssls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
-		-- configure lua server (with special settings)
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			settings = { -- custom settings for lua
+			settings = { 
 				Lua = {
-					-- make the language server recognize "vim" global
 					diagnostics = {
 						globals = { "vim" },
 					},
 					workspace = {
-						-- make language server aware of runtime files
 						library = {
 							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 							[vim.fn.stdpath("config") .. "/lua"] = true,
@@ -147,17 +137,29 @@ return {
 		})
 
 		-- lspconfig.omnisharp.setup({
-		-- 	capabilities = capabilities,
-		-- 	on_attach = on_attach,
 		-- 	cmd = {
-		-- 		"dotnet",
-		-- 		"C:/Users/joelhu/AppData/Local/nvim-data/mason/packages/omnisharp/libexec/OmniSharp.exe",
+		-- 		"omnisharp",
 		-- 	},
-		-- 	enable_editorconfig_support = true, -- set this to false if incomplete references list
 		-- 	handlers = {
 		-- 		["textDocument/definition"] = require("omnisharp_extended").handler,
 		-- 	},
-		-- 	root_dir = util.root_pattern("*.sln", "omnisharp.json", "function.json", "*.fsproj", "*.git"),
+		-- 	capabilities = capabilities,
+		-- 	on_attach = on_attach,
+		-- 	root_dir = util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", "*.fsproj", "*.git"),
+		-- 	init_options = {
+		-- 		useModernNet = true,
+		-- 		enableImportCompletion = true,
+		-- 	},
+		-- 	settings = {
+		-- 		FormattingOptions = {
+		-- 			EnableEditorConfigSupport = true,
+		-- 			OrganizeImport = true
+		-- 		},
+		-- 		RoslynExtensionsOptions = {
+		-- 			EnableAnalyzersSupport = true,
+		-- 			AnalyzeOpenDocumentsOnly = true
+		-- 		}
+		-- 	}
 		-- })
 	end,
 }

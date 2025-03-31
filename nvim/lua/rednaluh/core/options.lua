@@ -31,6 +31,12 @@ opt.confirm = true
 opt.splitright = true
 opt.completeopt = "menuone,noselect"
 
+-- folding
+opt.foldcolumn = '1' 
+opt.foldlevel = 99 
+opt.foldlevelstart = 99
+opt.foldenable = true
+
 opt.shell = "pwsh"
 opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -command'
 opt.shellxquote = ''

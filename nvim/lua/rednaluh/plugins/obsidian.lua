@@ -3,6 +3,7 @@ return {
 	version = "*",
 	lazy = true,
 	event = {
+		"BufReadPre C:/Users/JoelHulander/OneDrive - Sweet Systems AB/Documents/Work/*.md",
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -11,6 +12,7 @@ return {
 		workspaces = {
 			{
 				name = "work",
+				path = "~/OneDrive - Sweet Systems AB/Documents/Work",
 			}
 		},
 		daily_notes = {
@@ -80,7 +82,7 @@ return {
 				action = function()
 					return require("obsidian").util.toggle_checkbox()
 				end,
-				opts = { buffer = true },
+				opts = { desc = "Toggle checkbox", buffer = true },
 			},
 		},
 		ui = {
