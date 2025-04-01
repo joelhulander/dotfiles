@@ -32,8 +32,8 @@ opt.splitright = true
 opt.completeopt = "menuone,noselect"
 
 -- folding
-opt.foldcolumn = '1' 
-opt.foldlevel = 99 
+opt.foldcolumn = '1'
+opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldenable = true
 
@@ -50,9 +50,12 @@ opt.diffopt:append('iwhite')
 -- For LSP config
 vim.diagnostic.config({
 	virtual_text = false,
+	virtual_lines = false,
 	signs = true,
 	underline = true,
 	update_in_insert = true,
 	severity_sort = false,
 })
 
+opt.winborder = 'rounded'
+opt.showmode = false

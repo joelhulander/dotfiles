@@ -63,17 +63,17 @@ return {
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		lspconfig.html.setup({
-			capabilities = capabilities,
+			-- capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		lspconfig.cssls.setup({
-			capabilities = capabilities,
+			-- capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		lspconfig.ts_ls.setup({
-			capabilities = capabilities,
+			-- capabilities = capabilities,
 			on_attach = on_attach,
 		})
 

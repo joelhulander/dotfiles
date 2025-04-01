@@ -16,7 +16,7 @@ return {
 		markdown_preview = true,
 		mini_diff = true,
 		mini_git = true,
-		nvim_cmp = true,
+		nvim_cmp = false,
 		nvim_navic = true,
 		obsidian = true,
 		oil = true,
@@ -41,7 +41,7 @@ return {
 
 		-- LSP
 		linting = true,
-		lspconfig = true,
+		lspconfig = false,
 		mason = true,
 
 		--Color schemes

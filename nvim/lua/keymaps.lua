@@ -109,7 +109,7 @@ set("n", "<leader>otn", "<cmd>ObsidianNewFromTemplate<CR>", { desc = "New from t
 
 -- mini.nvim
 set("n", "<leader>go", "<cmd>lua MiniDiff.toggle_overlay()<CR>", { desc = "Toggle overlay", noremap = true, silent = true})
-set("n", "<leader>gt", "<cmd>lua MiniDiff.toggle()<CR>", { desc = "Toggle mini diff", noremap = true, silent = true})
+set("n", "<leader>gtt", "<cmd>lua MiniDiff.toggle()<CR>", { desc = "Toggle mini diff", noremap = true, silent = true})
 set("n", "<leader>gD", "<cmd>Git diff<CR>", { desc = "Mini Diff", noremap = true, silent = true})
 set("n", "<leader>gc", "<cmd>Git commit<CR>", { desc = "Commit", noremap = true, silent = true})
 set("n", "<leader>gp", "<cmd>Git pull<CR>", { desc = "Pull", noremap = true, silent = true})
