@@ -73,5 +73,68 @@ return {
 
 		-- LazyGit
 		{ "<leader>lg", function() Snacks.lazygit() end, desc = "Open LazyGit" },
+
+		-- Custom
+		{
+			"<leader>tt",
+			function()
+				Snacks.picker.grep({
+					title = "Tasks",
+					prompt = " ",
+					search = "^\\s*- \\[ \\].*todo",
+					regex = true,
+					live = false,
+					preview = false,
+					dirs = { vim.fn.getcwd() },
+					args = { "--no-ignore" },
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+					finder = "grep",
+					format = function(item)
+						return {
+							{ item.line, "Normal"}
+						}
+					end,
+					show_empty = true,
+					supports_live = false,
+					layout = {
+						preset = "ivy",
+						preview = false,
+					},
+				})
+			end,
+			desc = "Search for incomplete tasks",
+		},
+		{
+			"<leader>tc",
+			function()
+				Snacks.picker.grep({
+					title = "Completed tasks",
+					prompt = " ",
+					search = "^\\s*- \\[x\\].*todo",
+					regex = true,
+					live = false,
+					dirs = { vim.fn.getcwd() },
+					args = { "--no-ignore" },
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+					finder = "grep",
+					format = function(item)
+						return {
+							{ item.line, "Normal"}
+						}
+					end,
+					show_empty = true,
+					supports_live = false,
+					layout = {
+						preset = "ivy",
+						preview = false,
+					},
+				})
+			end,
+			desc = "Search for complete tasks",
+		},
 	},
 }

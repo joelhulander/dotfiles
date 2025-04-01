@@ -4,10 +4,6 @@ return {
 	"obsidian-nvim/obsidian.nvim",
 	enabled = config.obsidian ~= false,
 	version = "*",
-	lazy = true,
-	event = {
-		"BufReadPre C:/Users/JoelHulander/OneDrive - Sweet Systems AB/Documents/Work/*.md",
-	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
@@ -69,9 +65,26 @@ return {
 					end
 
 					return os.date("%A, %B ") .. day .. suffix .. os.date(", %Y")
+				end,
+				company = function()
+					return vim.fn.input("Which company: ")
 				end
 			}
 		},
+		note_path_func = function(spec)
+			local path
+			if spec.title:match("Note (template)") then
+				path = spec.dir / "6 - Notes" / tostring(spec.title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower())
+			elseif spec.title:match("Meeting") then
+				local year = os.date("%Y")
+				local month = os.date("%m-%B")
+				path = spec.dir / "6 - Notes" / "Meetings" / year / month / tostring(spec.title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower())
+			else
+				-- Default behavior for other templates
+				path = spec.dir / tostring(spec.title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower())
+			end
+			return path:with_suffix(".md")
+		end,
 		preferred_link_style = "markdown",
 		disable_frontmatter = false,
 		mappings = {
