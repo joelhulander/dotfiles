@@ -143,6 +143,7 @@ main() {
 		"z"
 		"zellij"
 		"zinit"
+		"yazi"
     )
 
     for package in "${packages[@]}"; do
@@ -178,6 +179,7 @@ main() {
 	create_symlink "$dotfiles_dir/aerospace/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
 	create_symlink "$dotfiles_dir/sketchybar" "$HOME/.config/sketchybar"
 	create_symlink "$dotfiles_dir/kitty" "$HOME/.config/kitty"
+	create_symlink "$dotfiles_dir/starship/starship.toml" "$HOME/.config/starship.toml"
 
 	echo ""
 	print_success "Installation completed! (Please restart the terminal or source the .zshrc file)"

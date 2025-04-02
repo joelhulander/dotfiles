@@ -19,38 +19,46 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zdharma/history-search-multi-word
 
 # Aliases
+alias cdHome='cd $HOME'
+alias cdBack='cd ..'
 alias g='git'
 alias n='nvim'
+alias t='z'
+alias to='z'
 alias lg='lazygit'
-alias sa='cd /path/to/SA'
-alias ~='cd ~'
-alias ..='cd ..'
-
-# Functions
-cdBack() {
-  cd ..
-}
+alias tig='tig'
+alias less='less'
+alias ~='cdHome'
+alias ..='cdBack'
+alias gd='showGitDiff'
 
 showGitDiff() {
-  git diff -w
+    git diff -w
 }
 
-add_space() {
-    echo ""
+# Functions
+open() {
+    if [[ "$(uname)" == "Darwin" ]]; then
+        open "$1"  # macOS
+    else
+        xdg-open "$1"  # Linux
+    fi
 }
 
-autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+branch() {
+    git rev-parse --abbrev-ref HEAD
+}
 
+# File navigation with yazi
+y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if [ -f "$tmp" ]; then
+        local cwd="$(cat "$tmp")"
+        [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd "$cwd"
+        rm -f "$tmp"
+    fi
+}
 
-typeset -a preexec_functions
-preexec_functions+=(add_space)
-
-# FZF keybindings for Arch
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
-bindkey '^T' fzf-file-widget
-bindkey '^R' fzf-history-widget
-
+# Initialize starship prompt
 eval "$(starship init zsh)"
