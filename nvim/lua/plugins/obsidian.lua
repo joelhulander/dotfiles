@@ -7,6 +7,8 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+	lazy = true,
+	ft = "markdown",
 	opts = {
 		workspaces = {
 			{
@@ -102,7 +104,7 @@ return {
 			},
 		},
 		ui = {
-			enable = true
+			enable = false
 		}
 	},
 }

@@ -51,7 +51,14 @@ opt.diffopt:append('iwhite')
 vim.diagnostic.config({
 	virtual_text = false,
 	virtual_lines = false,
-	signs = true,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = ' ',
+			[vim.diagnostic.severity.WARN]  = " ",
+			[vim.diagnostic.severity.HINT] = "󰠠 ",
+			[vim.diagnostic.severity.INFO]  = " "
+		}
+	},
 	underline = true,
 	update_in_insert = true,
 	severity_sort = false,
@@ -59,3 +66,4 @@ vim.diagnostic.config({
 
 opt.winborder = 'rounded'
 opt.showmode = false
+

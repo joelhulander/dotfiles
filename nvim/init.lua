@@ -46,6 +46,7 @@ require("lazy").setup({
 })
 
 require("lsp")
+require("advanced_keymaps")
 
 
 -- Set colorscheme (after plugins are loaded)

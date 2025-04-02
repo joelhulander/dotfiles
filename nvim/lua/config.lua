@@ -20,7 +20,7 @@ return {
 		nvim_navic = true,
 		obsidian = true,
 		oil = true,
-		render_markdown = false,
+		render_markdown = true,
 		silicon = true,
 		snacks = true,
 		treesitter_context = true,

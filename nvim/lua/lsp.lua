@@ -9,14 +9,10 @@ local capabilities = {
 
 capabilities = require("blink.cmp").get_lsp_capabilities(capabilities);
 
--- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
--- for type, icon in pairs(signs) do
--- 	local hl = "DiagnosticSign" .. type
--- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
--- end
-
 local set = vim.keymap.set -- for conciseness
 local opts = { noremap = true, silent = true }
+
+
 
 local on_attach = function(_, bufnr)
 	opts.buffer = bufnr
@@ -28,7 +24,7 @@ local on_attach = function(_, bufnr)
 	set("n", "<leader>lRn", vim.lsp.buf.rename, opts) -- smart rename
 
 	opts.desc = "Show buffer diagnostics"
-	set("n", "<leader>lD", vim.diagnostic.show, opts) -- show  diagnostics for file
+	set("n", "<leader>lD", function() Snacks.picker.diagnostics_buffer() end, opts) -- show  diagnostics for file
 
 	opts.desc = "Show line diagnostics"
 	set("n", "<leader>ld", vim.diagnostic.open_float, opts) -- show diagnostics for line
@@ -63,5 +59,5 @@ vim.lsp.config("*", {
 	root_markers = { ".git" },
 })
 
-vim.lsp.enable({'lua-ls', 'gopls' })-- , 'csharp-ls'})
+vim.lsp.enable({'lua-ls', 'gopls' , 'csharp-ls'})
 
