@@ -7,9 +7,11 @@ if wezterm.config_builder then config = wezterm.config_builder() end
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.default_prog = {"pwsh.exe"}
+	config.win32_system_backdrop = "Acrylic"
 elseif wezterm.target_triple == "aarch64-apple-darwin" then
 	config.default_prog = { "/bin/zsh", "-l", "-i" }
 	config.native_macos_fullscreen_mode = true
+	config.macos_window_background_blur = 20
 elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
 	config.enable_wayland = false
 	config.default_prog = { "/usr/bin/zsh", "-l", "-i" }
@@ -31,31 +33,51 @@ wezterm.on('update-right-status', function(window)
 	})
 end)
 
+
+local mux = wezterm.mux
+
+wezterm.on('gui-attached', function()
+
+	local notes_dir = wezterm.home_dir .. '/OneDrive - Sweet Systems AB/Documents/Notes'
+	mux.spawn_window {
+		workspace = 'notes',
+		cwd = notes_dir,
+		args = { 'nvim' },
+	}
+
+	local coding_dir = 'D:/SANet8/Application/SweetAutomation/'
+	mux.spawn_window {
+		workspace = 'coding',
+		cwd = coding_dir,
+		args = { 'nvim' },
+	}
+
+	local dir = wezterm.home_dir
+	mux.spawn_window {
+		workspace = 'yazi',
+		cwd = dir,
+		args = { 'yazi' },
+	}
+
+end)
+
 -- Tab bar configuration
 
 config.show_new_tab_button_in_tab_bar = false
-
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.show_tabs_in_tab_bar = false
-config.tab_max_width = 32
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.90
+config.window_background_opacity = 0.7
 
 config.initial_cols = 130
 config.initial_rows = 45
 
-config.colors = {
-	tab_bar = {
-		background = 'rgba(0,0,0,0)'
-	}
-}
-
 config.window_padding = {
-	left = 6,
-	right = 6,
-	top = 10,  -- This could be causing extra space at the top
-	bottom = 10,
+	left = 20,
+	right = 20,
+	top = 10,
+	bottom = 0,
 }
 
 -- Color scheme
@@ -78,7 +100,7 @@ config.font_size = 12
 config.debug_key_events = true
 
 -- Keys
-config.leader = { key = "'", mods = "CTRL", timeout_milliseconds = 1500 }
+config.leader = { key = "'", mods = "CTRL", timeout_milliseconds = 1501 }
 config.keys = {
 	-- Send C-a when pressing C-a twice
 	{ key = "c",          mods = "LEADER",      action = act.ActivateCopyMode },
@@ -126,6 +148,34 @@ config.keys = {
 	-- Workspace
 	{ key = "w", mods = "LEADER",       action = act.ShowLauncherArgs { flags = "FUZZY|WORKSPACES" } },
 	{
+		key = 'h',
+		mods = 'CTRL|SHIFT',
+		action = act.SwitchToWorkspace {
+			name = 'default',
+		},
+	},
+	{
+		key = 'n',
+		mods = 'CTRL|SHIFT',
+		action = act.SwitchToWorkspace {
+			name = 'coding',
+		},
+	},
+	{
+		key = 'e',
+		mods = 'CTRL|SHIFT',
+		action = act.SwitchToWorkspace {
+			name = 'notes',
+		},
+	},
+	{
+		key = 'y',
+		mods = 'CTRL|SHIFT',
+		action = act.SwitchToWorkspace {
+			name = 'yazi',
+		},
+	},
+	{
 		key = 'n',
 		mods = 'LEADER',
 		action = act.PromptInputLine {
@@ -135,9 +185,6 @@ config.keys = {
 				{ Text = 'Enter name for new workspace' },
 			},
 			action = wezterm.action_callback(function(window, pane, line)
-				-- line will be `nil` if they hit escape without entering anything
-				-- An empty string if they just hit enter
-				-- Or the actual line of text they wrote
 				if line then
 					window:perform_action(
 						act.SwitchToWorkspace {
@@ -159,9 +206,6 @@ config.keys = {
 				{ Text = 'Enter new name for workspace' },
 			},
 			action = wezterm.action_callback(function(window, pane, line)
-				-- line will be `nil` if they hit escape without entering anything
-				-- An empty string if they just hit enter
-				-- Or the actual line of text they wrote
 				if line then
 					wezterm.mux.rename_workspace(
 						wezterm.mux.get_active_workspace(),

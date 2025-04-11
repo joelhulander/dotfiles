@@ -168,11 +168,11 @@ keybindings:
   - commands: ['resize --width -2%']
     bindings: ['alt+l']
   - commands: ['resize --width +2%']
-    bindings: ['alt+;']
-  - commands: ['resize --height +2%']
-    bindings: ['alt+y']
-  - commands: ['resize --height -2%']
     bindings: ['alt+u']
+  - commands: ['resize --height +2%']
+    bindings: ['alt+j']
+  - commands: ['resize --height -2%']
+    bindings: ['alt+y']
 
   # Disables all keybindings until alt+shift+p is pressed again.
   # - commands: ['wm-enable-binding-mode --name pause']

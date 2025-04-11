@@ -59,5 +59,5 @@ vim.lsp.config("*", {
 	root_markers = { ".git" },
 })
 
-vim.lsp.enable({'lua-ls', 'gopls' , 'csharp-ls'})
+vim.lsp.enable({'lua-ls', 'gopls' , 'csharp-ls', 'rust'})
 

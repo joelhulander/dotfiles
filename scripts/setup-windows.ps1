@@ -276,7 +276,7 @@ ${symlinks} = @(
 	@{Source="${dotfilesDir}\neovide"; Destination="${env:APPDATA}\neovide"},
     @{Source="${dotfilesDir}\silicon"; Destination="${env:APPDATA}\silicon"},
     @{Source="${dotfilesDir}\bat"; Destination="${env:APPDATA}\bat"},
-    @{Source="${dotfilesDir}\wezterm\config.lua"; Destination="${env:USERPROFILE}\.wezterm.lua"},
+    @{Source="${dotfilesDir}\wezterm"; Destination="${env:USERPROFILE}\.config\wezterm"},
     @{Source="${dotfilesDir}\ohmyposh\catppuccin.yaml"; Destination="${env:USERPROFILE}\Documents\PowerShell\catppuccin.omp.yaml"},
     @{Source="${dotfilesDir}\kanata\windows.kbd"; Destination="${env:USERPROFILE}\kanata.kbd"},
     @{Source="${dotfilesDir}\komokana\komokana.yaml"; Destination="${env:USERPROFILE}\komokana.yaml"},

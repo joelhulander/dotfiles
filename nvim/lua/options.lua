@@ -42,9 +42,7 @@ opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -command'
 opt.shellxquote = ''
 
 opt.pumheight = 10
-opt.shortmess = {
-	I = true,
-}
+opt.shortmess = 'ltToOCFI'
 opt.diffopt:append('iwhite')
 
 -- For LSP config
@@ -65,5 +63,4 @@ vim.diagnostic.config({
 })
 
 opt.winborder = 'rounded'
-opt.showmode = false
 

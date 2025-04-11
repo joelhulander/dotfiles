@@ -5,7 +5,7 @@ local opts = { noremap = true, silent = true }
 
 set("n", "<leader>a", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
 set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-set("x", "<leader>p", "\"_dP", opts)
+set("x", "<leader>pp", "\"_dP", opts)
 set("i", "<C-c>", "<Esc>", opts)
 
 -- folding
@@ -39,14 +39,12 @@ opts.desc = "Go to the up window"
 set("n", "se", "<C-W>k", opts)
 
 --Navigation
-set({ "n", "v" }, "<C-d>", "<C-d>zz", { noremap = true })
-set({ "n", "v" }, "<C-u>", "<C-u>zz", { noremap = true })
-set({ "n", "v" }, "n", "nzz", { noremap = true })
-set({ "n", "v" }, "N", "Nzz", { noremap = true })
+set({ "n", "v" }, "<C-d>", "<C-d>zz", opts)
+set({ "n", "v" }, "<C-u>", "<C-u>zz", opts)
 
 -- DAP
 opts.desc = "Continue/Run"
-set("n", "<F5>", ":lua require'dap'.continue()<CR>", opts) 
+set("n", "<F5>", ":lua require'dap'.continue()<CR>", opts)
 opts.desc = "Step over"
 set("n", "<F2>", ":lua require'dap'.step_over()<CR>", opts)
 opts.desc = "Step into"
@@ -88,7 +86,6 @@ set({ "n", "v" }, "e", "k", opts)
 set({ "n", "v" }, "E", "K", opts)
 set({ "n", "v" }, "j", "e", opts)
 set({ "n", "v" }, "J", "e", opts)
-set("i", "ii", "<ESC>", opts )
 
 -- oil
 set("n", "-", "<cmd>lua require('oil').open_float()<CR>", { noremap = true, silent = true })
@@ -100,22 +97,34 @@ set("n", "<leader>vs", "<cmd>!devenv /edit %<cr>", { desc = "Edit file in Visual
 set({ "v", "n"}, "<leader>=", "<cmd>!dotnet format whitespace<cr>", { desc = "Format file ", noremap = true, silent = true })
 
 -- obsidian
-set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Open note in Obsidian", noremap = true, silent = true})
-set("n", "<leader>od", "<cmd>ObsidianToday<CR>", { desc = "Open todays daily note", noremap = true, silent = true})
-set("n", "<leader>ft", "<cmd>ObsidianTags<CR>", { desc = "List tags", noremap = true, silent = true})
-set("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "Obsidian search", noremap = true, silent = true})
-set("n", "<leader>oti", "<cmd>ObsidianTemplate<CR>", { desc = "Insert template", noremap = true, silent = true})
-set("n", "<leader>otn", "<cmd>ObsidianNewFromTemplate<CR>", { desc = "New from template", noremap = true, silent = true})
+opts.desc = "Open note in Obsidian"
+set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", opts)
+opts.desc = "Open todays daily note"
+set("n", "<leader>od", "<cmd>ObsidianToday<CR>", opts)
+opts.desc = "List tags"
+set("n", "<leader>ft", "<cmd>ObsidianTags<CR>", opts)
+opts.desc = "Obsidian search"
+set("n", "<leader>os", "<cmd>ObsidianSearch<CR>", opts)
+opts.desc = "Insert template"
+set("n", "<leader>oti", "<cmd>ObsidianTemplate<CR>", opts)
+opts.desc = "New from template"
+set("n", "<leader>otn", "<cmd>ObsidianNewFromTemplate<CR>", opts)
+
 
 -- mini.nvim
-set("n", "<leader>go", "<cmd>lua MiniDiff.toggle_overlay()<CR>", { desc = "Toggle overlay", noremap = true, silent = true})
-set("n", "<leader>gtt", "<cmd>lua MiniDiff.toggle()<CR>", { desc = "Toggle mini diff", noremap = true, silent = true})
-set("n", "<leader>gD", "<cmd>Git diff<CR>", { desc = "Mini Diff", noremap = true, silent = true})
-set("n", "<leader>gc", "<cmd>Git commit<CR>", { desc = "Commit", noremap = true, silent = true})
-set("n", "<leader>gp", "<cmd>Git pull<CR>", { desc = "Pull", noremap = true, silent = true})
-set("n", "<leader>gP", "<cmd>Git push<CR>", { desc = "Push", noremap = true, silent = true})
-set("n", "<leader>gs", "<cmd>Git status<CR>", { desc = "Status", noremap = true, silent = true})
-set("n", "<leader>gl", "<cmd>Git log<CR>", { desc = "Log", noremap = true, silent = true})
-
--- advanced
-
+opts.desc = "Toggle overlay"
+set("n", "<leader>go", "<cmd>lua MiniDiff.toggle_overlay()<CR>", opts)
+opts.desc = "Toggle mini diff"
+set("n", "<leader>gtt", "<cmd>lua MiniDiff.toggle()<CR>", opts)
+opts.desc = "Mini Diff"
+set("n", "<leader>gD", "<cmd>Git diff<CR>", opts)
+opts.desc = "Commit"
+set("n", "<leader>gc", "<cmd>Git commit<CR>", opts)
+opts.desc = "Pull"
+set("n", "<leader>gp", "<cmd>Git pull<CR>", opts)
+opts.desc = "Push"
+set("n", "<leader>gP", "<cmd>Git push<CR>", opts)
+opts.desc = "Status"
+set("n", "<leader>gs", "<cmd>Git status<CR>", opts)
+opts.desc = "Log"
+set("n", "<leader>gl", "<cmd>Git log<CR>", opts)

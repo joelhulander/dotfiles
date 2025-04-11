@@ -29,8 +29,8 @@ return {
 			"kdl",
 			"vimdoc",
 			"svelte",
-			"sql"
-
+			"sql",
+			"rust"
 		},
 		-- incremental_selection = {
 		-- 	enable = true,

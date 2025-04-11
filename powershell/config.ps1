@@ -1,4 +1,4 @@
-$env:Path += ';C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE'
+$env:Path += ';C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE;C:\Users\JoelHulander\.local\bin'
 $env:LC_MESSAGES="en-US"
 $env:TERM='xterm-256color'
 $Env:KOMOREBI_CONFIG_HOME = "${Env:USERPROFILE}\.config\komorebi"
@@ -36,6 +36,9 @@ function cdHome {
 function cdBack { 
 	$localPath = Get-Location | Split-Path -Parent
 		set-location $localPath
+}
+function cdDev { 
+	set-location "D:\" 
 }
 
 function Copy-FileToClipboard {
@@ -100,6 +103,7 @@ Set-Alias yasb startYasb
 Set-Alias rb rebuild
 Set-Alias b build
 Set-Alias c cleanSlnOrProject
+Set-Alias dev cdDev
 
 function showGitDiff {
 	git diff -w

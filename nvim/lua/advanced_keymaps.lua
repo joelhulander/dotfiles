@@ -251,7 +251,7 @@ vim.keymap.set("n", "<leader>tx", function()
 	vim.cmd("loadview")
 end, { desc = "[P]Toggle task and move it to 'done'" })
 
-local map = vim.api.nvim_set_keymap
+local set= vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 function Create_note(path, chosen_template)
@@ -269,8 +269,8 @@ function Create_note(path, chosen_template)
 	end
 end
 
--- Function to create a note with a template using obsidian.nvim API directly
-function Create_note_with_template()
+opts.desc = "Create note with template"
+set('n', '<leader>on', function()
 	-- Define templates with names, template names, and destination folders
 	local templates = {
 		{ name = "Meeting", template = "Meeting", folder = "6 - Notes/Meetings" },
@@ -317,9 +317,11 @@ function Create_note_with_template()
 
 					filename = input
 
-					path = string.format("6 - Notes/Meetings/%s/%s-%s/%s - %s", year, month_num, month_name, date_str, filename .. ".md")
+					path = string.format("6 - Notes/Meetings/%s/%s-%s/%s-%s", year, month_num, month_name, date_str, filename .. ".md")
 
 					Create_note(path, chosen.template)
+					vim.fn.rename(vim.api.nvim_buf_get_name(0), path)
+					vim.cmd("e " .. path)
 				end)
 
 			elseif chosen.name == "Note" then
@@ -334,11 +336,102 @@ function Create_note_with_template()
 					path = chosen.folder .. "/" .. filename .. ".md"
 
 					Create_note(path, chosen.template)
+					vim.fn.rename(vim.api.nvim_buf_get_name(0), path)
+					vim.cmd("e " .. path)
 				end)
 			end
 		end)
-end
+end, opts)
+
+opts.desc = "List projects"
+set('n', '<leader>fp', function()
+	local templates = {
+		{ name = "Home", path = "~" },
+		{ name = "Sweet Automation NET 8", path = "D:/SANet8/Application/SweetAutomation/" },
+		{ name = "Sweet Automation", path = "D:/SA/Application/SweetAutomation/" },
+		{ name = "dotfiles", path = "~/dotfiles/" },
+		{ name = "LF", path = "D:/LFLiv/" },
+		{ name = "SA CI/CD", path = "D:/SA-CI-CD/" },
+		{ name = "Sweet CRM", path = "D:/SweetOne/" },
+		{ name = "Wasa Kredit", path = "D:/WasaKredit/" },
+		{ name = "Personal", path = "D:/personal/" },
+	}
+
+	local options = {}
+	for i, t in ipairs(templates) do
+		options[i] = t.name
+	end
+
+	vim.ui.select(options, {
+		prompt = "Choose a project",
+		format_item = function(item) return item end,
+	}, function(selected_name)
+			if not selected_name then return end
+
+			-- Find the selected template
+			local chosen
+			for _, t in ipairs(templates) do
+				if t.name == selected_name then
+					chosen = t
+					break
+				end
+			end
+
+			if not chosen then return end
+
+			vim.api.nvim_set_current_dir(chosen.path)
+			vim.notify("Changing CWD to " .. chosen.path,  vim.log.levels.INFO)
+
+		end)
+end, opts)
+
+opts.desc = "Insert current time"
+set("n", "<leader>it", function()
+	vim.cmd("pu=strftime('%H:%M')")
+end, opts)
+
+opts.desc = "Browser search"
+set("n", "<leader>bs", function()
+	local searchEngines = {
+		{ name = "Google", url= "https://www.google.com/search?q=" },
+		{ name = "DuckDuckGo", url = "https://duckduckgo.com?q=" },
+	}
+
+	local options = {}
+	for i, t in ipairs(searchEngines) do
+		options[i] = t.name
+	end
+
+	vim.ui.select(options, {
+		prompt = "Choose search engine",
+		format_item = function(item) return item end,
+	}, function(selected)
+			if not selected then return end
+
+			local searchEngine
+			for _, t in ipairs(searchEngines) do
+				if t.name == selected then
+					searchEngine = t
+					break
+				end
+			end
+
+			if not searchEngine then return end
+
+			local url
+
+			vim.ui.input({ prompt = "Search prompt" }, function(input)
+				if not input or input == "" then
+					vim.notify("Operation cancelled", vim.log.levels.INFO)
+					return
+				end
+
+				url = string.format(searchEngine.url .. "%s", input)
+
+				vim.ui.open(url)
+			end)
 
 
--- Keymap to create a note with a template
-map('n', '<leader>on', ":lua Create_note_with_template()<CR>", opts)
+		end)
+
+end, opts)

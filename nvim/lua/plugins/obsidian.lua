@@ -7,13 +7,15 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
-	lazy = true,
-	ft = "markdown",
+	event = {
+		"BufReadPre " .. "*/OneDrive - Sweet Systems AB/Documents/Notes/*",
+		"BufNewFile " .. "*/OneDrive - Sweet Systems AB/Documents/Notes/*",
+	},
 	opts = {
 		workspaces = {
 			{
-				name = "work",
-				path = "~/OneDrive - Sweet Systems AB/Documents/Work",
+				name = "notes",
+				path = "~/OneDrive - Sweet Systems AB/Documents/Notes",
 			}
 		},
 		daily_notes = {
@@ -86,6 +88,9 @@ return {
 				path = spec.dir / tostring(spec.title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower())
 			end
 			return path:with_suffix(".md")
+		end,
+		follow_url_func = function(url)
+			vim.ui.open(url)
 		end,
 		preferred_link_style = "markdown",
 		disable_frontmatter = false,
