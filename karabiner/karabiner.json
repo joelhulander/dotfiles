@@ -1,0 +1,307 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "HYPER LAYER",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "caps + t -> escape",
+                                "from": { "key_code": "f" },
+                                "to": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "caps + ; -> :",
+                                "from": { "key_code": "p" },
+                                "to": [
+                                    {
+                                        "key_code": "p",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "caps + ; -> :",
+                                "from": { "key_code": "period" },
+                                "to": [
+                                    {
+                                        "key_code": "period",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "caps + d -> C-d",
+                                "from": { "key_code": "g" },
+                                "to": [
+                                    {
+                                        "key_code": "g",
+                                        "modifiers": ["control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "caps + i -> C-u",
+                                "from": { "key_code": "i" },
+                                "to": [
+                                    {
+                                        "key_code": "i",
+                                        "modifiers": ["control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "caps + space -> enter",
+                                "from": { "key_code": "spacebar" },
+                                "to": [{ "key_code": "return_or_enter" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "caps + semicolon -> backspace",
+                                "from": { "key_code": "semicolon" },
+                                "to": [{ "key_code": "delete_or_backspace" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "caps + n -> delete_forward",
+                                "from": { "key_code": "n" },
+                                "to": [{ "key_code": "delete_forward" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "caps + t -> tab",
+                                "from": { "key_code": "t" },
+                                "to": [{ "key_code": "tab" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "caps + r -> shift + v",
+                                "from": { "key_code": "r" },
+                                "to": [
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "caps + ' -> \"",
+                                "from": { "key_code": "quote" },
+                                "to": [
+                                    {
+                                        "key_code": "quote",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "caps + m -> ctrl + '",
+                                "from": { "key_code": "m" },
+                                "to": [
+                                    {
+                                        "key_code": "quote",
+                                        "modifiers": ["control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "k -> up",
+                                "from": { "key_code": "k" },
+                                "to": [{ "key_code": "up_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "j -> down",
+                                "from": { "key_code": "j" },
+                                "to": [{ "key_code": "down_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "h -> left",
+                                "from": { "key_code": "h" },
+                                "to": [{ "key_code": "left_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "l -> right",
+                                "from": { "key_code": "l" },
+                                "to": [{ "key_code": "right_arrow" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Caps to Hyper",
+                        "manipulators": [
+                            {
+                                "description": "capslock (press) -> esc; capslock (hold) -> Hyper",
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": {
+                                    "set_variable": {
+                                        "name": "HYPER",
+                                        "value": 1
+                                    }
+                                },
+                                "to_after_key_up": {
+                                    "set_variable": {
+                                        "name": "HYPER",
+                                        "value": 0
+                                    }
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "HYPER",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "capslock + esc -> switch capslock state",
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": { "optional": ["caps_lock"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "caps_lock",
+                                        "modifiers": ["control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "name": "Default profile",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "iso" }
+        }
+    ]
+}

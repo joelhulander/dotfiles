@@ -1,0 +1,189 @@
+/**
+ * Import the Nerdfonts icon font.
+ * Ref https://www.nerdfonts.com/cheat-sheet for a cheatsheet of available Nerdfonts icons.
+ */
+@import 'https://www.nerdfonts.com/assets/css/webfont.css';
+:root {
+  --ctp-base: #1e1e2e;
+  --ctp-mantle: #181825;
+  --ctp-surface2: #585b70;
+  --ctp-surface1: #45475a;
+  --ctp-surface0: #282936;
+  --ctp-text: #cdd6f4;
+  --ctp-subtext0: #a6adc8;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+  --ctp-red: #f38ba8;
+  --ctp-mauve: #cba6f7;
+  --ctp-yellow: #f9e2af;
+  --ctp-green: #a6e3a1;
+}
+i {
+  color: var(--ctp-lavender);
+  margin-right: 7px;
+}
+body {
+  color: var(--ctp-subtext0);
+  font-family: ui-monospace, monospace;
+  font-size: 14px;
+  overflow: hidden;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+#root {
+  border-bottom: 1px solid var(--ctp-surface0);
+  background: linear-gradient(
+    var(--ctp-base),
+    var(--ctp-mantle)
+  );
+}
+.app {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  height: 100%;
+  padding: 4px 1.5vw;
+}
+.left,
+.center,
+.right {
+  display: flex;
+  align-items: center;
+}
+.center {
+  justify-self: center;
+}
+.right {
+  justify-self: end;
+}
+.logo,
+.binding-mode,
+.tiling-direction {
+  margin-right: 10px;
+}
+
+/* Apply background to network, memory, cpu, battery and weather */
+.network,
+.memory,
+.cpu,
+.battery,
+.weather {
+  display: flex;
+  align-items: center;
+  background: var(--ctp-surface0);
+  padding: 4px 8px;
+  color: var(--ctp-text);
+  border-radius: 2px;
+  margin-right: 4px;
+}
+
+.workspaces {
+  display: flex;
+  align-items: center;
+}
+.workspace {
+  background: var(--ctp-surface0);
+  margin-right: 4px;
+  padding: 4px 8px;
+  color: var(--ctp-text);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  &.displayed {
+    background: var(--ctp-surface1);
+  }
+  &.focused,
+  &:hover {
+    background: var(--ctp-mauve);
+    color: var(--ctp-base);
+  }
+}
+.binding-mode,
+.tiling-direction {
+  background: var(--ctp-surface0);
+  color: var(--ctp-text);
+  border-radius: 2px;
+  line-height: 1;
+  padding: 4px 8px;
+  border: 0;
+  cursor: pointer;
+  &:hover {
+    background: var(--ctp-mauve);
+    color: var(--ctp-base);
+  }
+}
+.binding-mode {
+  margin-right: 4px;
+}
+.cpu .high-usage {
+  color: var(--ctp-red);
+}
+.battery {
+  position: relative;
+}
+.battery i {
+  color: var(--ctp-green)
+}
+.weather i {
+  color: var(--ctp-yellow)
+}
+.battery .charging-icon {
+  position: absolute;
+  font-size: 7px;
+  left: -8px;
+  top: 3px;
+}
+.media-widget {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  background: var(--ctp-surface0);
+  margin-right: 4px;
+  padding: 4px 8px;
+  color: var(--ctp-text);
+  border: none;
+  border-radius: 2px;
+}
+.media-widget-info {
+  /* max-width: 200px; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 8px;
+}
+.media-widget-controls {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+}
+.media-widget-controls i {
+  margin: 0 5px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+.media-widget-controls .play-pause {
+  color: var(--ctp-subtex0);
+}
+.media-widget-controls .play-pause:hover {
+  color: var(--ctp-mauve);
+}
+.media-widget-controls .prev-next {
+  color: var(--ctp-subtext0);
+}
+.media-widget-controls .prev-next:hover {
+  color: var(--ctp-mauve);
+}
+.media-widget-icon {
+  color: var(--ctp-text);
+  margin-right: 5px;
+}
+.media-widget-title {
+  color: var(--ctp-text);
+}
+.media-widget-artist {
+  color: var(--ctp-text);
+}

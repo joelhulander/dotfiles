@@ -1,0 +1,65 @@
+#!/usr/bin/env zsh
+
+FONT_FACE="JetBrainsMono Nerd Font"
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+
+sketchybar --bar \
+    height=32 \
+    color=0x66494d64 \
+    margin=0 \
+    sticky=on \
+    padding_left=0 \
+    padding_right=0 \
+    notch_width=188 \
+    display=main
+
+sketchybar --default \
+    background.height=32 \
+    icon.color=0xff24273a \
+    icon.font="$FONT_FACE:Medium:20.0" \
+    icon.padding_left=5 \
+    icon.padding_right=5 \
+    label.color=0xff24273a \
+    label.font="$FONT_FACE:Bold:14.0" \
+    label.y_offset=1 \
+    label.padding_left=0 \
+    label.padding_right=5
+
+sketchybar --add event aerospace_workspace_change
+
+for sid in $(aerospace list-workspaces --all); do
+	sketchybar --add item space.$sid left \
+		--subscribe space.$sid aerospace_workspace_change \
+		--set space.$sid \
+        background.color=0xfffab387 \
+        background.corner_radius=2 \
+        background.height=25 \
+        background.drawing=off \
+		background.padding_right=4 \
+		background.padding_left=4 \
+		label="$sid" \
+		click_script="aerospace workspace $sid" \
+		script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+	done
+
+
+sketchybar --add item clock right \
+    --set clock \
+    icon=󰃰 \
+	background.corner_radius=4 \
+	background.padding_right=4 \
+	background.padding_left=4 \
+	background.height=25 \
+    update_freq=10 \
+    script="$PLUGIN_DIR/clock.sh"
+
+sketchybar --add item volume right \
+	--set volume script="$PLUGIN_DIR/volume.sh" \
+	--subscribe volume volume_change \
+
+sketchybar --add item weather right \
+	--set weather script="$PLUGIN_DIR/weather.sh" \
+
+##### Finalizing Setup #####
+sketchybar --update
+sketchybar --trigger space_change

@@ -1,0 +1,9 @@
+{
+  "waitForEnterForFilteredHints": false,
+  "keyMappings": "unmap n\nunmap N\nmap n scrollDown\nmap N nextTab\nunmap k\nunmap K\nmap k performFind\nmap K performBackwardsFind\nunmap e\nunmap E\nmap e scrollUp\nmap E previousTab\nunmap j\nunmap J",
+  "linkHintCharacters": "stnerifwcmapdh",
+  "newTabUrl": "https://www.google.com",
+  "scrollStepSize": 200,
+  "grabBackFocus": true,
+  "settingsVersion": "2.1.2"
+}

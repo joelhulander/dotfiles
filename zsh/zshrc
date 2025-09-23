@@ -1,0 +1,48 @@
+export PATH="/opt/homebrew/bin:/Users/joelhulander/.local/bin:/Users/joelhulander/.cargo/bin:/Applications/darktable.app/Contents/MacOS:$PATH"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+source /opt/homebrew/opt/fzf/shell/completion.zsh
+
+bindkey -rM emacs '\ec'
+bindkey -rM vicmd '\ec'
+bindkey -rM viins '\ec'
+
+# Aliases
+alias cdHome='cd $HOME'
+alias cdBack='cd ..'
+alias n='nvim'
+alias lg='lazygit'
+alias ~='cdHome'
+alias ..='cdBack'
+alias ls='lsd'
+
+# Functions
+open() {
+    if [[ "$(uname)" == "Darwin" ]]; then
+        open "$1"  # macOS
+    else
+        xdg-open "$1"  # Linux
+    fi
+}
+
+branch() {
+    git rev-parse --abbrev-ref HEAD
+}
+
+# File navigation with yazi
+y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if [ -f "$tmp" ]; then
+        local cwd="$(cat "$tmp")"
+        [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd "$cwd"
+        rm -f "$tmp"
+    fi
+}
+
+# Initialize starship prompt
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
+. "$HOME/.local/bin/env"

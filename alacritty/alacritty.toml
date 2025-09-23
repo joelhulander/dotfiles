@@ -1,0 +1,62 @@
+[general]
+
+[window]
+dimensions = { columns = 130, lines = 45 }
+padding = { x = 20, y = 10 }
+opacity = 0.9
+decorations = "none"
+
+# Font configuration
+[font]
+normal = { family = "JetBrainsMono NF", style = "Regular" }
+size = 13.5
+offset = { x = 1, y = 2 }
+
+[colors.primary]
+background = "#1E1E2E"
+foreground = "#CDD6F4"
+
+[colors.normal]
+black = "#45475A"
+red = "#F38BA8"
+green = "#A6E3A1"
+yellow = "#F9E2AF"
+blue = "#89B4FA"
+magenta = "#F5C2E7"
+cyan = "#94E2D5"
+white = "#BAC2DE"
+
+[colors.bright]
+black = "#585B70"
+red = "#F38BA8"
+green = "#A6E3A1"
+yellow = "#F9E2AF"
+blue = "#89B4FA"
+magenta = "#F5C2E7"
+cyan = "#94E2D5"
+white = "#A6ADC8"
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+blink_interval = 500
+
+[keyboard]
+bindings = [
+	{ key = "T", mods = "Control|Shift", action = "CreateNewWindow" },
+	{ key = "Space", mods = "Control|Shift", action = "ToggleViMode" },
+	{ key = "Y", mode = "Vi", action = "Copy" },
+	{ key = "P", mode = "Vi", action = "Paste" },
+	{ key = "K", mode = "Vi|~Search", action = "SearchNext" },
+	{ key = "N", mode = "Vi|~Search", action = "Down" },
+	{ key = "E", mode = "Vi|~Search", action = "Up" },
+	{ key = "J", mode = "Vi|~Search", action = "SemanticRight" },
+]
+
+[terminal]
+shell = "/bin/zsh"
+
+# Scrolling configuration
+[scrolling]
+history = 10000
+multiplier = 3
+
