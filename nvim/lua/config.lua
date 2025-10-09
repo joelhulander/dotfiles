@@ -45,7 +45,6 @@ local config = {
 		linting = true,
 		lspconfig = false,
 		mason = true,
-		rustaceanvim = false,
 
 		--Color schemes
 		tokyonight = false,

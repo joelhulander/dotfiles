@@ -42,40 +42,6 @@ set("n", "se", "<C-W>k", opts)
 set({ "n", "v" }, "<C-d>", "<C-d>zz", opts)
 set({ "n", "v" }, "<C-u>", "<C-u>zz", opts)
 
--- DAP
-opts.desc = "Continue/Run"
-set("n", "<F5>", ":lua require'dap'.continue()<CR>", opts)
-opts.desc = "Step over"
-set("n", "<F2>", ":lua require'dap'.step_over()<CR>", opts)
-opts.desc = "Step into"
-set("n", "<F1>", ":lua require'dap'.step_into()<CR>", opts)
-opts.desc = "Step out"
-set("n", "<F3>", ":lua require'dap'.step_out()<CR>", opts)
-opts.desc = "Toggle breakpoint"
-set("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>", opts)
-opts.desc = "Set breakpoint with condition"
-set(
-	"n",
-	"<leader>dB",
-	":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-	opts
-)
-opts.desc = "Log point message"
-set(
-	"n",
-	"<leader>dl",
-	":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-	opts
-)
-opts.desc = "Repl open"
-set("n", "<leader>dR", ":lua require'dap'.repl.open()<CR>", opts)
-opts.desc = "Debug test"
-set("n", "<leader>dgt", ":lua require'dap-go'.debug_test()<CR>", opts)
-
--- DAP UI
-opts.desc = "Open DAP UI"
-set("n", "<leader>du", ":lua require'dapui'.toggle()<CR>", opts)
-
 -- VIM  for normal and visual mode
 set({ "n", "v" }, "k", "n", opts)
 set({ "n", "v" }, "K", "N", opts)
@@ -141,4 +107,15 @@ set("n", "<leader>gC", "<cmd>lua MiniGit.show_at_cursor()<CR>", opts)
 opts.desc = "Toggle relative line number"
 set({'n', 'v'}, '<leader>ln', function ()
 	vim.opt.relativenumber = not vim.opt.relativenumber:get()
+end, opts)
+
+opts.desc = "Toggle wrap and linebreak"
+set({'n', 'v'}, '<leader>lw', function ()
+	if vim.opt.wrap:get() then
+		vim.opt.wrap = false
+		vim.opt.linebreak = false
+	else
+		vim.opt.wrap = true
+		vim.opt.linebreak = true
+	end
 end, opts)
