@@ -1,9 +1,7 @@
-local config = require("config").plugins
-
 return {
 	"Saecki/crates.nvim",
 	event = { "BufRead Cargo.toml" },
-	enabled = config.crates ~= false,
+	enabled = true,
 	opts = {
 		completion = {
 			crates = {

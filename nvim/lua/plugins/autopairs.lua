@@ -1,8 +1,6 @@
-local config = require("config").plugins
-
 return {
 	'windwp/nvim-autopairs',
-	enabled = config.autopairs ~= false,
+	enabled = true,
 	event = "InsertEnter",
 	opts = {} -- this is equalent to setup({}) function
 }

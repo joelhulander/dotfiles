@@ -1,6 +1,3 @@
--- lua/plugins/lsp.lua
-local config = require("config").plugins
-
 -- ====== Capabilities ======
 local capabilities = {
 	textDocument = {
@@ -104,7 +101,8 @@ vim.lsp.config("rust_analyzer", {
 })
 
 -- ====== C# LSP ======
-if config.csharp_lsp ~= false then
+local should_csharp_run = false
+if should_csharp_run then
 	local csharp_servers = { "omnisharp", "csharpls-extended" }
 	for _, srv in ipairs(csharp_servers) do
 		vim.lsp.config(srv, {

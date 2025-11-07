@@ -1,8 +1,6 @@
-local config = require("config").plugins
-
 return {
 	'echasnovski/mini-git',
-	enabled = config.mini_git ~= false,
+	enabled = true,
 	version = false,
 	main = 'mini.git',
 	config = function()

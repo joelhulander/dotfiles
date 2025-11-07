@@ -1,4 +1,3 @@
-local config = require("config").plugins
 local lazy_status = require("lazy.status")
 
 local opts = {
@@ -49,7 +48,7 @@ local opts = {
 local lualine =
 {
 	"nvim-lualine/lualine.nvim",
-	enabled = config.lualine ~= false,
+	enabled = true,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"Kurren123/mssql.nvim"

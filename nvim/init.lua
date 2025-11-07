@@ -10,40 +10,43 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
-
-local files = vim.fn.readdir(vim.fn.stdpath('data') .. '/jh')
-
-local personal_settings_file_path
-
-if #files > 1 then
-	vim.ui.select(files, {
-		prompt = 'Select personal settings file:',
-		format_item = function(item)
-			return item
-		end,
-	}, function(choice)
-			personal_settings_file_path = choice
-		end
-	)
-else
-	personal_settings_file_path = 'personal_settings.json'
+-- Create undo directory if it doesn't exist
+local undodir = vim.fn.expand("~/.vim/undodir")
+if vim.fn.isdirectory(undodir) == 0 then
+  vim.fn.mkdir(undodir, "p")
 end
 
-local personal_settings = io.open(vim.fn.stdpath('data') .. '/jh/' .. personal_settings_file_path, 'r')
-
-if personal_settings then
-	local content = personal_settings:read("*a")
-	personal_settings:close()
-	vim.g.personal_settings = vim.json.decode(content)
-end
-
-if not _G.last_project_buffers then
-  _G.last_project_buffers = {}
-end
+_G.last_project_buffers = _G.last_project_buffers or {}
 
 require("keymaps")
 require("options")
 require("autocommands")
+require("terminal")
+
+local dir = vim.fn.stdpath("data") .. "/jh"
+local files = vim.fn.readdir(dir)
+local personal_settings_file
+local cwd_name = vim.fn.fnamemodify(vim.loop.cwd(), ":t")
+
+for _, f in ipairs(files) do
+	if f:lower():match(cwd_name:lower()) then
+		personal_settings_file = f
+	break
+	end
+end
+
+if not personal_settings_file and #files > 0 then
+	personal_settings_file = 'personal_settings.json'
+end
+
+if personal_settings_file then
+	local f = io.open(vim.fs.joinpath(dir, personal_settings_file), "r")
+	if f then
+		local content = f:read("*a")
+		f:close()
+		vim.g.personal_settings = vim.json.decode(content)
+	end
+end
 
 -- Initialize lazy.nvim with plugins
 require("lazy").setup({

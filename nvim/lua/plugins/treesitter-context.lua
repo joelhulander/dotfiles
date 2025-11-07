@@ -1,8 +1,6 @@
-local config = require("config").plugins
-
 return {
 	"nvim-treesitter/nvim-treesitter-context",
-	enabled = config.treesitter_context ~= false,
+	enabled = true,
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local context = require("treesitter-context")

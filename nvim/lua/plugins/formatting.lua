@@ -1,8 +1,6 @@
-local config = require("config").plugins
-
 return {
 	"stevearc/conform.nvim",
-	enabled = config.conform ~= false,
+	enabled = true,
 	lazy = true,
 	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
 	config = function()

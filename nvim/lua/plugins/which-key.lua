@@ -1,8 +1,6 @@
-local config = require("config").plugins
-
 return {
 	'folke/which-key.nvim',
-	enabled = config.which_key ~= false,
+	enabled = true,
 	event = 'VeryLazy',
 	config = function()
 		vim.o.timeout = true

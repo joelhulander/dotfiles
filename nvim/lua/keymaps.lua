@@ -1,24 +1,27 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 local set = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 set("n", "<leader>a", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
+opts.desc = "Clear search highlights"
 set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-set("x", "<leader>pp", "\"_dP", opts)
+opts.desc = "Paste without yanking"
+set("x", "<leader>pp", "_dP", opts)
 set("i", "<C-c>", "<Esc>", opts)
 
--- folding
+opts.desc = "Delete without yanking"
+set({ "n", "v" }, "<leader>D", '"_d', opts)
 
+opts.desc = "Next buffer"
+set("n", "<leader>bn", ":bnext<CR>", opts)
+opts.desc = "Previous buffer"
+set("n", "<leader>bp", ":bprevious<CR>", opts)
+
+-- folding
 opts.desc = "Fold to bottom"
 set("n", "<leader><leader>fG", "zfG", opts)
-
--- terminal
-set("t", "<Esc>", [[<C-\><C-n>]], opts)
-
--- New tab
-opts.desc = "Open new tab"
-set("n", "<leader>tn", ":tabnew<CR>", opts)
 
 -- Split window
 opts.desc = "Split window"
@@ -27,24 +30,33 @@ opts.desc = "Split window vertically"
 set("n", "<leader>ws", ":vsplit<Return>", opts)
 opts.desc = "Split vertically to empty file"
 set("n", "<leader>wn", ":vne<Return>", opts)
+set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
+set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
+set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
--- Move window
-opts.desc = "Go to the left window"
-set("n", "sh", "<C-W>h", opts)
-opts.desc = "Go to the down window"
-set("n", "sn", "<C-W>j", opts)
-opts.desc = "Go to the right window"
-set("n", "si", "<C-W>l", opts)
-opts.desc = "Go to the up window"
-set("n", "se", "<C-W>k", opts)
+-- set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
+-- set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
+-- set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+-- set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+
+-- Better pane navigation
+opts.desc = "Go to the left pane"
+set("n", "<C-h>", "<C-W>h", opts)
+opts.desc = "Go to the down pane"
+set("n", "<C-n>", "<C-W>j", opts)
+opts.desc = "Go to the right pane"
+set("n", "<C-i>", "<C-W>l", opts)
+opts.desc = "Go to the up pane"
+set("n", "<C-e>", "<C-W>k", opts)
 
 --Navigation
 set({ "n", "v" }, "<C-d>", "<C-d>zz", opts)
 set({ "n", "v" }, "<C-u>", "<C-u>zz", opts)
 
--- VIM  for normal and visual mode
-set({ "n", "v" }, "k", "n", opts)
-set({ "n", "v" }, "K", "N", opts)
+-- VIM for normal and visual mode
+set({ "n", "v" }, "k", "nzzzv", opts)
+set({ "n", "v" }, "K", "Nzzzv", opts)
 set({ "n", "v" }, "n", "j", opts)
 set({ "n", "v" }, "N", "J", opts)
 set({ "n", "v" }, "e", "k", opts)
@@ -119,3 +131,7 @@ set({'n', 'v'}, '<leader>lw', function ()
 		vim.opt.linebreak = true
 	end
 end, opts)
+
+-- custom
+opts.desc = "Go to file"
+set("n", "gf", [[:execute 'edit ' . substitute(expand('<cfile>'), '%20', ' ', 'g')<CR>]], opts)

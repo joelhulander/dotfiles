@@ -1,8 +1,6 @@
-local config = require("config").plugins
-
 return {
 	"Tweekism/markdown-preview.nvim",
-	enabled = config.markdown_preview ~= false,
+	enabled = true,
 	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 	build = "cd app && yarn install",
 	init = function()

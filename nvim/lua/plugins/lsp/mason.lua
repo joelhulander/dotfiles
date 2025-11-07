@@ -1,8 +1,6 @@
-local config = require("config").plugins
-
 return {
 	"williamboman/mason.nvim",
-	enabled = config.mason ~= false,
+	enabled = true,
 	version = '1.11.0',
 	config = function()
 		local mason = require("mason")

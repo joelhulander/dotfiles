@@ -1,8 +1,6 @@
-local config = require("config").plugins
-
 return {
 	"folke/snacks.nvim",
-	enabled = config.snacks ~= false,
+	enabled = true,
 	priority = 1000,
 	lazy = false,
 	---@type snacks.Config
@@ -74,7 +72,7 @@ return {
 
 		-- Custom
 		{
-			"<leader>tt",
+			"<leader>ti",
 			function()
 				Snacks.picker.grep_word({
 					title = "Tasks",
@@ -154,13 +152,6 @@ return {
 					end
 				})
 			end
-		},
-		{
-			"<leader><CR>",
-			function()
-				Snacks.terminal.open()
-			end,
-			desc = "Open terminal"
 		}
 	},
 }

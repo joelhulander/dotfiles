@@ -1,9 +1,7 @@
-local config = require("config").plugins
-
 return {
 	'echasnovski/mini.diff',
 	version = false,
-	enabled = config.mini_diff ~= false,
+	enabled = true,
 	config = function()
 		require('mini.diff').setup(
 			{

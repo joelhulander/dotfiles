@@ -1,8 +1,6 @@
-local config = require("config").plugins
-
 return {
 	"nvim-treesitter/nvim-treesitter",
-	enabled = config.treesitter ~= false,
+	enabled = true,
 	event = { "BufReadPre", "BufNewFile" },
 	version = false,
 	dependencies = {

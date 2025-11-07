@@ -1,8 +1,6 @@
-local config = require("config").plugins
-
 return {
 	"krivahtoo/silicon.nvim",
-	enabled = config.silicon ~= false,
+	enabled = true,
 	build = "./install.sh",
 	config = function ()
 		local silicon = require('silicon')
@@ -27,10 +25,10 @@ return {
 			round_corner = true,
 		})
 
-		local keymap = vim.keymap
+		local set = vim.keymap.set
 		local opts = { noremap = true, silent = true }
 
 		opts.desc = 'Copy selection to clipboard as an image'
-		keymap.set('v', '<leader>sc', ":'<,'>Silicon<cr>", opts)
+		set('v', '<leader>sc', ":'<,'>Silicon<cr>", opts)
 	end
 }

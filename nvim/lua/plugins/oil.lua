@@ -1,8 +1,6 @@
-local config = require("config").plugins
-
 return {
 	'stevearc/oil.nvim',
-	enabled = config.oil ~= false,
+	enabled = true,
 	opts = {},
 	-- Optional dependencies
 	dependencies = { "nvim-tree/nvim-web-devicons" },

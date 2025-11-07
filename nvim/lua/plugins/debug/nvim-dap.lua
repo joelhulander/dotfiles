@@ -1,8 +1,6 @@
-local config = require("config").plugins
-
 return {
 	"mfussenegger/nvim-dap",
-	enabled = config.nvim_dap ~= false,
+	enabled = true,
 	dependencies = {
 		"theHamsta/nvim-dap-virtual-text",
 		"rcarriga/nvim-dap-ui",
@@ -107,28 +105,28 @@ return {
 
 		-- ===== Keymaps for debugging =====
 		local map_opts = { noremap = true, silent = true }
-		local map = vim.keymap.set
+		local set = vim.keymap.set
 
 		-- DAP core controls
-		map("n", "<leader>dc", dap.continue, { desc = "Continue/Run", unpack(map_opts) })
-		map("n", "<leader>dn", dap.step_over, { desc = "Step Over", unpack(map_opts) })
-		map("n", "<leader>di", dap.step_into, { desc = "Step Into", unpack(map_opts) })
-		map("n", "<leader>do", dap.step_out, { desc = "Step Out", unpack(map_opts) })
+		set("n", "<leader>dc", dap.continue, { desc = "Continue/Run", unpack(map_opts) })
+		set("n", "<leader>dn", dap.step_over, { desc = "Step Over", unpack(map_opts) })
+		set("n", "<leader>di", dap.step_into, { desc = "Step Into", unpack(map_opts) })
+		set("n", "<leader>do", dap.step_out, { desc = "Step Out", unpack(map_opts) })
 
 		-- Breakpoints
-		map("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle Breakpoint", unpack(map_opts) })
-		map("n", "<leader>dB", function()
+		set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle Breakpoint", unpack(map_opts) })
+		set("n", "<leader>dB", function()
 			dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
 		end, { desc = "Conditional Breakpoint", unpack(map_opts) })
-		map("n", "<leader>dl", function()
+		set("n", "<leader>dl", function()
 			dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
 		end, { desc = "Log Point", unpack(map_opts) })
 
 		-- REPL and UI
-		map("n", "<leader>dR", dap.repl.open, { desc = "Open REPL", unpack(map_opts) })
-		map("n", "<leader>du", dapui.toggle, { desc = "Toggle DAP UI", unpack(map_opts) })
+		set("n", "<leader>dR", dap.repl.open, { desc = "Open REPL", unpack(map_opts) })
+		set("n", "<leader>du", dapui.toggle, { desc = "Toggle DAP UI", unpack(map_opts) })
 
 		-- Run last debug session
-		map("n", "<leader>dr", dap.run_last, { desc = "Run Last Debug Session", unpack(map_opts) })
+		set("n", "<leader>dr", dap.run_last, { desc = "Run Last Debug Session", unpack(map_opts) })
 	end,
 }
