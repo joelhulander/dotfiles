@@ -56,7 +56,7 @@
 	cp (unicode ")")
 	usc (unicode _)
 	add (unicode +)
-	col (unicode :)
+	col S-;
 	ask (unicode ?)
 	les (unicode <)
 	mor (unicode >)

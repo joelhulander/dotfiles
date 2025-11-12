@@ -15,6 +15,7 @@ mkdir -p "$CONFIG_DIR/silicon"
 mkdir -p "$CONFIG_DIR/tmux"
 mkdir -p "$CONFIG_DIR/wezterm"
 mkdir -p "$CONFIG_DIR/zellij"
+mkdir -p "$CONFIG_DIR/yazi"
 # mkdir -p "$HOME/.zsh"
 
 # Function to create backup of existing config
@@ -46,15 +47,17 @@ echo "Setting up symlinks for dotfiles..."
 # bat
 create_symlink "$DOTFILES_DIR/bat/config" "$CONFIG_DIR/bat/config"
 
+# kanata
+create_symlink "$DOTFILES_DIR/kanata/config.kbd" "$CONFIG_DIR/kanata/config.kbd"
+
 # lazygit
 create_symlink "$DOTFILES_DIR/lazygit/config.yml" "$CONFIG_DIR/lazygit/config.yml"
 
 # neovim
 create_symlink "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
 
-# oh-my-posh
-create_symlink "$DOTFILES_DIR/ohmyposh/config.yaml" "$CONFIG_DIR/ohmyposh/config.yaml"
-create_symlink "$DOTFILES_DIR/ohmyposh/catppuccin.yaml" "$CONFIG_DIR/ohmyposh/catppuccin.yaml"
+# yazi
+create_symlink "$DOTFILES_DIR/yazi" "$CONFIG_DIR/yazi"
 
 # silicon
 create_symlink "$DOTFILES_DIR/silicon/config" "$CONFIG_DIR/silicon/config"
@@ -63,7 +66,7 @@ create_symlink "$DOTFILES_DIR/silicon/config" "$CONFIG_DIR/silicon/config"
 create_symlink "$DOTFILES_DIR/tmux" "$CONFIG_DIR/tmux"
 
 # wezterm
-create_symlink "$DOTFILES_DIR/wezterm/config.lua" "$CONFIG_DIR/wezterm/wezterm.lua"
+create_symlink "$DOTFILES_DIR/wezterm/wezterm.lua" "$CONFIG_DIR/wezterm/wezterm.lua"
 
 # zellij
 create_symlink "$DOTFILES_DIR/zellij/config.kdl" "$CONFIG_DIR/zellij/config.kdl"

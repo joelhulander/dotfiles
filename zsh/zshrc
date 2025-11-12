@@ -1,8 +1,17 @@
 export PATH="/opt/homebrew/bin:/Users/joelhulander/.local/bin:/Users/joelhulander/.cargo/bin:/Applications/darktable.app/Contents/MacOS:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 
-source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
-source /opt/homebrew/opt/fzf/shell/completion.zsh
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    # macOS specific settings
+	source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+	source /opt/homebrew/opt/fzf/shell/completion.zsh
+    # Add macOS-specific configurations here
+elif [[ "$(uname -s)" == "Linux" ]]; then
+    # Linux specific settings
+	source /usr/share/fzf/key-bindings.zsh
+	source /usr/share/fzf/completion.zsh
+fi
+
 
 bindkey -rM emacs '\ec'
 bindkey -rM vicmd '\ec'
@@ -45,4 +54,3 @@ y() {
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
-. "$HOME/.local/bin/env"

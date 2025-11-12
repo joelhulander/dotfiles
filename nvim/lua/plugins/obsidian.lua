@@ -1,6 +1,6 @@
 return {
 	"obsidian-nvim/obsidian.nvim",
-	enabled = true,
+	enabled = vim.g.personal_settings.obsidian or false,
 	version = "*",
 	dependencies = {
 		"nvim-lua/plenary.nvim",

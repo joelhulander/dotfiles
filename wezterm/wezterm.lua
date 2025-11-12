@@ -103,7 +103,7 @@ config.inactive_pane_hsb = {
 }
 
 config.font = wezterm.font("Hack Nerd Font", {weight="Regular", stretch="Normal", style="Normal"})
-config.font_size = 17
+config.font_size = 14
 
 -- Keys
 config.leader = { key = "'", mods = "CTRL", timeout_milliseconds = 1501 }
@@ -111,6 +111,7 @@ config.keys = {
 	-- Send C-a when pressing C-a twice
 	{ key = "c",          mods = "LEADER",      action = act.ActivateCopyMode },
 	{ key = "phys:Space", mods = "LEADER",      action = act.ActivateCommandPalette },
+	{ key = 'U', mods = 'CTRL|SHIFT', action = act.DisableDefaultAssignment },
 
 	-- Pane keybindings
 	{ key = "v",          mods = "LEADER",      action = act.SplitVertical { domain = "CurrentPaneDomain" } },
