@@ -18,12 +18,8 @@ bindkey -rM vicmd '\ec'
 bindkey -rM viins '\ec'
 
 # Aliases
-alias cdHome='cd $HOME'
-alias cdBack='cd ..'
 alias n='nvim'
 alias lg='lazygit'
-alias ~='cdHome'
-alias ..='cdBack'
 alias ls='lsd'
 
 # Functions

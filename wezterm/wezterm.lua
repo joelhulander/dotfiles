@@ -24,7 +24,8 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" then
 	config.macos_window_background_blur = 50
 elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
 	config.enable_wayland = false
-	config.default_prog = { "/usr/bin/zsh", "-l", "-i" }
+	-- config.default_prog = { "/usr/bin/zsh", "-l", "-i" }
+	config.default_prog = { "/usr/bin/nu", "-l", "-i" }
 else
 	config.default_prog = {"/bin/bash"}
 end

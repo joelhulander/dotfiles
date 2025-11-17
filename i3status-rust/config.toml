@@ -1,0 +1,24 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "ctp-mocha"
+
+[theme.overrides]
+separator = ""
+
+[icons]
+icons = "awesome4"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "custom"
+command = "upower -i /org/freedesktop/UPower/devices/battery_BAT0 | awk '/state:/ {state=$2} /percentage:/ {pct=$2; sub(\"%\",\"\",pct); pct+=0} END {pct=int(pct); icon=\"\"; if (pct>80) icon=\"\"; else if (pct>60) icon=\"\"; else if (pct>40) icon=\"\"; else if (pct>20) icon=\"\"; if (state==\"charging\") icon=\"\"; print icon \" \" pct \"%\";}'"
+interval = 30
+
+[[block]]
+block = "time"
+interval = 5
+format = " $timestamp.datetime(f:'%R') "
+

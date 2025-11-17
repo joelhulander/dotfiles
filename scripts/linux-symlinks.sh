@@ -6,16 +6,6 @@ CONFIG_DIR="$HOME/.config"
 
 # Create necessary directories
 mkdir -p "$CONFIG_DIR"
-mkdir -p "$CONFIG_DIR/bat"
-mkdir -p "$CONFIG_DIR/lazygit"
-mkdir -p "$CONFIG_DIR/nvim"
-mkdir -p "$CONFIG_DIR/ohmyposh"
-mkdir -p "$CONFIG_DIR/powershell"
-mkdir -p "$CONFIG_DIR/silicon"
-mkdir -p "$CONFIG_DIR/tmux"
-mkdir -p "$CONFIG_DIR/wezterm"
-mkdir -p "$CONFIG_DIR/zellij"
-mkdir -p "$CONFIG_DIR/yazi"
 # mkdir -p "$HOME/.zsh"
 
 # Function to create backup of existing config
@@ -45,13 +35,13 @@ create_symlink() {
 echo "Setting up symlinks for dotfiles..."
 
 # bat
-create_symlink "$DOTFILES_DIR/bat/config" "$CONFIG_DIR/bat/config"
+create_symlink "$DOTFILES_DIR/bat" "$CONFIG_DIR/bat"
 
 # kanata
-create_symlink "$DOTFILES_DIR/kanata/config.kbd" "$CONFIG_DIR/kanata/config.kbd"
+create_symlink "$DOTFILES_DIR/kanata" "$CONFIG_DIR/kanata"
 
 # lazygit
-create_symlink "$DOTFILES_DIR/lazygit/config.yml" "$CONFIG_DIR/lazygit/config.yml"
+create_symlink "$DOTFILES_DIR/lazygit" "$CONFIG_DIR/lazygit"
 
 # neovim
 create_symlink "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
@@ -60,19 +50,31 @@ create_symlink "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
 create_symlink "$DOTFILES_DIR/yazi" "$CONFIG_DIR/yazi"
 
 # silicon
-create_symlink "$DOTFILES_DIR/silicon/config" "$CONFIG_DIR/silicon/config"
+create_symlink "$DOTFILES_DIR/silicon" "$CONFIG_DIR/silicon"
 
 # tmux (handling both locations)
 create_symlink "$DOTFILES_DIR/tmux" "$CONFIG_DIR/tmux"
 
+# nushell
+create_symlink "$DOTFILES_DIR/nushell" "$CONFIG_DIR/nushell"
+
 # wezterm
-create_symlink "$DOTFILES_DIR/wezterm/wezterm.lua" "$CONFIG_DIR/wezterm/wezterm.lua"
+create_symlink "$DOTFILES_DIR/wezterm" "$CONFIG_DIR/wezterm"
 
 # zellij
-create_symlink "$DOTFILES_DIR/zellij/config.kdl" "$CONFIG_DIR/zellij/config.kdl"
+create_symlink "$DOTFILES_DIR/zellij" "$CONFIG_DIR/zellij"
 
 # zsh
 create_symlink "$DOTFILES_DIR/zsh/zshrc" "$HOME/.zshrc"
+
+# sway
+create_symlink "$DOTFILES_DIR/sway" "$CONFIG_DIR/sway"
+
+# i3status-rust
+create_symlink "$DOTFILES_DIR/i3status-rust" "$CONFIG_DIR/i3status-rust"
+
+# hypr
+create_symlink "$DOTFILES_DIR/hypr" "$CONFIG_DIR/hypr"
 
 echo "Symlink setup complete!"
 
