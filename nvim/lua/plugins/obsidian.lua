@@ -63,7 +63,7 @@ return {
 				}
 			},
 			note_path_func = function(spec)
-				local notes_folder = settings.notes_folder or "6 - Notes"
+				local notes_folder = settings.notes_folder or "Notes"
 				local function slugify(str)
 					return tostring(str:gsub(" ", "-").gsub("[^A-Za-z0-9-]", ""):lower())
 				end
@@ -72,7 +72,7 @@ return {
 
 				if spec.id then
 					path = spec.dir / (spec.id .. ".md")
-				elseif spec.title and spec.title:match("Note (template)") then
+				elseif spec.title and spec.title:match("Note (nvim)") then
 					path = spec.dir / notes_folder / slugify(spec.title)
 				elseif spec.title and spec.title:match("Meeting") then
 					local year = os.date("%Y")
@@ -88,7 +88,6 @@ return {
 				vim.ui.open(url)
 			end,
 			preferred_link_style = "markdown",
-			disable_frontmatter = false,
 			completion = {
 				blink = true,
 				min_chars = 2,

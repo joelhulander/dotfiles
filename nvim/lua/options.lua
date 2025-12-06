@@ -10,10 +10,11 @@ opt.sidescrolloff = 8
 
 -- Indentation
 opt.tabstop = 4
+opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.smartindent = true
 opt.autoindent = true
-opt.expandtab = false
+opt.expandtab = true
 
 -- Search settings
 opt.ignorecase = true

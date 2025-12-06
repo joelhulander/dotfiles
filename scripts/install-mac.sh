@@ -164,11 +164,11 @@ main() {
 	create_symlink "$dotfiles_dir/zsh/zshrc" "$HOME/.zshrc"
 	create_symlink "$dotfiles_dir/aerospace/aerospace.toml" "$HOME/.config/aerospace/aerospace.toml"
 	create_symlink "$dotfiles_dir/sketchybar" "$HOME/.config/sketchybar"
-	create_symlink "$dotfiles_dir/kitty" "$HOME/.config/kitty"
 	create_symlink "$dotfiles_dir/starship/starship.toml" "$HOME/.config/starship.toml"
 	create_symlink "$dotfiles_dir/yazi" "$HOME/.config/yazi"
 	create_symlink "$dotfiles_dir/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 	create_symlink "$dotfiles_dir/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
+	create_symlink "$dotfiles_dir/nushell" "$HOME/.config/nushell"
 
 	echo ""
 	print_success "Installation completed! (Please restart the terminal or source the .zshrc file)"

@@ -30,19 +30,19 @@ else
 	config.default_prog = {"/bin/bash"}
 end
 
--- wezterm.on('update-right-status', function(window)
--- 	window:set_right_status(window:active_workspace())
---
--- 	local prefix = ""
---
--- 	if window:leader_is_active() then
--- 		prefix = " " .. utf8.char(0x1f30a) -- ocean wave
--- 	end
---
--- 	window:set_left_status(wezterm.format {
--- 		{ Text = prefix },
--- 	})
--- end)
+wezterm.on('update-right-status', function(window)
+	-- window:set_right_status(window:active_workspace())
+
+	local prefix = ""
+
+	if window:leader_is_active() then
+		prefix = " " .. utf8.char(0x1f30a) -- ocean wave
+	end
+
+	window:set_left_status(wezterm.format {
+		{ Text = prefix },
+	})
+end)
 
 
 -- local mux = wezterm.mux
@@ -103,8 +103,9 @@ config.inactive_pane_hsb = {
 	brightness = 0.55
 }
 
-config.font = wezterm.font("Hack Nerd Font", {weight="Regular", stretch="Normal", style="Normal"})
-config.font_size = 14
+config.font = wezterm.font("JetBrainsMono NF", {weight="Regular", stretch="Normal", style="Normal"})
+config.font_size = 16
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 -- Keys
 config.leader = { key = "'", mods = "CTRL", timeout_milliseconds = 1501 }

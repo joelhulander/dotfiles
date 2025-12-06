@@ -17,6 +17,7 @@ if vim.fn.isdirectory(undodir) == 0 then
 end
 
 _G.last_project_buffers = _G.last_project_buffers or {}
+_G.project_terminals = _G.project_terminals or {}
 
 require("keymaps")
 require("options")

@@ -1,5 +1,5 @@
 -- Create task or checkbox
-vim.keymap.set({ "n", "i" }, "<C-l>", function()
+vim.keymap.set({ "n", "i" }, "<C-t>", function()
 	local cursor_pos = vim.api.nvim_win_get_cursor(0)
 	local row, _ = cursor_pos[1], cursor_pos[2]
 	local line = vim.api.nvim_get_current_line()
@@ -257,28 +257,27 @@ end, { desc = "[P]Toggle task and move it to 'done'" })
 local set= vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-function Create_note(path, chosen_template)
+function Create_note(filename, chosen_template, chosen_folder)
 	local client = require("obsidian")
-	local note = client.Note.new({
-		title = path,
-		template = chosen_template .. ".md"
+	local note = client.Note.create({
+		title = filename,
+		template = chosen_template .. ".md",
+		dir = chosen_folder,
+		should_write = true
 	})
 
 	if note then
-		client.Note.open(path, { sync = true })
-		vim.notify("Created note: " .. path .. " with template: " .. chosen_template, vim.log.levels.INFO)
+		-- note.open()
+		client.Note.open(chosen_folder .. "/" .. filename, { sync = true })
 	else
-		vim.notify("Failed to create note: " .. path, vim.log.levels.ERROR)
+		vim.notify("Failed to create note: " .. chosen_folder .. "/" .. filename, vim.log.levels.ERROR)
 	end
 end
 
 opts.desc = "Create note with template"
 set('n', '<leader>on', function()
 	-- Define templates with names, template names, and destination folders
-	local templates = {
-		{ name = "Meeting", template = "Meeting", folder = "6 - Notes/Meetings" },
-		{ name = "Note", template = "Note (nvim)", folder = "6 - Notes" },
-	}
+	local templates = vim.g.personal_settings.obsidian.templates.note_templates
 
 	local options = {}
 	for i, t in ipairs(templates) do
@@ -320,9 +319,9 @@ set('n', '<leader>on', function()
 
 					filename = input
 
-					path = string.format("6 - Notes/Meetings/%s/%s-%s/%s-%s", year, month_num, month_name, date_str, filename .. ".md")
+					path = string.format("Notes/Meetings/%s/%s-%s/%s-%s", year, month_num, month_name, date_str, filename .. ".md")
 
-					Create_note(path, chosen.template)
+					Create_note(filename, chosen.template, chosen.folder)
 					vim.fn.rename(vim.api.nvim_buf_get_name(0), path)
 					vim.cmd("e " .. path)
 				end)
@@ -335,16 +334,76 @@ set('n', '<leader>on', function()
 						return
 					end
 
-					filename = input
-					path = chosen.folder .. "/" .. filename .. ".md"
+					filename = input .. ".md"
 
-					Create_note(path, chosen.template)
+					path = chosen.folder .. "/" .. filename
+
+					Create_note(filename, chosen.template, chosen.folder)
 					vim.fn.rename(vim.api.nvim_buf_get_name(0), path)
 					vim.cmd("e " .. path)
+				end)
+			elseif chosen.name == "Resa" then
+				-- Prompt for note name
+				vim.ui.input({ prompt = "Enter destination and year: " }, function(input)
+					if not input or input == "" then
+						vim.notify("Operation cancelled", vim.log.levels.INFO)
+						return
+					end
+
+					Get_nested_templates(chosen.name, function(nested_template)
+						if not nested_template or nested_template == "" then
+							vim.notify("Operation cancelled", vim.log.levels.INFO)
+							return
+						end
+
+						filename = input .. " - " .. nested_template.name .. ".md"
+
+						path = chosen.folder .. "/" .. filename
+
+						Create_note(filename, nested_template.template, chosen.folder)
+						vim.fn.rename(vim.api.nvim_buf_get_name(0), path)
+						vim.cmd("e " .. path)
+					end)
+
 				end)
 			end
 		end)
 end, opts)
+
+function Get_nested_templates(name, callback)
+	local templates = vim.g.personal_settings.obsidian.templates.note_templates
+
+	local options = {}
+	for _, t in ipairs(templates) do
+		if t.name == name then
+			for n, nt in ipairs(t.nested_templates) do
+				options[n] = nt.name
+			end
+		end
+	end
+
+	vim.ui.select(options, {
+		prompt = "Choose travel template",
+		format_item = function(item) return item end,
+	}, function (selected)
+			if not selected then
+				callback(nil)
+				return
+			end
+
+			-- Find the selected template
+			for _, t in ipairs(templates) do
+				if t.name == name then
+					for _, nt in ipairs(t.nested_templates) do
+						if nt.name == selected then
+							callback(nt)
+							break
+						end
+					end
+				end
+			end
+		end)
+end
 
 function Change_project(project)
 	if not project then return end
@@ -366,12 +425,21 @@ function Change_project(project)
 	vim.notify("Changing workspace to " .. chosen.name,  vim.log.levels.INFO)
 
 	local last_buffer = _G.last_project_buffers[chosen.path]
+	-- vim.notify(vim.inspect(last_buffer), vim.log.levels.INFO)
+	-- vim.notify(vim.inspect(_G.last_project_buffers), vim.log.levels.INFO)
+
+	if not _G.project_terminals[chosen.path] then
+		_G.project_terminals[chosen.path] = {
+			buf = nil,
+			win = nil,
+			is_open = false
+		}
+	end
 
 	if last_buffer and vim.fn.bufexists(last_buffer) == 1 then
 		vim.cmd("buffer " .. last_buffer)
 	else
 		vim.cmd("enew")
-		-- vim.cmd("Oil")
 	end
 end
 
@@ -450,7 +518,7 @@ local leader = ","
 local counter = 0
 
 for i,v in ipairs(vim.g.personal_settings.projects) do
-	if counter ~= 0 and counter % 4 == 0 then
+	if counter ~= 0 and counter % 6 == 0 then
 		leader = leader .. ","
 		counter = 0
 	end

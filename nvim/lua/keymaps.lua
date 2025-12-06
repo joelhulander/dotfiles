@@ -46,7 +46,7 @@ set("n", "<C-h>", "<C-W>h", opts)
 opts.desc = "Go to the down pane"
 set("n", "<C-n>", "<C-W>j", opts)
 opts.desc = "Go to the right pane"
-set("n", "<C-i>", "<C-W>l", opts)
+set("n", "<C-l>", "<C-W>l", opts)
 opts.desc = "Go to the up pane"
 set("n", "<C-e>", "<C-W>k", opts)
 

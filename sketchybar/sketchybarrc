@@ -1,65 +1,83 @@
-#!/usr/bin/env zsh
+# This is a demo config to showcase some of the most important commands.
+# It is meant to be changed and configured, as it is intentionally kept sparse.
+# For a (much) more advanced configuration example see my dotfiles:
+# https://github.com/FelixKratz/dotfiles
 
-FONT_FACE="JetBrainsMono Nerd Font"
-PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-sketchybar --bar \
-    height=32 \
-    color=0x66494d64 \
-    margin=0 \
-    sticky=on \
-    padding_left=0 \
-    padding_right=0 \
-    notch_width=188 \
-    display=main
+##### Bar Appearance #####
+# Configuring the general appearance of the bar.
+# These are only some of the options available. For all options see:
+# https://felixkratz.github.io/SketchyBar/config/bar
+# If you are looking for other colors, see the color picker:
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --default \
-    background.height=32 \
-    icon.color=0xff24273a \
-    icon.font="$FONT_FACE:Medium:20.0" \
-    icon.padding_left=5 \
-    icon.padding_right=5 \
-    label.color=0xff24273a \
-    label.font="$FONT_FACE:Bold:14.0" \
-    label.y_offset=1 \
-    label.padding_left=0 \
-    label.padding_right=5
+sketchybar --bar position=top height=30 blur_radius=100 color=0xff313244 border_color=0xff1e1e2e border_width=1 margin=20 corner_radius=10 y_offset=10
+
+##### Changing Defaults #####
+# We now change some default values, which are applied to all further items.
+# For a full list of all available item properties see:
+# https://felixkratz.github.io/SketchyBar/config/items
+
+default=(
+  padding_left=5
+  padding_right=5
+  icon.font="Hack Nerd Font:Bold:17.0"
+  label.font="Hack Nerd Font:Bold:14.0"
+  icon.color=0xffffffff
+  label.color=0xffffffff
+  icon.padding_left=4
+  icon.padding_right=4
+  label.padding_left=4
+  label.padding_right=4
+)
+sketchybar --default "${default[@]}"
 
 sketchybar --add event aerospace_workspace_change
 
-for sid in $(aerospace list-workspaces --all); do
-	sketchybar --add item space.$sid left \
-		--subscribe space.$sid aerospace_workspace_change \
-		--set space.$sid \
-        background.color=0xfffab387 \
-        background.corner_radius=2 \
+for sid in {1..6}; do
+    sketchybar --add item space.$sid left \
+        --subscribe space.$sid aerospace_workspace_change \
+        --set space.$sid \
+		icon=$sid \
+		icon.padding_left=7 \
+		icon.padding_right=7 \
+		icon.color=0xffcdd6f4 \
+        background.color=0xff585b70 \
+        background.corner_radius=5 \
         background.height=25 \
         background.drawing=off \
-		background.padding_right=4 \
-		background.padding_left=4 \
-		label="$sid" \
-		click_script="aerospace workspace $sid" \
-		script="$CONFIG_DIR/plugins/aerospace.sh $sid"
-	done
+		label.drawing=off \
+        script="$CONFIG_DIR/plugins/aerospace.sh $sid" \
+        click_script="aerospace workspace $sid" 
+done
 
+##### Adding Left Items #####
+# We add some regular items to the left side of the bar, where
+# only the properties deviating from the current defaults need to be set
 
-sketchybar --add item clock right \
-    --set clock \
-    icon=󰃰 \
-	background.corner_radius=4 \
-	background.padding_right=4 \
-	background.padding_left=4 \
-	background.height=25 \
-    update_freq=10 \
-    script="$PLUGIN_DIR/clock.sh"
+# sketchybar --add item chevron left \
+#            --set chevron icon= label.drawing=off \
+#            --add item front_app left \
+#            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+#            --subscribe front_app front_app_switched
 
-sketchybar --add item volume right \
-	--set volume script="$PLUGIN_DIR/volume.sh" \
-	--subscribe volume volume_change \
+##### Adding Right Items #####
+# In the same way as the left items we can add items to the right side.
+# Additional position (e.g. center) are available, see:
+# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
 
-sketchybar --add item weather right \
-	--set weather script="$PLUGIN_DIR/weather.sh" \
+# Some items refresh on a fixed cycle, e.g. the clock runs its script once
+# every 10s. Other items respond to events they subscribe to, e.g. the
+# volume.sh script is only executed once an actual change in system audio
+# volume is registered. More info about the event system can be found here:
+# https://felixkratz.github.io/SketchyBar/config/events
 
-##### Finalizing Setup #####
+sketchybar --add item clock center \
+           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
+           --add item volume right \
+           --set volume script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change \
+
+##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
-sketchybar --trigger space_change

@@ -21,6 +21,7 @@ bindkey -rM viins '\ec'
 alias n='nvim'
 alias lg='lazygit'
 alias ls='lsd'
+alias ..='cd ..'
 
 # Functions
 open() {

@@ -48,7 +48,7 @@ local opts = {
 local lualine =
 {
 	"nvim-lualine/lualine.nvim",
-	enabled = true,
+	enabled = false,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"Kurren123/mssql.nvim"
