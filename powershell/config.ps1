@@ -4,6 +4,13 @@ $env:TERM='xterm-256color'
 $Env:KOMOREBI_CONFIG_HOME = "${Env:USERPROFILE}\.config\komorebi"
 $KanataConfigLocation = "${Env:USERPROFILE}\kanata.kbd"
 
+$env:XDG_CONFIG_HOME = "$Env:USERPROFILE\.config"
+
+# Optional: XDG_DATA_HOME, XDG_STATE_HOME for other apps
+$env:XDG_DATA_HOME  = "$Env:USERPROFILE\.local\share"
+$env:XDG_STATE_HOME = "$Env:USERPROFILE\.local\state"
+$env:XDG_CACHE_HOME = "$Env:USERPROFILE\.cache"
+
 # Set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 

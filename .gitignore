@@ -1,5 +1,5 @@
 *.log
-lazygit/state.yml
-nvim/lazy-lock.json
-zebar/tmp*
-nushell/history.txt
+dot_config/lazygit/state.yml
+dot_config/nvim/lazy-lock.json
+dot_glzr/zebar/tmp*
+dot_config/nushell/history.txt
