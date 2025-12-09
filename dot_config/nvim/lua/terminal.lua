@@ -76,7 +76,8 @@ local function FloatingTerminal()
 	end
 
 	if not has_terminal then
-		vim.fn.termopen(os.getenv("SHELL"))
+        local shell = os.getenv("SHELL") or { vim.o.shell }
+		vim.fn.termopen(shell)
 	end
 
 	_G.project_terminals[cwd].is_open = true

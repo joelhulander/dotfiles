@@ -53,7 +53,11 @@ bindings = [
 ]
 
 [terminal]
+{{ if eq .chezmoi.os "windows" }}
+shell = "pwsh.exe"
+{{ else }}
 shell = "/bin/zsh"
+{{ end }}
 
 # Scrolling configuration
 [scrolling]

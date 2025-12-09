@@ -66,7 +66,7 @@ opt.foldmethod = 'expr'
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 99
 
-if vim.fn.has('macunix') then
+if vim.fn.has('macunix') == 1 then
 	opt.shell = 'zsh'
 else
 	opt.shell = 'pwsh'

@@ -1,6 +1,6 @@
 return {
 	"krivahtoo/silicon.nvim",
-	enabled = true,
+	enabled = false,
 	build = "./install.sh",
 	config = function ()
 		local silicon = require('silicon')

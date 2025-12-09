@@ -6,17 +6,18 @@ powershell/
 neovide/
 rio/
 scripts/
+.config/yasb/
+.config/komokana/
 brewfile
 
 {{ if ne .chezmoi.os "darwin" }}
 .config/sketchybar/
 .config/aerospace/
-.config/zellij/
+.config/karabiner/
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
 .config/sway/
-.config/zellij/
 .config/hypr/
 .config/i3status-rust/
 .config/waybar/
@@ -26,5 +27,12 @@ brewfile
 .config/yasb/
 .glzr/
 .config/komorebi/
-.config/komokana/
+AppData/
+{{ else }}
+.config/zellij/
+.config/alacritty/
+.config/silicon/
+.tmux.conf
+.zshrc
 {{ end }}
+
