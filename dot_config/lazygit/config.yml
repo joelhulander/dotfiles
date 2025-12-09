@@ -34,3 +34,6 @@ gui:
 
   authorColors:
     '*': '#b4befe'
+git:
+  log:
+    order: default
