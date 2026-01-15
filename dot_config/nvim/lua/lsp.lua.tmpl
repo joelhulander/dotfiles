@@ -101,7 +101,11 @@ vim.lsp.config("rust_analyzer", {
 })
 
 -- ====== C# LSP ======
+{{ if eq .chezmoi.os "windows" }}
+local should_csharp_run = true
+{{ else }}
 local should_csharp_run = false
+{{ end }}
 if should_csharp_run then
 	local csharp_servers = { "omnisharp", "csharpls-extended" }
 	for _, srv in ipairs(csharp_servers) do
