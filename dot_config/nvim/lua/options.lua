@@ -46,6 +46,7 @@ opt.timeoutlen = 500
 opt.ttimeoutlen = 0
 opt.autoread = true
 opt.autowrite = false
+opt.fileformat = "unix"
 
 -- Behaviour settings
 opt.iskeyword:append("-")
@@ -69,6 +70,10 @@ opt.foldlevel = 99
 if vim.fn.has('macunix') == 1 then
 	opt.shell = 'zsh'
 else
+    vim.opt.shellslash = false
+    vim.defer_fn(function ()
+        vim.opt.shellslash = false
+    end, 5000)
 	opt.shell = 'pwsh'
 end
 

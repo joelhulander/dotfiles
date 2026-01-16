@@ -44,6 +44,7 @@ blink_interval = 500
 bindings = [
 	{ key = "T", mods = "Control|Shift", action = "CreateNewWindow" },
 	{ key = "Space", mods = "Control|Shift", action = "ToggleViMode" },
+	{ key = "Return", mods = "Shift", chars = "\u001B\r" },
 	{ key = "Y", mode = "Vi", action = "Copy" },
 	{ key = "P", mode = "Vi", action = "Paste" },
 	{ key = "K", mode = "Vi|~Search", action = "SearchNext" },

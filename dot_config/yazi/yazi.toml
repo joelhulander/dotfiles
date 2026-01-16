@@ -4,6 +4,11 @@ edit = [
 	{ run = "nvim $@",  block = true, desc = "nvim", for = "unix" },
 ]
 
+[open]
+prepend_rules = [
+    { name = "*.toml", use = "edit" },
+]
+
 [mgr]
 ratio = [2,4,4]
 show_hidden = true

@@ -260,10 +260,11 @@ local opts = { noremap = true, silent = true }
 function Create_note(filename, chosen_template, chosen_folder)
 	local client = require("obsidian")
 	local note = client.Note.create({
-		title = filename,
+		id = filename,
 		template = chosen_template .. ".md",
 		dir = chosen_folder,
-		should_write = true
+		should_write = true,
+        verbatim = true
 	})
 
 	if note then
@@ -317,11 +318,12 @@ set('n', '<leader>on', function()
 						return
 					end
 
-					filename = input
+					filename = string.format("%s-%s.md", date_str, input)
 
-					path = string.format("Notes/Meetings/%s/%s-%s/%s-%s", year, month_num, month_name, date_str, filename .. ".md")
+                    local folder_path = string.format("Notes/Meetings/%s/%s-%s", year, month_num, month_name)
+					path = string.format("%s/%s", folder_path, filename)
 
-					Create_note(filename, chosen.template, chosen.folder)
+					Create_note(filename, chosen.template, folder_path)
 					vim.fn.rename(vim.api.nvim_buf_get_name(0), path)
 					vim.cmd("e " .. path)
 				end)

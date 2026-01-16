@@ -107,11 +107,11 @@ local should_csharp_run = true
 local should_csharp_run = false
 {{ end }}
 if should_csharp_run then
-	local csharp_servers = { "omnisharp", "csharpls-extended" }
+	local csharp_servers = { "omnisharp", "csharpls-extended", "csharp_ls" }
 	for _, srv in ipairs(csharp_servers) do
 		vim.lsp.config(srv, {
 			cmd = srv == "omnisharp" and { "omnisharp" } or { "csharp-ls" },
-			filetypes = srv == "omnisharp" and { "cs", "razor", "csproj", "fs", "fsproj" } or nil,
+            filetypes = srv == "omnisharp" and { "cs", "razor", "csproj", "fs", "fsproj" } or srv == "csharp_ls" and { "cs" } or { "cs" },
 			init_options = srv == "csharp-ls" and { AutomaticWorkspaceInit = true } or nil,
 			handlers = srv == "csharp-ls" and { ["textDocument/definition"] = require("csharpls_extended").handler } or nil,
 			capabilities = capabilities,

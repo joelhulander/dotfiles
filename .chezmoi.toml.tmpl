@@ -5,3 +5,13 @@
 
 [warnings]
     configFileTemplateHasChanged = false
+
+[edit]
+    command = "nvim"
+{{ if eq .chezmoi.os "windows" }}
+[cd]
+    command = "pwsh"
+{{ else }}
+[cd]
+    command = "zsh"
+{{ end }}

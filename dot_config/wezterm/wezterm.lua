@@ -111,6 +111,7 @@ config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.leader = { key = "'", mods = "CTRL", timeout_milliseconds = 1501 }
 config.keys = {
 	-- Send C-a when pressing C-a twice
+    { key = "Enter",      mods = "SHIFT",       action = act.SendString '\x1b\r' },
 	{ key = "c",          mods = "LEADER",      action = act.ActivateCopyMode },
 	{ key = "phys:Space", mods = "LEADER",      action = act.ActivateCommandPalette },
 	{ key = 'U', mods = 'CTRL|SHIFT', action = act.DisableDefaultAssignment },
