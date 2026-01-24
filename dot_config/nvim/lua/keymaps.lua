@@ -4,7 +4,7 @@ vim.g.maplocalleader = " "
 local set = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-set("n", "<leader>a", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
+set("n", "<leader>sa", ":keepjumps normal! ggVG<cr>", { desc = "Select all", noremap = true })
 opts.desc = "Clear search highlights"
 set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 opts.desc = "Paste without yanking"
