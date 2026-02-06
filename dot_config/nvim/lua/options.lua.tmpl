@@ -12,7 +12,7 @@ opt.sidescrolloff = 8
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
-opt.smartindent = true
+opt.smartindent = false
 opt.autoindent = true
 opt.expandtab = true
 
@@ -67,15 +67,23 @@ opt.foldmethod = 'expr'
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 99
 
-if vim.fn.has('macunix') == 1 then
-	opt.shell = 'zsh'
-else
-    vim.opt.shellslash = false
-    vim.defer_fn(function ()
-        vim.opt.shellslash = false
-    end, 5000)
-	opt.shell = 'pwsh'
+-- Shell settings (OS-specific)
+{{- if eq .chezmoi.os "darwin" }}
+opt.shell = 'zsh'
+{{- else if eq .chezmoi.os "linux" }}
+opt.shell = 'bash'
+-- Use zsh if available
+if vim.fn.executable('zsh') == 1 then
+    opt.shell = 'zsh'
 end
+{{- else }}
+-- Windows
+vim.opt.shellslash = false
+vim.defer_fn(function()
+    vim.opt.shellslash = false
+end, 5000)
+opt.shell = 'pwsh'
+{{- end }}
 
 -- opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -command'
 opt.shellxquote = ''
@@ -90,10 +98,10 @@ vim.diagnostic.config({
 	virtual_lines = false,
 	signs = {
 		text = {
-			[vim.diagnostic.severity.ERROR] = ' ',
-			[vim.diagnostic.severity.WARN]  = " ",
+			[vim.diagnostic.severity.ERROR] = ' ',
+			[vim.diagnostic.severity.WARN]  = " ",
 			[vim.diagnostic.severity.HINT] = "󰠠 ",
-			[vim.diagnostic.severity.INFO]  = " "
+			[vim.diagnostic.severity.INFO]  = " "
 		}
 	},
 	underline = true,

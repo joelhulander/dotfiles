@@ -1,0 +1,15 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+# Brewfile hash: {{ include "brewfile" | sha256sum }}
+set -e
+
+if ! command -v brew &>/dev/null; then
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+echo "Running brew bundle..."
+brew bundle --no-lock --file="{{ .chezmoi.sourceDir }}/brewfile"
+
+echo "Package installation complete."
+{{ end -}}

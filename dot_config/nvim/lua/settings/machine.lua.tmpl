@@ -1,0 +1,36 @@
+return {
+    mkdp_images_path = {{ if .mkdp_images_path }}{{ .mkdp_images_path | quote }}{{ else }}""{{ end }},
+
+    obsidian = {
+        workspaces = {
+            { name = "notes", path = {{ if .obsidian_vault }}{{ .obsidian_vault | quote }}{{ else }}""{{ end }} },
+        },
+        templates = {
+            note_templates = {
+{{- if .note_templates }}
+{{- range .note_templates }}
+                {
+                    name = {{ .name | quote }},
+                    template = {{ .template | quote }},
+                    folder = {{ .folder | quote }},
+{{- if index . "path_pattern" }}
+                    path_pattern = {{ index . "path_pattern" | quote }},
+{{- end }}
+{{- if index . "prompt" }}
+                    prompt = {{ index . "prompt" | quote }},
+{{- end }}
+                },
+{{- end }}
+{{- end }}
+            },
+        },
+    },
+
+    projects = {
+{{- if .projects }}
+{{- range .projects }}
+        { name = {{ .name | quote }}, path = {{ .path | quote }} },
+{{- end }}
+{{- end }}
+    },
+}

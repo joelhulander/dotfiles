@@ -1,0 +1,112 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+# Self-hash for run_onchange_ detection:
+# {{ include "run_onchange_before_install-packages-linux.sh.tmpl" | sha256sum }}
+set -e
+
+# ─── Colors ─────────────────────────────────────────────
+cyan()    { echo -e "\033[0;36m$1\033[0m"; }
+green()   { echo -e "\033[0;32m$1\033[0m"; }
+red()     { echo -e "\033[0;31m$1\033[0m"; }
+magenta() { echo -e "\033[0;35m$1\033[0m"; }
+
+print_header() { magenta "==== $1 ===="; }
+print_status() { cyan "  -> $1"; }
+print_ok()     { green "  ✓ $1"; }
+print_err()    { red "  ✗ $1" >&2; }
+
+if ! command -v pacman &>/dev/null; then
+    print_err "This script requires pacman (Arch Linux)"
+    exit 1
+fi
+
+# ─── AUR helper ─────────────────────────────────────────
+if command -v yay &>/dev/null; then
+    AUR_HELPER="yay"
+elif command -v paru &>/dev/null; then
+    AUR_HELPER="paru"
+else
+    print_status "No AUR helper found. Installing yay..."
+    sudo pacman -S --needed --noconfirm git base-devel
+    tmpdir=$(mktemp -d)
+    git clone https://aur.archlinux.org/yay.git "$tmpdir/yay"
+    (cd "$tmpdir/yay" && makepkg -si --noconfirm)
+    rm -rf "$tmpdir"
+    AUR_HELPER="yay"
+fi
+print_status "AUR helper: $AUR_HELPER"
+
+# ─── Pacman packages ───────────────────────────────────
+echo ""
+print_header "Installing pacman packages"
+
+sudo pacman -Syu --needed --noconfirm \
+    base-devel \
+    git \
+    bat \
+    eza \
+    fd \
+    fzf \
+    jq \
+    ripgrep \
+    p7zip \
+    tree \
+    zoxide \
+    lsd \
+    zsh \
+    zsh-autosuggestions \
+    starship \
+    neovim \
+    cmake \
+    gcc \
+    go \
+    lua \
+    nodejs \
+    npm \
+    python \
+    rustup \
+    yarn \
+    lazygit \
+    chezmoi \
+    tmux \
+    zellij \
+    ghostscript \
+    imagemagick \
+    kanata \
+    task \
+    alacritty
+
+# ─── AUR packages ──────────────────────────────────────
+echo ""
+print_header "Installing AUR packages"
+
+$AUR_HELPER -S --needed --noconfirm \
+    yazi-bin \
+    nushell-bin \
+    zsh-fast-syntax-highlighting \
+    zinit \
+    wezterm-bin \
+    ghostty-bin \
+    uv \
+    bitwarden-cli
+
+# ── Hyprland desktop ──
+sudo pacman -S --needed --noconfirm hyprland hyprlock hyprpaper waybar xdg-desktop-portal-hyprland
+
+# ── Sway desktop ──
+sudo pacman -S --needed --noconfirm sway i3status-rust xdg-desktop-portal-wlr
+
+# ── Common Wayland tools ──
+sudo pacman -S --needed --noconfirm wl-clipboard grim slurp mako
+
+# ─── Rustup setup ──────────────────────────────────────
+if command -v rustup &>/dev/null; then
+    echo ""
+    print_header "Setting up Rust toolchain"
+    rustup default stable 2>/dev/null || true
+    print_ok "Rust toolchain ready"
+fi
+
+echo ""
+print_ok "Package installation complete."
+{{ end -}}

@@ -3,7 +3,7 @@
 [window]
 dimensions = { columns = 130, lines = 45 }
 padding = { x = 20, y = 10 }
-opacity = 0.9
+opacity = 1
 decorations = "none"
 
 # Font configuration

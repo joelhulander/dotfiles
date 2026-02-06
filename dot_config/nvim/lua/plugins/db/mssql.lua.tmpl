@@ -1,0 +1,27 @@
+{{- if and (eq .chezmoi.os "windows") .has_mssql }}
+return {
+	"Kurren123/mssql.nvim",
+	enabled = true,
+	opts = {
+		keymap_prefix = "<leader>.",
+		tools_file = vim.fn.expand('~') .. "/.sqltools/MicrosoftSqlToolsServiceLayer.exe",
+		max_rows = 10000,
+		max_column_width = 200
+	},
+	dependencies = { "folke/which-key.nvim" }
+}
+{{- else if and (eq .chezmoi.os "linux") .has_mssql }}
+return {
+	"Kurren123/mssql.nvim",
+	enabled = true,
+	opts = {
+		keymap_prefix = "<leader>.",
+		tools_file = vim.fn.expand('~') .. "/.sqltools/MicrosoftSqlToolsServiceLayer",
+		max_rows = 10000,
+		max_column_width = 200
+	},
+	dependencies = { "folke/which-key.nvim" }
+}
+{{- else }}
+return {}
+{{- end }}

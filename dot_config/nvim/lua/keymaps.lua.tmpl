@@ -67,11 +67,15 @@ set({ "n", "v" }, "J", "e", opts)
 -- oil
 set("n", "-", "<cmd>lua require('oil').open_float()<CR>", { noremap = true, silent = true })
 
---visual studio
+{{- if eq .chezmoi.os "windows" }}
+-- Visual Studio (Windows only)
 set("n", "<leader>vs", "<cmd>!devenv /edit %<cr>", { desc = "Edit file in Visual Studio", noremap = true, silent = true })
+{{- end }}
 
+{{- if .has_dotnet }}
 -- dotnet format
 set({ "v", "n"}, "<leader>=", "<cmd>!dotnet format whitespace<cr>", { desc = "Format file ", noremap = true, silent = true })
+{{- end }}
 
 -- obsidian
 opts.desc = "Open note in Obsidian"

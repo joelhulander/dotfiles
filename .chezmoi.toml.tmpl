@@ -1,7 +1,28 @@
 {{ $email := promptStringOnce . "email" "What is your email address" -}}
+{{ $has_dotnet := promptBoolOnce . "has_dotnet" "Do you have .NET tools installed (netcoredbg, dotnet CLI)" -}}
+{{ $has_mssql := promptBoolOnce . "has_mssql" "Do you have MSSQL tools installed" -}}
+{{ $debugger_port := promptIntOnce . "debugger_port" "ASP.NET Core debugger port (e.g., 5000)" -}}
+{{ $obsidian_vault := promptStringOnce . "obsidian_vault" "Path to Obsidian vault (e.g., ~/Documents/Notes)" -}}
+{{ $mkdp_images_path := promptStringOnce . "mkdp_images_path" "Markdown preview images path (empty if not needed)" -}}
 
 [data]
     email = {{ $email | quote }}
+    has_dotnet = {{ $has_dotnet }}
+    has_mssql = {{ $has_mssql }}
+    debugger_port = {{ $debugger_port }}
+    obsidian_vault = {{ $obsidian_vault | quote }}
+    mkdp_images_path = {{ $mkdp_images_path | quote }}
+
+# Add note_templates and projects manually using [[data.note_templates]] and [[data.projects]] syntax
+# Example:
+# [[data.note_templates]]
+#     name = "Note"
+#     template = "Note (nvim)"
+#     folder = "Notes"
+#
+# [[data.projects]]
+#     name = "dotfiles"
+#     path = "~/.local/share/chezmoi"
 
 [warnings]
     configFileTemplateHasChanged = false
@@ -9,6 +30,10 @@
 [edit]
     command = "nvim"
 {{ if eq .chezmoi.os "windows" }}
+[interpreters.ps1]
+    command = "powershell.exe"
+    args = ["-NoLogo", "-ExecutionPolicy", "Bypass"]
+
 [cd]
     command = "pwsh"
 {{ else }}

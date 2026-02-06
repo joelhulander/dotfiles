@@ -2,9 +2,9 @@ $env:Path += ';C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\
 $env:LC_MESSAGES="en-US"
 $env:TERM='xterm-256color'
 $Env:KOMOREBI_CONFIG_HOME = "${Env:USERPROFILE}\.config\komorebi"
-$KanataConfigLocation = "${Env:USERPROFILE}\kanata.kbd"
 
 $env:XDG_CONFIG_HOME = "$Env:USERPROFILE\.config"
+$KanataConfigLocation = "$Env:USERPROFILE\.config\kanata\config.kbd"
 
 # Optional: XDG_DATA_HOME, XDG_STATE_HOME for other apps
 $env:XDG_DATA_HOME  = "$Env:USERPROFILE\.local\share"
@@ -79,7 +79,7 @@ Set-Alias rebuild rebuildSA
 Set-Alias gd showGitDiff
 Set-Alias yasb startYasb
 Set-Alias dev cdDev
-Set-Alias ls eza
+Set-Alias ls lsd
 
 function showGitDiff {
 	git diff -w
@@ -172,4 +172,5 @@ function y {
     Remove-Item -Path $tmp
 }
 
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
 Invoke-Expression (&starship init powershell)

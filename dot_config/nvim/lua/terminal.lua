@@ -2,13 +2,6 @@
 -- FLOATING TERMINAL
 -- ============================================================================
 
--- terminal
--- local terminal_state = {
--- 	buf = nil,
--- 	win = nil,
--- 	is_open = false
--- }
-
 local function FloatingTerminal()
 	local cwd = vim.fn.getcwd()
 	local terminal_state = _G.project_terminals[cwd]
@@ -34,7 +27,7 @@ local function FloatingTerminal()
 	if not terminal_state.buf or not vim.api.nvim_buf_is_valid(terminal_state.buf) then
 		_G.project_terminals[cwd].buf = vim.api.nvim_create_buf(false, true)
 		-- Set buffer options for better terminal experience
-		vim.api.nvim_buf_set_option(terminal_state.buf, 'bufhidden', 'hide')
+		vim.bo[terminal_state.buf].bufhidden = 'hide'
 	end
 
 	-- Calculate window dimensions
@@ -55,11 +48,10 @@ local function FloatingTerminal()
 	})
 
 	-- Set transparency for the floating window
-	vim.api.nvim_win_set_option(terminal_state.win, 'winblend', 0)
+	vim.wo[terminal_state.win].winblend = 0
 
 	-- Set transparent background for the window
-	vim.api.nvim_win_set_option(terminal_state.win, 'winhighlight',
-		'Normal:FloatingTermNormal,FloatBorder:FloatingTermBorder')
+	vim.wo[terminal_state.win].winhighlight = 'Normal:FloatingTermNormal,FloatBorder:FloatingTermBorder'
 
 	-- Define highlight groups for transparency
 	vim.api.nvim_set_hl(0, "FloatingTermNormal", { bg = "none" })
@@ -97,19 +89,11 @@ local function FloatingTerminal()
 
 end
 
--- Function to explicitly close the terminal
-local function CloseFloatingTerminal()
-	if terminal_state.is_open and vim.api.nvim_win_is_valid(terminal_state.win) then
-		vim.api.nvim_win_close(terminal_state.win, false)
-		terminal_state.is_open = false
-	end
-end
-
 -- Key mappings
-vim.keymap.set("n", "<leader>t", FloatingTerminal, { noremap = true, silent = true, desc = "Toggle floating terminal" })
+vim.keymap.set("n", "<leader>tt", FloatingTerminal, { noremap = true, silent = true, desc = "Toggle floating terminal" })
 vim.keymap.set("t", "<Esc><Esc>", function()
 	local terminal_state = _G.project_terminals[vim.fn.getcwd()]
-	if terminal_state.is_open then
+	if terminal_state and terminal_state.is_open then
 		vim.api.nvim_win_close(terminal_state.win, false)
 		terminal_state.is_open = false
 	end

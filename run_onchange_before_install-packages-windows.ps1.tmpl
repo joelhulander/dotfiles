@@ -1,0 +1,194 @@
+{{ if eq .chezmoi.os "windows" -}}
+# Self-hash for run_onchange_ detection (do not remove):
+# {{ include "run_onchange_before_install-packages-windows.ps1.tmpl" | sha256sum }}
+
+# --- Helper functions ---
+
+function Write-ColoredOutput($message, $color) {
+    Write-Host $message -ForegroundColor $color
+}
+
+function Write-Ok($message) {
+    Write-Host "  [OK] " -ForegroundColor Green -NoNewline
+    Write-Host $message -ForegroundColor DarkGray
+}
+
+function Write-Fail($message) {
+    Write-Host "  [FAIL] " -ForegroundColor Red -NoNewline
+    Write-Host $message -ForegroundColor Red
+}
+
+function Test-Command(${command}) {
+    try {
+        if (Get-Command ${command} -ErrorAction Stop) { return $true }
+    } catch {
+        return $false
+    }
+}
+
+function Install-OrUpdateWingetPackage(${packageId}, ${commandName}, ${installedList}) {
+    if (${installedList} -match ${packageId}) {
+        Write-Ok "${commandName} already installed"
+        return
+    }
+    Write-ColoredOutput "  Installing ${commandName} (${packageId})..." "Cyan"
+    try {
+        winget install --id ${packageId} --accept-source-agreements --accept-package-agreements --silent 2>&1 | Out-Null
+        Write-Ok "${commandName} installed"
+    } catch {
+        Write-Fail "Failed: $_"
+    }
+}
+
+function Install-OrUpdateScoopPackage(${packageName}, ${installedList}) {
+    try {
+        if (${installedList} -notmatch ${packageName}) {
+            Write-ColoredOutput "  Installing ${packageName}..." "Cyan"
+            scoop install ${packageName}
+            Write-Ok "${packageName} installed"
+        } else {
+            Write-Ok "${packageName} already installed"
+        }
+    } catch {
+        Write-Fail "Failed: $_"
+    }
+}
+
+function Install-OrUpdateModule(${moduleName}) {
+    try {
+        if (-not (Get-Module -ListAvailable -Name ${moduleName})) {
+            Write-ColoredOutput "  Installing ${moduleName}..." "Cyan"
+            Install-Module -Name ${moduleName} -Force -Scope CurrentUser
+            Write-Ok "${moduleName} installed"
+        } else {
+            Write-Ok "${moduleName} already installed"
+        }
+    } catch {
+        Write-Fail "Failed: $_"
+    }
+}
+
+# --- Ensure package managers are available ---
+
+if (-not (Test-Command winget)) {
+    Write-ColoredOutput "winget is not available. Please install App Installer from the Microsoft Store." "Red"
+    exit 1
+}
+
+if (-not (Test-Command scoop)) {
+    Write-ColoredOutput "Installing Scoop..." "Yellow"
+    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+}
+
+# --- Winget packages ---
+
+Write-Host ""
+Write-ColoredOutput "Installing winget packages..." "Magenta"
+
+$wingetPackages = @(
+    @{Id="Microsoft.PowerShell"; Command="pwsh"},
+    @{Id="Git.Git"; Command="git"},
+    @{Id="Neovim.Neovim"; Command="nvim"},
+    @{Id="twpayne.chezmoi"; Command="chezmoi"},
+    @{Id="jesseduffield.lazygit"; Command="lazygit"},
+    @{Id="wez.wezterm"; Command="wezterm"},
+    @{Id="fzf"; Command="fzf"},
+    @{Id="Python.Python.3.10"; Command="python"},
+    @{Id="JernejSimoncic.Wget"; Command="wget"},
+    @{Id="glzr-io.glazewm"; Command="glazewm"},
+    @{Id="Yarn.Yarn"; Command="yarn"},
+    @{Id="sxyazi.yazi"; Command="yazi"},
+    @{Id="JohnMacFarlane.Pandoc"; Command="pandoc"},
+    @{Id="Neovide.Neovide"; Command="neovide"},
+    @{Id="Starship.Starship"; Command="starship"},
+    @{Id="7zip.7zip"; Command="7z"},
+    @{Id="raphamorim.rio"; Command="rio"},
+    @{Id="eza-community.eza"; Command="eza"},
+    @{Id="lsd-rs.lsd"; Command="lsd"},
+    @{Id="ajeetdsouza.zoxide"; Command="zoxide"},
+    @{Id="jj-vcs.jj"; Command="jj"},
+    @{Id="sharkdp.bat"; Command="bat"},
+    @{Id="BurntSushi.ripgrep.MSVC"; Command="rg"},
+    @{Id="sharkdp.fd"; Command="fd"},
+    @{Id="jqlang.jq"; Command="jq"},
+    @{Id="Nushell.Nushell"; Command="nu"}
+)
+
+$installedList = winget list --accept-source-agreements 2>&1 | Out-String
+
+foreach ($package in $wingetPackages) {
+    Install-OrUpdateWingetPackage $package.Id $package.Command $installedList
+}
+
+$pwshPath = Get-Command pwsh -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source
+if (-not $pwshPath) {
+    $pwshPath = "$env:ProgramFiles\PowerShell\7\pwsh.exe"
+}
+
+if (Test-Path $pwshPath) {
+    $tempScript = [System.IO.Path]::GetTempFileName() + ".ps1"
+    @'
+function Write-ColoredOutput($message, $color) {
+    Write-Host $message -ForegroundColor $color
+}
+
+function Write-Ok($message) {
+    Write-Host "  [OK] " -ForegroundColor Green -NoNewline
+    Write-Host $message -ForegroundColor DarkGray
+}
+
+function Write-Fail($message) {
+    Write-Host "  [FAIL] " -ForegroundColor Red -NoNewline
+    Write-Host $message -ForegroundColor Red
+}
+
+# Scoop packages
+Write-Host ""
+Write-ColoredOutput "Installing scoop packages..." "Magenta"
+
+$scoopInstalled = scoop export 2>$null | Out-String
+$scoopPackages = @("kanata", "PSReadLine", "PSFzf", "silicon", "poppler")
+foreach ($package in $scoopPackages) {
+    try {
+        if ($scoopInstalled -notmatch $package) {
+            Write-ColoredOutput "  Installing $package..." "Cyan"
+            scoop install $package
+            Write-Ok "$package installed"
+        } else {
+            Write-Ok "$package already installed"
+        }
+    } catch {
+        Write-Fail "Failed: $_"
+    }
+}
+
+# PowerShell modules
+Write-Host ""
+Write-ColoredOutput "Installing PowerShell modules..." "Magenta"
+
+$psModules = @("posh-git", "Terminal-Icons")
+foreach ($module in $psModules) {
+    try {
+        if (-not (Get-Module -ListAvailable -Name $module)) {
+            Write-ColoredOutput "  Installing $module..." "Cyan"
+            Install-Module -Name $module -Force -Scope CurrentUser
+            Write-Ok "$module installed"
+        } else {
+            Write-Ok "$module already installed"
+        }
+    } catch {
+        Write-Fail "Failed: $_"
+    }
+}
+'@ | Set-Content -Path $tempScript -Encoding UTF8
+
+    & $pwshPath -NoLogo -ExecutionPolicy Bypass -File $tempScript
+    Remove-Item $tempScript -ErrorAction SilentlyContinue
+} else {
+    Write-ColoredOutput "pwsh not found - skipping scoop packages and PowerShell modules." "Yellow"
+    Write-ColoredOutput "Install PowerShell 7 and re-run 'chezmoi apply'." "Yellow"
+}
+
+Write-Host ""
+Write-ColoredOutput "Package installation complete." "Green"
+{{ end -}}
