@@ -5,8 +5,10 @@ format = """
 $os\
 $username\
 [](bg:peach fg:surface0)\
+$directory\
 [](fg:peach bg:green)\
 $git_branch\
+$git_metrics\
 [](fg:green bg:teal)\
 $c\
 $rust\
@@ -95,13 +97,12 @@ show_always = true
 style_user = "bg:surface0 fg:text"
 style_root = "bg:surface0 fg:text"
 format = '[ $user ]($style)'
-aliases = { "Administrator" = "jhul" }
+aliases = { "Administrator" = "jhul", "joelhulander" = "jhul" }
 
 [directory]
 style = "fg:mantle bg:peach"
 format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
+truncation_length = 1
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -115,9 +116,9 @@ symbol = ""
 style = "bg:teal"
 format = '[[ $symbol $branch ](fg:base bg:green)]($style)'
 
-# [git_status]
-# style = "bg:teal"
-# format = '[[($all_status$ahead_behind )](fg:base bg:green)]($style)'
+[git_status]
+style = "bg:teal"
+format = '[[($all_status$ahead_behind )](fg:base bg:green)]($style)'
 
 [nodejs]
 symbol = ""

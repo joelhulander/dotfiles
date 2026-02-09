@@ -2,6 +2,7 @@
 tap "felixkratz/formulae"
 tap "jesseduffield/lazygit"
 tap "nikitabobko/tap"
+tap "wez/wezterm"
 
 # ─── Core CLI tools ─────────────────────────────────────
 brew "bat"
@@ -10,6 +11,7 @@ brew "eza"
 brew "fd"
 brew "fzf"
 brew "git"
+brew "jj"
 brew "jq"
 brew "ripgrep"
 brew "sevenzip"
@@ -47,6 +49,7 @@ brew "chezmoi"
 # ─── Media & documents ─────────────────────────────────
 brew "ghostscript"
 brew "imagemagick"
+brew "poppler"
 
 # ─── macOS desktop & bar ───────────────────────────────
 brew "felixkratz/formulae/sketchybar"
@@ -63,7 +66,6 @@ cask "alacritty"
 cask "ghostty"
 cask "wezterm"
 
-# ── Optional tools ──
 brew "bitwarden-cli"
 brew "lsd"
 brew "task"

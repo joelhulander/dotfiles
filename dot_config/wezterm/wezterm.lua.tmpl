@@ -24,8 +24,8 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" then
 	config.macos_window_background_blur = 50
 elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
 	config.enable_wayland = false
-	-- config.default_prog = { "/usr/bin/zsh", "-l", "-i" }
-	config.default_prog = { "/usr/bin/nu", "-l", "-i" }
+	config.default_prog = { "/usr/bin/zsh", "-l", "-i" }
+	-- config.default_prog = { "/usr/bin/nu", "-l", "-i" }
 else
 	config.default_prog = {"/bin/bash"}
 end
@@ -76,7 +76,7 @@ config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.show_tabs_in_tab_bar = false
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.9
+config.window_background_opacity = 1
 
 config.initial_cols = 130
 config.initial_rows = 45
@@ -104,7 +104,11 @@ config.inactive_pane_hsb = {
 }
 
 config.font = wezterm.font("JetBrainsMono NF", {weight="Regular", stretch="Normal", style="Normal"})
+{{ if eq .chezmoi.os "windows" }}
 config.font_size = 16
+{{ else }}
+config.font_size = 18
+{{ end }}
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 -- Keys

@@ -12,6 +12,8 @@ elif [[ "$(uname -s)" == "Linux" ]]; then
 	source /usr/share/fzf/completion.zsh
 fi
 
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 bindkey -rM emacs '\ec'
 bindkey -rM vicmd '\ec'
@@ -46,6 +48,8 @@ y() {
         rm -f "$tmp"
     fi
 }
+
+source <(COMPLETE=zsh jj)
 
 # Initialize starship prompt
 eval "$(starship init zsh)"

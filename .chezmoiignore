@@ -25,6 +25,7 @@ brewfile
 .config/yasb/
 .glzr/
 .config/komorebi/
+.config/powershell/
 AppData/
 {{ else }}
 .config/zellij/

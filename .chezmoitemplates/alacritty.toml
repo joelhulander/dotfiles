@@ -9,7 +9,12 @@ decorations = "none"
 # Font configuration
 [font]
 normal = { family = "JetBrainsMono NF", style = "Regular" }
+
+{{ if eq .chezmoi.os "windows" }}
 size = 13.5
+{{ else }}
+size = 18
+{{ end }}
 offset = { x = 1, y = 2 }
 
 [colors.primary]
@@ -37,7 +42,6 @@ cyan = "#94E2D5"
 white = "#A6ADC8"
 
 [cursor]
-style = { shape = "Block", blinking = "On" }
 blink_interval = 500
 
 [keyboard]
