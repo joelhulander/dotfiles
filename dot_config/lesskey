@@ -1,0 +1,21 @@
+#command
+# Colemak-friendly navigation
+n forw-line
+e back-line
+i right-scroll
+h left-scroll
+
+# Page navigation
+N forw-screen
+E back-screen
+
+# Jump to beginning/end
+gg goto-line
+G goto-end
+
+# Search (keep standard)
+/ forw-search
+? back-search
+
+# Quit
+q quit

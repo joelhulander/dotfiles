@@ -3,7 +3,29 @@
   "keyMappings": "unmap n\nunmap N\nmap n scrollDown\nmap N nextTab\nunmap k\nunmap K\nmap k performFind\nmap K performBackwardsFind\nunmap e\nunmap E\nmap e scrollUp\nmap E previousTab\nunmap j\nunmap J",
   "linkHintCharacters": "stnerifwcmapdh",
   "newTabUrl": "https://www.google.com",
-  "scrollStepSize": 200,
+  "scrollStepSize": 150,
   "grabBackFocus": true,
-  "settingsVersion": "2.1.2"
+  "settingsVersion": "2.3.1",
+  "exclusionRules": [
+    {
+      "passKeys": "",
+      "pattern": "https?://mail.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://www.toptal.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://onedrive.live.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://vdi.afaforsakring.se/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https://monkeytype.com/"
+    }
+  ]
 }

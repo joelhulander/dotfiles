@@ -1,5 +1,6 @@
 export PATH="/opt/homebrew/bin:/Users/joelhulander/.local/bin:/Users/joelhulander/.cargo/bin:/Applications/darktable.app/Contents/MacOS:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
     # macOS specific settings
