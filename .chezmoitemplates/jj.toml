@@ -1,7 +1,11 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
 [user]
 name = "Joel Hulander"
 email = {{ .email | quote }}
 
 [ui]
+pager = "less -FRX"
+paginate = "auto"
 editor = "nvim"
 default-command = "log"

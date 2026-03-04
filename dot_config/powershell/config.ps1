@@ -2,9 +2,13 @@ $env:Path += ';C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\
 $env:LC_MESSAGES="en-US"
 $env:TERM='xterm-256color'
 $Env:KOMOREBI_CONFIG_HOME = "${Env:USERPROFILE}\.config\komorebi"
+$env:EDITOR = "nvim"
 
 $env:XDG_CONFIG_HOME = "$Env:USERPROFILE\.config"
+$env:YAZI_CONFIG_HOME = "$env:XDG_CONFIG_HOME\yazi"
 $KanataConfigLocation = "$Env:USERPROFILE\.config\kanata\config.kbd"
+$env:LESS = "-FRX --lesskey-src=$Env:XDG_CONFIG_HOME\lesskey"
+$env:BAT_PAGER = "less"
 
 # Optional: XDG_DATA_HOME, XDG_STATE_HOME for other apps
 $env:XDG_DATA_HOME  = "$Env:USERPROFILE\.local\share"
@@ -172,5 +176,11 @@ function y {
     Remove-Item -Path $tmp
 }
 
+function Invoke-Starship-TransientFunction {
+  &starship module character
+}
+
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 Invoke-Expression (&starship init powershell)
+
+Enable-TransientPrompt

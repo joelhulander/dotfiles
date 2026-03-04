@@ -40,14 +40,14 @@ gaps:
   scale_with_dpi: true
 
   # Gap between adjacent windows.
-  inner_gap: '6px'
+  inner_gap: '10px'
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '44px'
-    right: '6px'
-    bottom: '6px'
-    left: '6px'
+    top: '50px'
+    right: '10px'
+    bottom: '10px'
+    left: '10px'
 
 window_effects:
   # Visual effects to apply to the focused window.
@@ -56,8 +56,8 @@ window_effects:
     # ** Exclusive to Windows 11 due to API limitations.
     border:
       enabled: true
-      # color: '#b4befe'
-      color: '#cba6f7'
+      # color: '#cba6f7'  # catppuccin mocha (mauve)
+      color: '#ebbcba'    # rosé pine (iris)
 
     # Change the corner style of the window's frame.
     # ** Exclusive to Windows 11 due to API limitations.
@@ -70,7 +70,8 @@ window_effects:
   other_windows:
     border:
       enabled: true
-      color: '#6c7086'
+      # color: '#6c7086'  # catppuccin mocha (overlay0)
+      color: '#6e6a86'    # rosé pine (muted)
     corner_style:
       enabled: true
       style: 'small_rounded'
@@ -102,26 +103,29 @@ window_behavior:
 workspaces:
   - name: '1'
     keep_alive: true
-    # display_name: ""
-    # display_name: 1
-    display_name: "chat"
+    display_name: 1
+    # display_name: "chat"
   - name: '2'
     keep_alive: true
-    # display_name: ""
-    # display_name: 2
-    display_name: "term"
+    display_name: 2
+    # display_name: "term"
   - name: '3'
     keep_alive: true
-    # display_name: ""
-    # display_name: 3
-    display_name: "browser"
+    display_name: 3
+    # display_name: "browser"
   - name: '4'
-    # display_name: ""
-    # display_name: 4
-    display_name: "other"
+    display_name: 4
+    # display_name: "other"
   - name: '5'
-    display_name: ""
-    # display_name: 5
+    display_name: 5
+  - name: '6'
+    display_name: 6
+  - name: '7'
+    display_name: 7
+  - name: '8'
+    display_name: 8
+  - name: '9'
+    display_name: 9
 
 window_rules:
   - commands: ['ignore']
@@ -141,7 +145,11 @@ window_rules:
       - window_process: { equals: 'Lively' }
         window_class: { regex: 'HwndWrapper' }
 
+  - commands: ['set-floating']
+    match:
       - window_process: { equals: "explorer"}
+      - window_process: { equals: 'zen' }
+        window_title: { regex: 'Bitwarden Password Manager' }
 
 binding_modes:
   # When enabled, all keybindings are disabled except for alt+shift+p which
@@ -263,6 +271,14 @@ keybindings:
     bindings: ['alt+4']
   - commands: ['focus --workspace 5']
     bindings: ['alt+5']
+  - commands: ['focus --workspace 6']
+    bindings: ['alt+6']
+  - commands: ['focus --workspace 7']
+    bindings: ['alt+7']
+  - commands: ['focus --workspace 8']
+    bindings: ['alt+8']
+  - commands: ['focus --workspace 9']
+    bindings: ['alt+9']
 
   # Move the focused window's parent workspace to a monitor in a given
   # direction.

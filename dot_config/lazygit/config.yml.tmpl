@@ -1,0 +1,51 @@
+keybinding:
+  universal:
+    prevItem-alt: 'e' # go one line up
+    nextItem-alt: 'n' # go one line down
+    nextMatch: 'k'
+    prevMatch: 'K'
+    new: 'k'
+    edit: '!'
+    scrollUpMain-alt1: 'E' # main panel scroll up
+    scrollDownMain-alt1: 'N' # main panel scroll down
+    moveDownCommit: '<c-n>' # move commit down one
+    moveUpCommit: '<c-e>' # move commit up one
+gui:
+  theme:
+    activeBorderColor:
+      - '#a6e3a1'
+      - bold
+    inactiveBorderColor:
+      - '#a6adc8'
+    optionsTextColor:
+      - '#89b4fa'
+    selectedLineBgColor:
+      - '#313244'
+    cherryPickedCommitBgColor:
+      - '#45475a'
+    cherryPickedCommitFgColor:
+      - '#a6e3a1'
+    unstagedChangesColor:
+      - '#f38ba8'
+    defaultFgColor:
+      - '#cdd6f4'
+    searchingActiveBorderColor:
+      - '#f9e2af'
+
+  authorColors:
+    '*': '#b4befe'
+git:
+  log:
+    order: default
+os:
+{{- if eq .chezmoi.os "windows" }}
+  edit: 'pwsh -NoLogo -NoProfile -File "{{ .chezmoi.homeDir }}/.config/nvim/scripts/edit-in-nvim.ps1" "{{ "{{" }}filename{{ "}}" }}"'
+  editAtLine: 'pwsh -NoLogo -NoProfile -File "{{ .chezmoi.homeDir }}/.config/nvim/scripts/edit-in-nvim.ps1" "{{ "{{" }}filename{{ "}}" }}" "{{ "{{" }}line{{ "}}" }}"'
+  editAtLineAndWait: 'nvim "+{{ "{{" }}line{{ "}}" }}" "{{ "{{" }}filename{{ "}}" }}"'
+  editInTerminal: true
+{{- else }}
+  edit: 'if [ -n "$NVIM" ]; then nvim --clean -l "$HOME/.config/nvim/scripts/edit-in-nvim.lua" "{{ "{{" }}filename{{ "}}" }}"; else nvim "{{ "{{" }}filename{{ "}}" }}"; fi'
+  editAtLine: 'if [ -n "$NVIM" ]; then nvim --clean -l "$HOME/.config/nvim/scripts/edit-in-nvim.lua" "{{ "{{" }}filename{{ "}}" }}" "{{ "{{" }}line{{ "}}" }}"; else nvim "+{{ "{{" }}line{{ "}}" }}" "{{ "{{" }}filename{{ "}}" }}"; fi'
+  editAtLineAndWait: 'nvim "+{{ "{{" }}line{{ "}}" }}" "{{ "{{" }}filename{{ "}}" }}"'
+  editInTerminal: true
+{{- end }}

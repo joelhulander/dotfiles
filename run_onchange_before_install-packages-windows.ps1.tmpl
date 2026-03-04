@@ -147,7 +147,7 @@ Write-Host ""
 Write-ColoredOutput "Installing scoop packages..." "Magenta"
 
 $scoopInstalled = scoop export 2>$null | Out-String
-$scoopPackages = @("kanata", "PSReadLine", "PSFzf", "silicon", "poppler")
+$scoopPackages = @("kanata", "PSReadLine", "PSFzf", "silicon", "poppler", "less")
 foreach ($package in $scoopPackages) {
     try {
         if ($scoopInstalled -notmatch $package) {

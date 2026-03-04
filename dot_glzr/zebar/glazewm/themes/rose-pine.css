@@ -1,0 +1,13 @@
+:root {
+  --theme-bg: #191724;
+  --theme-bg-widget: #1f1d2e;
+  --theme-bg-active: #403d52;
+  --theme-border: #26233a;
+  --theme-text: #e0def4;
+  --theme-subtext: #908caa;
+  --theme-icon: #ebbcba;
+  --theme-accent: #ebbcba;
+  --theme-red: #eb6f92;
+  --theme-yellow: #f6c177;
+  --theme-green: #31748f;
+}

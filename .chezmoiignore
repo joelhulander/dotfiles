@@ -30,6 +30,7 @@ AppData/
 {{ else }}
 .config/zellij/
 .config/alacritty/
+.config/jj/
 .config/silicon/
 .tmux.conf
 .zshrc

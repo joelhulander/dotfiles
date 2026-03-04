@@ -1,10 +1,14 @@
 [general]
+	import = ["rose-pine.toml"]
 
 [window]
 dimensions = { columns = 130, lines = 45 }
 padding = { x = 20, y = 10 }
 opacity = 1
 decorations = "none"
+
+[env]
+LANG = "en_US.UTF-8"
 
 # Font configuration
 [font]
@@ -17,29 +21,29 @@ size = 18
 {{ end }}
 offset = { x = 1, y = 2 }
 
-[colors.primary]
-background = "#1E1E2E"
-foreground = "#CDD6F4"
-
-[colors.normal]
-black = "#45475A"
-red = "#F38BA8"
-green = "#A6E3A1"
-yellow = "#F9E2AF"
-blue = "#89B4FA"
-magenta = "#F5C2E7"
-cyan = "#94E2D5"
-white = "#BAC2DE"
-
-[colors.bright]
-black = "#585B70"
-red = "#F38BA8"
-green = "#A6E3A1"
-yellow = "#F9E2AF"
-blue = "#89B4FA"
-magenta = "#F5C2E7"
-cyan = "#94E2D5"
-white = "#A6ADC8"
+# [colors.primary]
+# background = "#1E1E2E"
+# foreground = "#CDD6F4"
+#
+# [colors.normal]
+# black = "#45475A"
+# red = "#F38BA8"
+# green = "#A6E3A1"
+# yellow = "#F9E2AF"
+# blue = "#89B4FA"
+# magenta = "#F5C2E7"
+# cyan = "#94E2D5"
+# white = "#BAC2DE"
+#
+# [colors.bright]
+# black = "#585B70"
+# red = "#F38BA8"
+# green = "#A6E3A1"
+# yellow = "#F9E2AF"
+# blue = "#89B4FA"
+# magenta = "#F5C2E7"
+# cyan = "#94E2D5"
+# white = "#A6ADC8"
 
 [cursor]
 blink_interval = 500

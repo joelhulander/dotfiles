@@ -16,6 +16,8 @@ G goto-end
 # Search (keep standard)
 / forw-search
 ? back-search
+k repeat-search
+K reverse-search
 
 # Quit
 q quit

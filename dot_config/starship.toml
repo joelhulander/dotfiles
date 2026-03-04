@@ -25,7 +25,7 @@ $docker_context\
 $time\
 [ ](fg:purple)"""
 
-palette = 'catppuccin_mocha'
+palette = 'rose_pine'
 
 [palettes.gruvbox_dark]
 color_fg0 = '#fbf1c7'
@@ -38,6 +38,32 @@ color_orange = '#d65d0e'
 color_purple = '#b16286'
 color_red = '#cc241d'
 color_yellow = '#d79921'
+
+[palettes.rose_pine]
+base = "#191724"
+surface = "#1f1d2e"
+overlay = "#26233a"
+muted = "#6e6a86"
+subtle = "#908caa"
+text = "#e0def4"
+love = "#eb6f92"
+gold = "#f6c177"
+rose = "#ebbcba"
+pine = "#31748f"
+foam = "#9ccfd8"
+iris = "#c4a7e7"
+highlight_low = "#21202e"
+highlight_med = "#403d52"
+highlight_high = "#524f67"
+surface0 = "#26233a"
+peach = "#ebbcba"
+green = "#9ccfd8"
+teal = "#31748f"
+blue = "#c4a7e7"
+purple = "#eb6f92"
+mantle = "#1f1d2e"
+red = "#eb6f92"
+lavender = "#c4a7e7"
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
@@ -68,7 +94,7 @@ mantle = "#181825"
 crust = "#11111b"
 
 [os]
-disabled = false
+disabled = true
 style = "bg:surface0 fg:text"
 
 [os.symbols]
